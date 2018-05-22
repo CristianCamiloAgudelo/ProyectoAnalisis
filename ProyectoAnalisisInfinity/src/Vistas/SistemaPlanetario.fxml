@@ -5,8 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="610.0" prefWidth="764.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="proyectoanalisisinfinity.SistemaPlanetarioController">
+<AnchorPane id="AnchorPane" prefHeight="610.0" prefWidth="764.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.SistemaPlanetarioController">
    <children>
       <ImageView fitHeight="554.0" fitWidth="764.0" pickOnBounds="true">
          <image>

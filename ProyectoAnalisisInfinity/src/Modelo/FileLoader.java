@@ -5,13 +5,78 @@
  */
 package Modelo;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 /**
  *
- * @author usuario
+ * @author matel
  */
 public class FileLoader
-{
-    
+{ 
+    private String path;
+
+    public FileLoader(String path)
+    {
+        this.path = path;
+    }
+
+    public void open(String path)
+    {
+
+        URL response = null;
+        try
+        {
+            File file = new File(path);
+            if (file.exists())
+                response = file.toURI().toURL();
+            openStage(response);
+        }
+        catch (IOException ex)
+        {
+            System.out.println("Error al abrir el archivo" + ex);
+        }
+        System.out.println(response);
+    }
+
+    private void openStage(URL url)
+    {
+        if (url != null)
+        {
+            FXMLLoader loader = new FXMLLoader(url);
+            try
+            {
+                Parent panelEdit = loader.load();
+
+                Scene scene = new Scene(panelEdit);//lo de por dentro
+                Stage stage = new Stage();
+
+                stage.setScene(scene);
+                stage.show();
+            }
+            catch (Exception e)
+            {
+                System.out.println("No se pudo abrir " + e);
+            }
+        }
+    }
+
+    /**
+     * @return the path
+     */
+    public String getPath() {
+        return path;
+    }
+
+    /**
+     * @param path the path to set
+     */
+    public void setPath(String path) {
+        this.path = path;
+    }
 }
-
-

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectoanalisisinfinity;
+package Vistas;
 
 
 import javafx.application.Application;
@@ -22,7 +22,7 @@ public class ProyectoAnalisisInfinity extends Application
     @Override
     public void start(Stage stage) throws Exception
     {
-        Parent root = FXMLLoader.load(getClass().getResource("Planeta1.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Nebulosa.fxml"));
         
         Scene scene = new Scene(root);
         

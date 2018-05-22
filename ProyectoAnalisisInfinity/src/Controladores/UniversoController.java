@@ -3,19 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectoanalisisinfinity;
+package Controladores;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
  *
  * @author usuario
  */
-public class Planeta2Controller implements Initializable
+public class UniversoController implements Initializable
 {
+    @FXML
+    private Button CrearNebulosa;
+    @FXML
+    private Button AtrasUniverso;
+    @FXML
+    private Text textUniverso;
 
     /**
      * Initializes the controller class.
@@ -25,5 +35,15 @@ public class Planeta2Controller implements Initializable
     {
         // TODO
     }    
+
+    @FXML
+    private void CrearNebulosa(ActionEvent event)
+    {
+    }
+
+    @FXML
+    private void AtrasUniverso(ActionEvent event)
+    {
+    }
     
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectoanalisisinfinity;
+package Controladores;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,9 +20,13 @@ import javafx.scene.control.Button;
 public class NebulosaController implements Initializable
 {
     @FXML
-    private Button CrearNebulosa;
+    private Button CrearSistemaPlanetario;
     @FXML
-    private Button Atras;
+    private Button AtrasNebulosa;
+    @FXML
+    private Button CrearNebulosa1;
+    @FXML
+    private Button crearEnemigo;
 
     /**
      * Initializes the controller class.
@@ -39,8 +43,16 @@ public class NebulosaController implements Initializable
     }
 
     @FXML
-    private void AtrasUniverso(ActionEvent event)
+    private void CrearSistemaPlanetario(ActionEvent event)
     {
+    }
+
+    @FXML
+    private void AtrasNebulosa(ActionEvent event) {
+    }
+
+    @FXML
+    private void CrearEnemigo(ActionEvent event) {
     }
     
 }
