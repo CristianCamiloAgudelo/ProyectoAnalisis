@@ -9,12 +9,13 @@ package Grafo;
  */
 public class Arista
 {
-
     private int posicionXInicial;
     private int posicionYInicial;
     private int posicionXFinal;
     private int posicionYFinal;
     private int costo;
+    private Object objeto1;
+    private Object objeto2;
 
     /**
      * Constructor parametrizable
@@ -25,7 +26,7 @@ public class Arista
      * @param posicionYFinal
      * @param costo
      */
-    public Arista(int posicionXInicial, int posicionYInicial, int posicionXFinal, int posicionYFinal, int costo)
+    public Arista(Object objeto1,Object objeto2,int posicionXInicial, int posicionYInicial, int posicionXFinal, int posicionYFinal, int costo)
     {
         this.posicionXInicial = posicionXInicial;
         this.posicionYInicial = posicionYInicial;
@@ -82,6 +83,26 @@ public class Arista
     public void setCosto(int costo)
     {
         this.costo = costo;
+    }
+
+    public Object getObjeto1()
+    {
+        return objeto1;
+    }
+
+    public void setObjeto1(Object objeto1)
+    {
+        this.objeto1 = objeto1;
+    }
+
+    public Object getObjeto2()
+    {
+        return objeto2;
+    }
+
+    public void setObjeto2(Object objeto2)
+    {
+        this.objeto2 = objeto2;
     }
     
     

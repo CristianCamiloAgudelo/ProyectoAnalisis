@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectoanalisisinfinity;
-
+package prueba;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,13 +15,13 @@ import javafx.stage.Stage;
  *
  * @author usuario
  */
-public class ProyectoAnalisisInfinity extends Application
+public class Prueba extends Application
 {
     
     @Override
     public void start(Stage stage) throws Exception
     {
-        Parent root = FXMLLoader.load(getClass().getResource("Planeta1.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -39,4 +38,3 @@ public class ProyectoAnalisisInfinity extends Application
     }
     
 }
-
