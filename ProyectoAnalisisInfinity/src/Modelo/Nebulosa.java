@@ -9,13 +9,17 @@ import java.util.List;
  * @version 1.0
  * @author Cristian Camilo Agudelo
  */
+
+
 public class Nebulosa
 {
     private int codigo;
     private String nombre;
     private boolean enemigo;
     private boolean visitado;
-    private Grafo sistemaPlanetario;
+    //private Grafo sistemaPlanetario;
+    private List<Nodo> adyacencias;
+    private List<SistemaPlanetario> listaSistemasPlanetarios;
     private List<Image> imagen;
     private int posicionX;
     private int posicionY;
@@ -64,21 +68,22 @@ public class Nebulosa
         this.visitado = visitado;
     }
 
-    public Grafo getSistemaPlanetario()
-    {
-        return sistemaPlanetario;
-    }
-
-    public void setSistemaPlanetario(Grafo sistemaPlanetario)
-    {
-        this.sistemaPlanetario = sistemaPlanetario;
-    }
+//    public Grafo getSistemaPlanetario()
+//    {
+//        return sistemaPlanetario;
+//    }
+//
+//    public void setSistemaPlanetario(Grafo sistemaPlanetario)
+//    {
+//        this.sistemaPlanetario = sistemaPlanetario;
+//    }
 
     public List<Image> getImagen()
     {
         return imagen;
     }
 
+    
     public void setImagen(List<Image> imagen)
     {
         this.imagen = imagen;
@@ -102,6 +107,26 @@ public class Nebulosa
     public void setPosicionY(int posicionY)
     {
         this.posicionY = posicionY;
+    }
+
+    public List<Nodo> getAdyacencias()
+    {
+        return adyacencias;
+    }
+
+    public void setAdyacencias(List<Nodo> adyacencias)
+    {
+        this.adyacencias = adyacencias;
+    }
+
+    public List<SistemaPlanetario> getListaSistemasPlanetarios()
+    {
+        return listaSistemasPlanetarios;
+    }
+
+    public void setListaSistemasPlanetarios(List<SistemaPlanetario> listaSistemasPlanetarios)
+    {
+        this.listaSistemasPlanetarios = listaSistemasPlanetarios;
     }
     
     

@@ -1,6 +1,8 @@
 
 package Modelo;
 
+import java.util.List;
+
 /**
  * @version 1.0
  * @author Cristian Camilo Agudelo
@@ -12,11 +14,14 @@ public class Planeta
     private boolean visitado;
     private Elementos elementos;
     private boolean estacionCombustible;
+    private List<Nodo> adyacencias;
 
     public Planeta()
     {
     }
 
+    
+    
     public int getCodigo()
     {
         return codigo;
@@ -65,6 +70,16 @@ public class Planeta
     public void setEstacionCombustible(boolean estacionCombustible)
     {
         this.estacionCombustible = estacionCombustible;
+    }
+
+    public List<Nodo> getAdyacencias()
+    {
+        return adyacencias;
+    }
+
+    public void setAdyacencias(List<Nodo> adyacencias)
+    {
+        this.adyacencias = adyacencias;
     }
     
     

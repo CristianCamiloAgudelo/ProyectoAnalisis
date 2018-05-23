@@ -14,7 +14,9 @@ public class SistemaPlanetario
     private String nombre;
     private boolean visitado;
     private List<Enemigo> enemigos;
-    private Grafo planetas;
+    //private Grafo planetas;
+    private List<Nodo> adyacencias;
+    private List<Planeta> listaPlanetas;
     private List<Image> imagen;
     private int posicionX;
     private int posicionY;
@@ -63,15 +65,15 @@ public class SistemaPlanetario
         this.enemigos = enemigos;
     }
 
-    public Grafo getPlanetas()
-    {
-        return planetas;
-    }
-
-    public void setPlanetas(Grafo planetas)
-    {
-        this.planetas = planetas;
-    }
+//    public Grafo getPlanetas()
+//    {
+//        return planetas;
+//    }
+//
+//    public void setPlanetas(Grafo planetas)
+//    {
+//        this.planetas = planetas;
+//    }
 
     public List<Image> getImagen()
     {
@@ -101,6 +103,26 @@ public class SistemaPlanetario
     public void setPosicionY(int posicionY)
     {
         this.posicionY = posicionY;
+    }
+
+    public List<Nodo> getAdyacencias()
+    {
+        return adyacencias;
+    }
+
+    public void setAdyacencias(List<Nodo> adyacencias)
+    {
+        this.adyacencias = adyacencias;
+    }
+
+    public List<Planeta> getListaPlanetas()
+    {
+        return listaPlanetas;
+    }
+
+    public void setListaPlanetas(List<Planeta> listaPlanetas)
+    {
+        this.listaPlanetas = listaPlanetas;
     }
     
     
