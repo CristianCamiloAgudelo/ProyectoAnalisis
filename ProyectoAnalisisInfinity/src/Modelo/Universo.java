@@ -2,6 +2,7 @@
 package Modelo;
 import Grafo.*;
 import java.awt.Image;
+import java.util.List;
 
 /**
  * @version 1.0
@@ -10,7 +11,7 @@ import java.awt.Image;
 public class Universo
 {
     private String Nombre;
-    private Grafo Nebulosa;
+    private List<Nebulosa> listaNebulosas;
     private Image imagen;
 
     public Universo()
@@ -26,16 +27,16 @@ public class Universo
     {
         this.Nombre = Nombre;
     }
-
-    public Grafo getNebulosa()
-    {
-        return Nebulosa;
-    }
-
-    public void setNebulosa(Grafo Nebulosa)
-    {
-        this.Nebulosa = Nebulosa;
-    }
+//
+//    public List<Nebulosa> getGrafoNebulosa()
+//    {
+//        return grafoNebulosa;
+//    }
+//
+//    public void setGrafoNebulosa(List<Nebulosa> grafoNebulosa)
+//    {
+//        this.grafoNebulosa = grafoNebulosa;
+//    }
 
     public Image getImagen()
     {
@@ -46,6 +47,25 @@ public class Universo
     {
         this.imagen = imagen;
     }
+
+    /**
+     * @return the listaNebulosas
+     */
+    public List<Nebulosa> getListaNebulosas()
+    {
+        return listaNebulosas;
+    }
+
+    /**
+     * @param listaNebulosas the listaNebulosas to set
+     */
+    public void setListaNebulosas(List<Nebulosa> listaNebulosas)
+    {
+        this.listaNebulosas = listaNebulosas;
+    }
+
+   
+    
     
     
    

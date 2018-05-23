@@ -17,40 +17,34 @@ import javafx.stage.Stage;
  *
  * @author matel
  */
-public class FileLoader
-{ 
+public class FileLoader {
+
     private String path;
 
-    public FileLoader(String path)
-    {
+    public FileLoader(String path) {
         this.path = path;
     }
 
-    public void open(String path)
-    {
-
+    public Parent open(String path) {
+        System.out.println("Entre a " + path);
         URL response = null;
-        try
-        {
+        try {
             File file = new File(path);
-            if (file.exists())
+            if (file.exists()) {
                 response = file.toURI().toURL();
-            openStage(response);
-        }
-        catch (IOException ex)
-        {
+            }
+            Parent parent = changeStage2(response);
+            return parent;
+        } catch (IOException ex) {
             System.out.println("Error al abrir el archivo" + ex);
         }
-        System.out.println(response);
+        return null;
     }
 
-    private void openStage(URL url)
-    {
-        if (url != null)
-        {
+    private void openStage(URL url) {
+        if (url != null) {
             FXMLLoader loader = new FXMLLoader(url);
-            try
-            {
+            try {
                 Parent panelEdit = loader.load();
 
                 Scene scene = new Scene(panelEdit);//lo de por dentro
@@ -58,14 +52,25 @@ public class FileLoader
 
                 stage.setScene(scene);
                 stage.show();
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 System.out.println("No se pudo abrir " + e);
             }
         }
     }
 
+    private Parent changeStage2(URL url) {
+        if (url != null) {
+            FXMLLoader loader = new FXMLLoader(url);
+            try {
+                Parent panelEdit = loader.load();
+
+                return panelEdit;
+            } catch (Exception e) {
+                System.out.println("No se pudo abrir " + e);
+            }
+        }
+        return null;
+    }
     /**
      * @return the path
      */
