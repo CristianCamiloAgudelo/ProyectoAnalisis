@@ -5,11 +5,14 @@
  */
 package Controladores;
 
+import Modelo.*;
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 
 /**
@@ -37,22 +40,35 @@ public class NebulosaController implements Initializable
         // TODO
     }    
 
+    
     @FXML
-    private void CrearNebulosa(ActionEvent event)
+    private SistemaPlanetario CrearSistemaPlanetario(ActionEvent event)
     {
+        return null;
     }
-
+    
     @FXML
-    private void CrearSistemaPlanetario(ActionEvent event)
+    private Parent EntrarSistemaPlanetario(int codigoSistemaPlanetario)
     {
+        return null;
+    }
+    
+    @FXML
+    private LinkedList CrearConexion(int codigo, Nodo nodo)
+    {
+        return null;
+    }
+    @FXML
+    private void CrearEnemigos()
+    {
+        
+    }
+    
+    private Parent Volver()
+    {
+        return null;// volver a vista universo
     }
 
-    @FXML
-    private void AtrasNebulosa(ActionEvent event) {
-    }
-
-    @FXML
-    private void CrearEnemigo(ActionEvent event) {
-    }
+    
     
 }
