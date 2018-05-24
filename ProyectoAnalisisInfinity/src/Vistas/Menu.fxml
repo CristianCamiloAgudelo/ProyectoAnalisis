@@ -7,11 +7,14 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="MenuPane" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.MenuController">
+<AnchorPane id="MenuPane" fx:id="MenuPane" prefHeight="900.0" prefWidth="1500.0" stylesheets="@Estilos.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.MenuController">
     <children>
         <Button fx:id="btnHola" layoutX="29.0" layoutY="194.0" onAction="#PedirRuta" prefHeight="39.0" prefWidth="145.0" text="Hola" />
         <Label fx:id="label" layoutX="332.0" layoutY="371.0" minHeight="16" minWidth="69" />
-      <AnchorPane fx:id="marco" layoutX="186.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="874.0" prefWidth="1300.0" styleClass="marco" stylesheets="@Estilos.css" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="27.0" />
+      <AnchorPane fx:id="marco" layoutX="186.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="874.0" prefWidth="1300.0" styleClass="marco" stylesheets="@Estilos.css" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="27.0">
+         <children>
+            <Button id="Back" fx:id="Back" mnemonicParsing="false" styleClass="Back" text="Atras" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+         </children></AnchorPane>
       <MenuBar layoutY="2.0" prefHeight="26.0" prefWidth="1064.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
