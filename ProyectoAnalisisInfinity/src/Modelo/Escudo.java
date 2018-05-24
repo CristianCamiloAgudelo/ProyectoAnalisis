@@ -15,13 +15,16 @@ public class Escudo {
     private int vida;
     private List<String> imagenes;
     private int duracionEscudo;
+    private boolean activo;
 
     public Escudo(int codigo, String descripcion, int vida, int duracionEscudo) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.vida = vida;
         this.imagenes = new LinkedList<>();
+        this.imagenes.add("src/Vistas/Escudo1.jpg");
         this.duracionEscudo = duracionEscudo;
+        this.activo = false;
     }
 
     /**
@@ -71,6 +74,20 @@ public class Escudo {
      */
     public void setDuracionEscudo(int duracionEscudo) {
         this.duracionEscudo = duracionEscudo;
+    }
+
+    /**
+     * @return the activo
+     */
+    public boolean isActivo() {
+        return activo;
+    }
+
+    /**
+     * @param activo the activo to set
+     */
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
 }

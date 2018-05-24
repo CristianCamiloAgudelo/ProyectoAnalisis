@@ -16,7 +16,7 @@ public class Enemigo {
     private int daño;
     private int posicionX;
     private int posicionY;
-    private List<String> imagen;
+    private List<String> imagenes;
     private String tipoEnemigo;
 
     public Enemigo(int codigo, String descripcion, int vida, int daño, String tipoEnemigo) {
@@ -26,7 +26,10 @@ public class Enemigo {
         this.daño = daño;
         this.posicionX = 0;
         this.posicionY = 0;
-        this.imagen = new LinkedList<>();
+        this.imagenes = new LinkedList<>();
+        this.imagenes.add("src/Imagenes/EnemigoClaseA.png");
+        this.imagenes.add("src/Imagenes/EnemigoClaseB.png");
+        this.imagenes.add("src/Imagenes/EnemigoClaseC.png");
         this.tipoEnemigo = tipoEnemigo;
     }
 
@@ -80,10 +83,10 @@ public class Enemigo {
     }
 
     /**
-     * @return the imagen
+     * @return the imagenes
      */
-    public List<String> getImagen() {
-        return imagen;
+    public List<String> getImagenes() {
+        return imagenes;
     }
 
     /**

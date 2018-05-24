@@ -22,4 +22,18 @@ public class Nodo{
         this.peso = peso;
     }
 
+    /**
+     * @return the codigo
+     */
+    public int getCodigo() {
+        return codigo;
+    }
+
+    /**
+     * @return the peso
+     */
+    public int getPeso() {
+        return peso;
+    }
+
 }

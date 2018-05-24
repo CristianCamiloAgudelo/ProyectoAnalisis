@@ -4,15 +4,23 @@
  * and open the template in the editor.
  */
 package Modelo;
+
+import java.util.List;
+
 /**
  * @version 1.0
  * @author Cristian Camilo Agudelo
  */
-public class SistemaNavegacion
-{
+public class SistemaNavegacion {
 
-    public SistemaNavegacion()
-    {
+    public SistemaNavegacion() {
     }
-    
+
+    public List<Nodo> CaminoMasCorto() {
+        return null;
+    }
+
+    public List<Nodo> CaminoMasRecursos() {
+        return null;
+    }
 }
