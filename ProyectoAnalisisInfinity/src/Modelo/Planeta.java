@@ -25,9 +25,9 @@ public class Planeta {
         this.estacionCombustible = estacionCombustible;
         this.adyacencias = adyacencias;
         this.imagenes = new LinkedList<>();
-        this.imagenes.add("src/Vistas/Nebulosa1");
-        this.imagenes.add("src/Vistas/Nebulosa2");
-        this.imagenes.add("src/Vistas/Nebulosa3");
+        this.imagenes.add("src/Vistas/Planeta1");
+        this.imagenes.add("src/Vistas/Planeta2");
+        this.imagenes.add("src/Vistas/Planeta3");
     }
 
     public Planeta(int codigo, String nombre, Elementos elementos, boolean estacionCombustible) {
