@@ -4,11 +4,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.UniversoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="874.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.UniversoController">
    <children>
-      <ImageView fitHeight="500.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="874.0" fitWidth="1300.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Imagenes/1065651800.jpg" />
+            <Image url="@../Imagenes/tamaño-y-escala-universo.jpg" />
          </image>
       </ImageView>
    </children>

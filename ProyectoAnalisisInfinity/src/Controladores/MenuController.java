@@ -39,7 +39,10 @@ public class MenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        String ruta = "src/Vistas/Universo.fxml";
+        fileloader = new FileLoader(ruta);
+        this.marco.getChildren().clear();
+        this.marco.getChildren().add(fileloader.open(ruta));
     }
 
     private void CambioVista(String ruta) throws MalformedURLException {
