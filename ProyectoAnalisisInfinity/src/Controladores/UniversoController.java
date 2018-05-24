@@ -20,12 +20,6 @@ import javafx.scene.text.Text;
  */
 public class UniversoController implements Initializable
 {
-    @FXML
-    private Button CrearNebulosa;
-    @FXML
-    private Button AtrasUniverso;
-    @FXML
-    private Text textUniverso;
 
     /**
      * Initializes the controller class.
@@ -36,14 +30,6 @@ public class UniversoController implements Initializable
         // TODO
     }    
 
-    @FXML
-    private void CrearNebulosa(ActionEvent event)
-    {
-    }
 
-    @FXML
-    private void AtrasUniverso(ActionEvent event)
-    {
-    }
     
 }

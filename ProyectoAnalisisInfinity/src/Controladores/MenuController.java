@@ -18,17 +18,15 @@ import javafx.scene.layout.AnchorPane;
 import Modelo.FileLoader;
 import java.io.File;
 import java.net.MalformedURLException;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.stage.Stage;
+import java.util.Scanner;
 
 /**
  *
  * @author usuario
  */
-public class FXMLDocumentController implements Initializable {
+public class MenuController implements Initializable {
 
-    FileLoader fileloader ;
+    FileLoader fileloader;
     @FXML
     private Label label;
     @FXML
@@ -36,27 +34,18 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private AnchorPane marco;
 
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }
 
-    @FXML
-    private void CambioVista(ActionEvent event) throws MalformedURLException {
-        
-        String path = "src/Vistas/Universo.fxml";
-        fileloader  = new FileLoader(path);
-       
-        this.marco.getChildren().clear();
-        this.marco.getChildren().add(fileloader.open(path));
-        
-//        this.fileloader.open(path);
+    private void CambioVista(String ruta) throws MalformedURLException {
 
+        fileloader = new FileLoader(ruta);
+        this.marco.getChildren().clear();
+        this.marco.getChildren().add(fileloader.open(ruta));
+
+//        this.fileloader.open(path);
     }
 
     private URL checkFile(String path) throws MalformedURLException {
@@ -66,6 +55,15 @@ public class FXMLDocumentController implements Initializable {
             response = file.toURI().toURL();
         }
         return response;
+    }
+
+    @FXML
+    private void PedirRuta(ActionEvent event) throws MalformedURLException {
+        Scanner sc = new Scanner(System.in);
+        String ruta, palabraB;
+        System.out.println("Introduzca la ruta del archivo: ");
+        ruta = sc.nextLine();
+        CambioVista(ruta);
     }
 
 }

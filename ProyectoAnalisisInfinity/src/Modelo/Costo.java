@@ -11,6 +11,40 @@ public class Costo {
     private int paladio;
     private int platino;
 
-    public Costo() {
+    public Costo(int zero, int iridio, int paladio, int platino) {
+        this.zero = zero;
+        this.iridio = iridio;
+        this.paladio = paladio;
+        this.platino = platino;
     }
+
+    /**
+     * @return the zero
+     */
+    public int getZero() {
+        return zero;
+    }
+
+    /**
+     * @return the iridio
+     */
+    public int getIridio() {
+        return iridio;
+    }
+
+    /**
+     * @return the paladio
+     */
+    public int getPaladio() {
+        return paladio;
+    }
+
+    /**
+     * @return the platino
+     */
+    public int getPlatino() {
+        return platino;
+    }
+
+   
 }

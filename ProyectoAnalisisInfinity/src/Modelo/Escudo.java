@@ -1,6 +1,7 @@
 package Modelo;
 
 import java.awt.Image;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -10,11 +11,66 @@ import java.util.List;
 public class Escudo {
 
     private int codigo;
-    private String nombre;
+    private String descripcion;
     private int vida;
-    private List<Image> imagen;
+    private List<String> imagenes;
     private int duracionEscudo;
 
-    public Escudo() {
+    public Escudo(int codigo, String descripcion, int vida, int duracionEscudo) {
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        this.vida = vida;
+        this.imagenes = new LinkedList<>();
+        this.duracionEscudo = duracionEscudo;
     }
+
+    /**
+     * @return the codigo
+     */
+    public int getCodigo() {
+        return codigo;
+    }
+
+    /**
+     * @return the descripcion
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * @return the vida
+     */
+    public int getVida() {
+        return vida;
+    }
+
+    /**
+     * @param vida the vida to set
+     */
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
+    /**
+     * @return the imagenes
+     */
+    public List<String> getImagenes() {
+        return imagenes;
+    }
+
+    /**
+     * @return the duracionEscudo
+     */
+    public int getDuracionEscudo() {
+        return duracionEscudo;
+    }
+
+    /**
+     * @param duracionEscudo the duracionEscudo to set
+     */
+    public void setDuracionEscudo(int duracionEscudo) {
+        this.duracionEscudo = duracionEscudo;
+    }
+
 }
