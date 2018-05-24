@@ -5,6 +5,7 @@
  */
 package Controladores;
 
+import Modelo.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -19,6 +20,8 @@ import Modelo.FileLoader;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.util.Scanner;
+import org.json.JSONObject;
+
 
 /**
  *
@@ -69,4 +72,27 @@ public class MenuController implements Initializable {
         CambioVista(ruta);
     }
 
+    @FXML
+    private Universo CargarUniverso(JSONObject Universo)
+    {
+        return null;
+    }
+    
+    @FXML
+    private Universo CrearUniverso(ActionEvent event)
+    {
+        return null;
+    }
+    
+    @FXML
+    private void TeletrasportarNebulosa(ActionEvent event)
+    {
+        
+    }
+    
+    @FXML
+    private void IniciarSimulacion(ActionEvent event)
+    {
+        
+    }
 }

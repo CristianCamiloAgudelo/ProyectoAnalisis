@@ -5,13 +5,16 @@
  */
 package Controladores;
 
+import Modelo.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
+import java.util.LinkedList;
 
 /**
  * FXML Controller class
@@ -31,5 +34,22 @@ public class UniversoController implements Initializable
     }    
 
 
+    @FXML
+    private Nebulosa CrearNebulosa(ActionEvent event)
+    {
+        return null;
+    }
     
+    @FXML
+    private Parent EntrarNebulosa(int codigoSistemaPlanetario)
+    {
+        return null; // me retorna vistaNebulosa
+    }
+    
+    private void TeletransportarNebulosa()
+    {
+       
+    }
+    
+        
 }

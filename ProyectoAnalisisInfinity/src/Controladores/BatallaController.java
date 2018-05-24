@@ -9,44 +9,31 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
  *
  * @author usuario
  */
-public class PlanetaController implements Initializable
-{
+public class BatallaController implements Initializable {
 
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb)
-    {
+    public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }  
+    }    
     
     @FXML
-    private void LibrarBtatalla()
+    private void ConsultarEnemigos()
     {
         
     }
     
     @FXML
-    private void RecolectarElementos()
+    private void ActivarMejora(int codigoMejora)
     {
         
     }
-    
-    @FXML
-    private Parent EntrarEstacionCombustible()
-    {
-        return null; //Vista estacion Combustible
-    }
-    
 }

@@ -5,11 +5,14 @@
  */
 package Controladores;
 
+import Modelo.*;
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 
 /**
@@ -42,13 +45,31 @@ public class SistemaPlanetarioController implements Initializable
     }    
 
     @FXML
-    private void CrearPlaneta(ActionEvent event)
+    private Planeta CrearPlaneta(ActionEvent event)
     {
+        return null;
+    }
+    
+    @FXML
+    private Parent EntrarPlaneta(int codigoPlaneta)
+    {
+        return null;
     }
 
     @FXML
-    private void CrearConexion(ActionEvent event)
+    private LinkedList CrearConexion(int codigo, Nodo nodo)
     {
+        return null;
+    }
+    
+    @FXML
+    private void DefinirEstacionServicio(int codigoPlaneta)
+    {
+    }
+    
+    private Parent Volver()
+    {
+        return null;// volver a vista nebulosa
     }
 
     @FXML
@@ -56,19 +77,6 @@ public class SistemaPlanetarioController implements Initializable
     {
     }
 
-    @FXML
-    private void CrearEstacionServicio(ActionEvent event)
-    {
-    }
-
-    @FXML
-    private void RevisarMejoras(ActionEvent event)
-    {
-    }
-
-    @FXML
-    private void AtrasSistemaPlanetario(ActionEvent event)
-    {
-    }
+      
     
 }
