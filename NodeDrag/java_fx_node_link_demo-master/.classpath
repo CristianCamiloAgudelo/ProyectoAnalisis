@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="Drag_demo_pts_1_to_3/DragDemo/src"/>
+	<classpathentry kind="src" path="Draggable_Node/DraggableNodeDemo/src"/>
+	<classpathentry kind="src" path="NodeLink/NodeLinkDemo/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="Drag_demo_pts_1_to_3/DragDemo/bin"/>
+</classpath>
