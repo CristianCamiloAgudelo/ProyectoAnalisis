@@ -3,17 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package Controladores;
 
+import Modelo.Nodo;
 import java.util.List;
 
 /**
  * @version 1.0
  * @author Cristian Camilo Agudelo
  */
-public class SistemaNavegacion {
+public class ControlSistemaNavegacion {
 
-    public SistemaNavegacion() {
+    public ControlSistemaNavegacion() {
     }
 
     public List<Nodo> CaminoMasCorto() {

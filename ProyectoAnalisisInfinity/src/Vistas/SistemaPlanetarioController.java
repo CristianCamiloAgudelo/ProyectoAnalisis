@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controladores;
+package Vistas;
 
 import Modelo.*;
 import java.net.URL;
@@ -20,16 +20,20 @@ import javafx.scene.control.Button;
  *
  * @author usuario
  */
-public class NebulosaController implements Initializable
+public class SistemaPlanetarioController implements Initializable
 {
     @FXML
-    private Button CrearSistemaPlanetario;
+    private Button crearPlaneta;
     @FXML
-    private Button AtrasNebulosa;
+    private Button crearConexion;
     @FXML
-    private Button CrearNebulosa1;
+    private Button crearElementos;
     @FXML
-    private Button crearEnemigo;
+    private Button crearEstacionCombustible;
+    @FXML
+    private Button revisarMejoras;
+    @FXML
+    private Button atrasSistemaPlanetario;
 
     /**
      * Initializes the controller class.
@@ -40,35 +44,35 @@ public class NebulosaController implements Initializable
         // TODO
     }    
 
-    
     @FXML
-    private SistemaPlanetario CrearSistemaPlanetario(ActionEvent event)
+    private Planeta CrearPlaneta(ActionEvent event)
     {
         return null;
     }
     
+  
+
     @FXML
-    private Parent EntrarSistemaPlanetario(int codigoSistemaPlanetario)
+    private void CrearElementos(ActionEvent event)
     {
-        return null;
-    }
-    
-    @FXML
-    private LinkedList CrearConexion(int codigo, Nodo nodo)
-    {
-        return null;
-    }
-    @FXML
-    private void CrearEnemigos()
-    {
-        
-    }
-    
-    private Parent Volver()
-    {
-        return null;// volver a vista universo
     }
 
-    
+    @FXML
+    private void CrearConexion(ActionEvent event) {
+    }
+
+    @FXML
+    private void CrearEstacionServicio(ActionEvent event) {
+    }
+
+    @FXML
+    private void RevisarMejoras(ActionEvent event) {
+    }
+
+    @FXML
+    private void AtrasSistemaPlanetario(ActionEvent event) {
+    }
+
+      
     
 }

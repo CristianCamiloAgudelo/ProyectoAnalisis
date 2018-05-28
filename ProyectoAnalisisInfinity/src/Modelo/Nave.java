@@ -4,6 +4,7 @@ package Modelo;
  * @version 1.0
  * @author Cristian Camilo Agudelo
  */
+import Controladores.ControlSistemaNavegacion;
 import java.awt.Image;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class Nave {
     private List<Escudo> escudos;
     private List<Propulsor> propulsores;
     private Elementos elementos;
-    private SistemaNavegacion radar;
+    private ControlSistemaNavegacion radar;
     private int vida;
     private int daño;
     private int velocidad;
@@ -34,7 +35,7 @@ public class Nave {
         this.escudos = escudos;
         this.propulsores = propulsores;
         this.elementos = new Elementos(0, 0, 0, 0);
-        this.radar = new SistemaNavegacion();
+        this.radar = new ControlSistemaNavegacion();
         this.vida = 100;
         this.daño = 10;
         this.velocidad = 10;
@@ -45,7 +46,7 @@ public class Nave {
         this.nivel = 1;
     }
 
-    public Nave(String nombre, int cantidadSonda, int cantidadCombustible, List<Arma> armas, List<Escudo> escudos, List<Propulsor> propulsores, Elementos elementos, SistemaNavegacion radar, int vida, int daño, int velocidad, int posicionX, int posicionY, int experiencia, int nivel) {
+    public Nave(String nombre, int cantidadSonda, int cantidadCombustible, List<Arma> armas, List<Escudo> escudos, List<Propulsor> propulsores, Elementos elementos, ControlSistemaNavegacion radar, int vida, int daño, int velocidad, int posicionX, int posicionY, int experiencia, int nivel) {
         this.nombre = nombre;
         this.cantidadSonda = cantidadSonda;
         this.cantidadCombustible = cantidadCombustible;
@@ -158,7 +159,7 @@ public class Nave {
     /**
      * @return the radar
      */
-    public SistemaNavegacion getRadar() {
+    public ControlSistemaNavegacion getRadar() {
         return radar;
     }
 

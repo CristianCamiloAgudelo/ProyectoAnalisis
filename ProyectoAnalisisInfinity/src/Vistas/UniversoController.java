@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controladores;
+package Vistas;
 
 import Modelo.*;
 import java.net.URL;
@@ -34,22 +34,8 @@ public class UniversoController implements Initializable
     }    
 
 
-    @FXML
-    private Nebulosa CrearNebulosa(ActionEvent event)
-    {
-        return null;
-    }
     
-    @FXML
-    private Parent EntrarNebulosa(int codigoSistemaPlanetario)
-    {
-        return null; // me retorna vistaNebulosa
-    }
     
-    private void TeletransportarNebulosa()
-    {
-       
-    }
-    
+   
         
 }

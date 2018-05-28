@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controladores;
+package Vistas;
 
 import Modelo.*;
 import java.net.URL;
@@ -20,8 +20,7 @@ import Modelo.FileLoader;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.util.Scanner;
-import org.json.JSONObject;
-
+//import org.json.JSONObject;
 
 /**
  *
@@ -36,20 +35,27 @@ public class MenuController implements Initializable {
     private Button btnHola;
     @FXML
     private AnchorPane marco;
+    @FXML
+    private AnchorPane MenuPane;
+    @FXML
+    private Button Back;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        String ruta = "src/Vistas/Universo.fxml";
+        String ruta = "src/Vistas/Nebulosa.fxml";
         fileloader = new FileLoader(ruta);
         this.marco.getChildren().clear();
         this.marco.getChildren().add(fileloader.open(ruta));
     }
 
     private void CambioVista(String ruta) throws MalformedURLException {
-
-        fileloader = new FileLoader(ruta);
-        this.marco.getChildren().clear();
-        this.marco.getChildren().add(fileloader.open(ruta));
+        try {
+            fileloader = new FileLoader(ruta);
+            this.marco.getChildren().clear();
+            this.marco.getChildren().add(fileloader.open(ruta));
+        } catch (Exception e) {
+            System.out.println("error: " + e);
+        }
 
 //        this.fileloader.open(path);
     }
@@ -72,27 +78,13 @@ public class MenuController implements Initializable {
         CambioVista(ruta);
     }
 
-    @FXML
-    private Universo CargarUniverso(JSONObject Universo)
-    {
+//    @FXML
+//    private Universo CargarUniverso(JSONObject Universo)
+//    {
+//        return null;
+//    }
+    private Universo CrearUniverso(ActionEvent event) {
         return null;
     }
-    
-    @FXML
-    private Universo CrearUniverso(ActionEvent event)
-    {
-        return null;
-    }
-    
-    @FXML
-    private void TeletrasportarNebulosa(ActionEvent event)
-    {
-        
-    }
-    
-    @FXML
-    private void IniciarSimulacion(ActionEvent event)
-    {
-        
-    }
+
 }
