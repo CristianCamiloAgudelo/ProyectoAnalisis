@@ -5,7 +5,7 @@
  */
 package Controladores;
 
-import Modelo.Nebulosa;
+import Modelo.*;
 import Modelo.Nodo;
 import java.util.LinkedList;
 
@@ -17,7 +17,8 @@ import javafx.scene.Parent;
  */
 public class ControlNebulosas {
 
-    public Parent EntrarSistemaPlanetario(int codigoSistemaPlanetario) {
+    public SistemaPlanetario crearSistemaPlanetario(int codigoSistemaPlanetario, Nebulosa nebulosa) {
+        nebulosa.getListaSistemasPlanetarios().add(new SistemaPlanetario(codigoSistemaPlanetario, ""));
         return null;
     }
 

@@ -6,6 +6,7 @@
 package Vistas;
 
 import Modelo.*;
+import Controladores.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -30,25 +31,21 @@ public class MenuController implements Initializable {
 
     FileLoader fileloader;
     @FXML
-    private Label label;
-    @FXML
-    private Button btnHola;
-    @FXML
     private AnchorPane marco;
     @FXML
     private AnchorPane MenuPane;
-    @FXML
-    private Button Back;
 
+    private ControlGeneral controlGeneral;
+    private UniversoController universoController;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        String ruta = "src/Vistas/Nebulosa.fxml";
-        fileloader = new FileLoader(ruta);
-        this.marco.getChildren().clear();
-        this.marco.getChildren().add(fileloader.open(ruta));
     }
 
-    private void CambioVista(String ruta) throws MalformedURLException {
+    public MenuController() {
+    }
+    
+
+    public void CambioVista(String ruta) throws MalformedURLException {
         try {
             fileloader = new FileLoader(ruta);
             this.marco.getChildren().clear();
@@ -69,7 +66,6 @@ public class MenuController implements Initializable {
         return response;
     }
 
-    @FXML
     private void PedirRuta(ActionEvent event) throws MalformedURLException {
         Scanner sc = new Scanner(System.in);
         String ruta, palabraB;
@@ -83,8 +79,15 @@ public class MenuController implements Initializable {
 //    {
 //        return null;
 //    }
-    private Universo CrearUniverso(ActionEvent event) {
-        return null;
+    @FXML
+    private void CrearMapa(ActionEvent event) {
+        this.controlGeneral.CrearUniverso();
+        this.universoController = new UniversoController(this.marco);
+        
+    }
+
+    @FXML
+    private void CargarMapa(ActionEvent event) {
     }
 
 }

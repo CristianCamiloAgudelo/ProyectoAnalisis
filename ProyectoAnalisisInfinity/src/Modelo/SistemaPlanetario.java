@@ -20,7 +20,7 @@ public class SistemaPlanetario
     private int posicionX;
     private int posicionY;
 
-    public SistemaPlanetario(int codigo, String nombre) {
+    public SistemaPlanetario(int codigo, String nombre, int posicionX, int posicionY) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.visitado = false;
@@ -31,8 +31,8 @@ public class SistemaPlanetario
         this.imagenes.add("src/Vistas/Sistema1");
         this.imagenes.add("src/Vistas/Sistema2");
         this.imagenes.add("src/Vistas/Sistema3");
-        this.posicionX = 0;
-        this.posicionY = 0;
+        this.posicionX = posicionX;
+        this.posicionY = posicionY;
     }
     
     

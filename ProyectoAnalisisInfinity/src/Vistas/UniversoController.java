@@ -15,27 +15,29 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import java.util.LinkedList;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
  *
  * @author usuario
  */
-public class UniversoController implements Initializable
-{
+public class UniversoController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    private FileLoader fileLoader;
+
     @Override
-    public void initialize(URL url, ResourceBundle rb)
-    {
-        // TODO
-    }    
+    public void initialize(URL location, ResourceBundle resources) {
+    }
+    public UniversoController(AnchorPane marco) {
+        try {
+            String ruta = "src/Vistas/Universo.fxml";
+            this.fileLoader = new FileLoader(ruta);
+            marco.getChildren().clear();
+            marco.getChildren().add(fileLoader.open(ruta));
+        } catch (Exception e) {
+            System.out.println("error: " + e);
+        }
+    }
 
-
-    
-    
-   
-        
 }

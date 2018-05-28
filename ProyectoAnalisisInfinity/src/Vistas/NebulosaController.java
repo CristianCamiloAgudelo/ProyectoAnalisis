@@ -7,7 +7,7 @@ package Vistas;
 
 import Modelo.*;
 import java.net.URL;
-import Controladores.ControlNebulosas;
+import Controladores.ControlGeneral;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,7 +31,7 @@ public class NebulosaController implements Initializable {
     @FXML
     private Button crearEnemigo;
     
-    private ControlNebulosas controlNebulosa;
+    private ControlGeneral controlGeneral;
 
     /**
      * Initializes the controller class.
@@ -43,7 +43,7 @@ public class NebulosaController implements Initializable {
 
     @FXML
     private SistemaPlanetario CrearSistemaPlanetario(ActionEvent event) {
-        controlNebulosa.
+        this.controlGeneral.CrearSistemaPlanetario(String nombre, 0,0);
         return null;
     }
 

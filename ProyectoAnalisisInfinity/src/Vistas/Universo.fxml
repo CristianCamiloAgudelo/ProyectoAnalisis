@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="857.0" prefWidth="938.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.UniversoController">
-   <children>
-      <ImageView fitHeight="873.0" fitWidth="938.0" layoutY="1.0" pickOnBounds="true" AnchorPane.bottomAnchor="-17.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
-         <image>
-            <Image url="@../Imagenes/tamaño-y-escala-universo.jpg" />
-         </image>
-      </ImageView>
-   </children>
-</AnchorPane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="857.0" prefWidth="938.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vistas.UniversoController" />
