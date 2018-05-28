@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="874.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vistas.SistemaPlanetarioController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="591.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vistas.SistemaPlanetarioController">
    <children>
-      <ImageView fitHeight="874.0" fitWidth="1300.0" pickOnBounds="true">
-         <image>
-            <Image url="@../Imagenes/sistemaPlanetario4.jpg" />
-         </image>
-      </ImageView>
-      <Button fx:id="crearPlaneta" layoutX="36.0" layoutY="444.0" mnemonicParsing="false" onAction="#CrearPlaneta" prefHeight="41.0" prefWidth="87.0" text="Crear Planeta" />
-      <Button fx:id="crearConexion" layoutX="141.0" layoutY="444.0" mnemonicParsing="false" onAction="#CrearConexion" prefHeight="41.0" prefWidth="107.0" text="Crear Conexion" />
-      <Button fx:id="crearElementos" layoutX="266.0" layoutY="444.0" mnemonicParsing="false" onAction="#CrearElementos" prefHeight="41.0" prefWidth="133.0" text="Crear Elementos" />
-      <Button fx:id="crearEstacionCombustible" layoutX="418.0" layoutY="444.0" mnemonicParsing="false" onAction="#CrearEstacionServicio" prefHeight="41.0" prefWidth="167.0" text="Crear Estacion Combustible" />
-      <Button fx:id="revisarMejoras" layoutX="613.0" layoutY="444.0" mnemonicParsing="false" onAction="#RevisarMejoras" prefHeight="41.0" prefWidth="133.0" text="Revisar Mejoras" />
-      <Button fx:id="atrasSistemaPlanetario" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#AtrasSistemaPlanetario" text="Atras" />
+      <SplitPane dividerPositions="0.29797979797979796" prefHeight="591.0" prefWidth="752.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <ScrollPane prefHeight="579.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <ImageView fitHeight="589.0" fitWidth="524.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <image>
+                        <Image url="@../Imagenes/sistemaPlanetario4.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
    </children>
 </AnchorPane>

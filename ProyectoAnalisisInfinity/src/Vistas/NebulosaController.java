@@ -22,14 +22,6 @@ import javafx.scene.control.Button;
  */
 public class NebulosaController implements Initializable {
 
-    @FXML
-    private Button CrearSistemaPlanetario;
-    @FXML
-    private Button AtrasNebulosa;
-    @FXML
-    private Button CrearNebulosa1;
-    @FXML
-    private Button crearEnemigo;
     
     private ControlGeneral controlGeneral;
 
@@ -41,18 +33,10 @@ public class NebulosaController implements Initializable {
         // TODO
     }
 
-    @FXML
     private SistemaPlanetario CrearSistemaPlanetario(ActionEvent event) {
-        this.controlGeneral.CrearSistemaPlanetario(String nombre, 0,0);
+      //  this.controlGeneral.CrearSistemaPlanetario(String nombre, 0,0);
         return null;
     }
 
-    @FXML
-    private void CrearNebulosa(ActionEvent event) {
-    }
-
-    @FXML
-    private void CrearEnemigo(ActionEvent event) {
-    }
 
 }

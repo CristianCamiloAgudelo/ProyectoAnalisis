@@ -22,18 +22,6 @@ import javafx.scene.control.Button;
  */
 public class SistemaPlanetarioController implements Initializable
 {
-    @FXML
-    private Button crearPlaneta;
-    @FXML
-    private Button crearConexion;
-    @FXML
-    private Button crearElementos;
-    @FXML
-    private Button crearEstacionCombustible;
-    @FXML
-    private Button revisarMejoras;
-    @FXML
-    private Button atrasSistemaPlanetario;
 
     /**
      * Initializes the controller class.
@@ -44,7 +32,6 @@ public class SistemaPlanetarioController implements Initializable
         // TODO
     }    
 
-    @FXML
     private Planeta CrearPlaneta(ActionEvent event)
     {
         return null;
@@ -52,26 +39,6 @@ public class SistemaPlanetarioController implements Initializable
     
   
 
-    @FXML
-    private void CrearElementos(ActionEvent event)
-    {
-    }
-
-    @FXML
-    private void CrearConexion(ActionEvent event) {
-    }
-
-    @FXML
-    private void CrearEstacionServicio(ActionEvent event) {
-    }
-
-    @FXML
-    private void RevisarMejoras(ActionEvent event) {
-    }
-
-    @FXML
-    private void AtrasSistemaPlanetario(ActionEvent event) {
-    }
 
       
     
