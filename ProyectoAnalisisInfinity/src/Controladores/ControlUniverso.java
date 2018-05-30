@@ -5,6 +5,7 @@
  */
 package Controladores;
 
+import Modelo.Nebulosa;
 import Modelo.Universo;
 
 /**
@@ -13,13 +14,39 @@ import Modelo.Universo;
  */
 public class ControlUniverso {
 
-    public ControlUniverso() {
+    private Universo universo;
 
+    public ControlUniverso() {
+        
     }
 
     public Universo CrearUniverso(String nombre) {
-        Universo universo = new Universo(nombre);
+        this.setUniverso(new Universo(nombre));
+        return this.getUniverso();
+    }
+
+    public Nebulosa BuscarNebulosa(int codigoNebulosa) {
+
+        for (Nebulosa nebulosa : this.universo.getListaNebulosas()) {
+            if (nebulosa.getCodigo() == codigoNebulosa) {
+                return nebulosa;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @return the universo
+     */
+    public Universo getUniverso() {
         return universo;
+    }
+
+    /**
+     * @param universo the universo to set
+     */
+    public void setUniverso(Universo universo) {
+        this.universo = universo;
     }
 
 }

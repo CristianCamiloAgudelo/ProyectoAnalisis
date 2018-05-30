@@ -69,11 +69,6 @@ public class UniversoController implements Initializable {
     private boolean bandera = false;
     private String rutaImagen = "";
 
-    /* UniversoController(Universo universo) {
-        this.universo = universo;
-        this.Texto.setText(this.universo.getNombre()); 
-        
-    }*/
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -108,7 +103,6 @@ public class UniversoController implements Initializable {
     @FXML
     private void CambiarTexto(ActionEvent event) {
         this.Texto.setText("una por la de negrito");
-        this.Texto.setVisible(true);
     }
 
     @FXML
