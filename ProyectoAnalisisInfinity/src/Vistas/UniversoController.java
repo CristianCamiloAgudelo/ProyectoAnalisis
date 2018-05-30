@@ -49,11 +49,6 @@ public class UniversoController implements Initializable {
     @FXML
     private Button Btn1;
 
-    /* UniversoController(Universo universo) {
-        this.universo = universo;
-        this.Texto.setText(this.universo.getNombre()); 
-        
-    }*/
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -85,7 +80,6 @@ public class UniversoController implements Initializable {
     @FXML
     private void CambiarTexto(ActionEvent event) {
         this.Texto.setText("una por la de negrito");
-        this.Texto.setVisible(true);
     }
 
 }
