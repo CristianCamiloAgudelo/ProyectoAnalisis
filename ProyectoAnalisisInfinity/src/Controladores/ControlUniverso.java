@@ -12,10 +12,14 @@ import Modelo.Universo;
  * @author USER
  */
 public class ControlUniverso {
-    private Universo universo;
 
     public ControlUniverso() {
-        this.universo = new Universo("Universo1");
+
     }
-    
+
+    public Universo CrearUniverso(String nombre) {
+        Universo universo = new Universo(nombre);
+        return universo;
+    }
+
 }

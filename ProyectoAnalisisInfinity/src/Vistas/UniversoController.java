@@ -15,6 +15,10 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import java.util.LinkedList;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.SplitPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -25,19 +29,63 @@ import javafx.scene.layout.AnchorPane;
 public class UniversoController implements Initializable {
 
     private FileLoader fileLoader;
+    private Universo universo;
+    @FXML
+    private AnchorPane Anchorpane;
+    @FXML
+    private SplitPane Splitpane;
+    @FXML
+    private AnchorPane Scroll;
+    @FXML
+    private ScrollPane Scrollpane;
+    @FXML
+    private AnchorPane Vista;
+    @FXML
+    private AnchorPane Vistapane;
+    @FXML
+    private ImageView Imagen;
+    @FXML
+    private Label Texto;
+    @FXML
+    private Button Btn1;
 
+    /* UniversoController(Universo universo) {
+        this.universo = universo;
+        this.Texto.setText(this.universo.getNombre()); 
+        
+    }*/
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
     }
-    public UniversoController(AnchorPane marco) {
-        try {
-            String ruta = "src/Vistas/Universo.fxml";
-            this.fileLoader = new FileLoader(ruta);
-            marco.getChildren().clear();
-            marco.getChildren().add(fileLoader.open(ruta));
-        } catch (Exception e) {
-            System.out.println("error: " + e);
-        }
+
+    public void setData(Universo universo) {
+        this.universo = universo;
+        this.Texto.setText(universo.getNombre());
+    }
+
+//    public UniversoController(Universo universo) {
+//
+//        this.universo = universo;
+//    }
+    /**
+     * @return the universo
+     */
+    public Universo getUniverso() {
+        return universo;
+    }
+
+    /**
+     * @param universo the universo to set
+     */
+    public void setUniverso(Universo universo) {
+        this.universo = universo;
+    }
+
+    @FXML
+    private void CambiarTexto(ActionEvent event) {
+        this.Texto.setText("una por la de negrito");
+        this.Texto.setVisible(true);
     }
 
 }

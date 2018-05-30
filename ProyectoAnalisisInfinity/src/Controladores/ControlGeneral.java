@@ -4,21 +4,42 @@
  * and open the template in the editor.
  */
 package Controladores;
+
 import Modelo.*;
 import Vistas.*;
+import java.util.Stack;
+
 /**
  *
  * @author USER
  */
 public class ControlGeneral {
-    private ControlNebulosas controlNebulosas;
-    private UniversoController universoController;
-    private Universo universo;
-    
-    public void CrearUniverso(){}
-    public SistemaPlanetario CrearSistemaPlanetario(String nombre, int posicionX, int posicionY ){
-        this.controlNebulosas.crearSistemaPlanetario(0, universo.getListaNebulosas());
-    return null;
+
+    private Stack<String> pila;
+    private ControlUniverso controlUniverso;
+    private ControlNebulosa controlNebulosa;
+    private ControlSistemaPlanetario controlSistemasPlanetarios;
+    private ControlPlaneta controlPlaneta;
+
+    public ControlGeneral() {
+        this.pila = new Stack<>();
+        this.controlUniverso = new ControlUniverso();
     }
-    
+
+    public Universo CrearUniverso(String nombre) {
+        return this.controlUniverso.CrearUniverso(nombre);
+    }
+
+    public SistemaPlanetario CrearSistemaPlanetario(String nombre, int posicionX, int posicionY) {
+
+        return null;
+    }
+
+    /**
+     * @return the pila
+     */
+    public Stack<String> getPila() {
+        return pila;
+    }
+
 }

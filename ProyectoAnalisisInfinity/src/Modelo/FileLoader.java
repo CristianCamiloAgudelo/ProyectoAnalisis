@@ -5,13 +5,13 @@
  */
 package Modelo;
 
+import Vistas.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import javafx.fxml.FXMLLoader;
+import Modelo.VistaGenerica;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 /**
  *
@@ -25,52 +25,56 @@ public class FileLoader {
         this.path = path;
     }
 
-    public Parent open(String path) {
-        System.out.println("Entre a " + path);
+    public VistaGenerica open(String tipoController) {
         URL response = null;
         try {
-            File file = new File(path);
+            File file = new File(this.path);
             if (file.exists()) {
                 response = file.toURI().toURL();
             }
-            Parent parent = changeStage2(response);
-            return parent;
+            VistaGenerica vistaGenerica = changeStage2(response, tipoController);
+            return vistaGenerica;
         } catch (IOException ex) {
             System.out.println("Error al abrir el archivo" + ex);
         }
         return null;
     }
 
-    private void openStage(URL url) {
+    private VistaGenerica changeStage2(URL url, String tipoController) {
         if (url != null) {
             FXMLLoader loader = new FXMLLoader(url);
             try {
+                VistaGenerica vistaGenerica;
                 Parent panelEdit = loader.load();
+                switch (tipoController) {
+                    case "universo":
+                        vistaGenerica = new VistaGenerica(panelEdit, (UniversoController) loader.getController());
+                        break;
+                    case "nebulosa":
+                        vistaGenerica = new VistaGenerica(panelEdit, (NebulosaController) loader.getController());
+                        break;
+                    case "sistemaplanetario":
+                        vistaGenerica = new VistaGenerica(panelEdit, (SistemaPlanetarioController) loader.getController());
+                        break;
+                    case "planeta":
+                        vistaGenerica = new VistaGenerica(panelEdit, (PlanetaController) loader.getController());
+                        break;
+                    default:
+                        vistaGenerica = new VistaGenerica();
+                        break;
+                }
+                if (tipoController.equals("universo")) {
 
-                Scene scene = new Scene(panelEdit);//lo de por dentro
-                Stage stage = new Stage();
+                }
 
-                stage.setScene(scene);
-                stage.show();
+                return vistaGenerica;
             } catch (Exception e) {
-                System.out.println("No se pudo abrir " + e);
-            }
-        }
-    }
-
-    private Parent changeStage2(URL url) {
-        if (url != null) {
-            FXMLLoader loader = new FXMLLoader(url);
-            try {
-                Parent panelEdit = loader.load();
-
-                return panelEdit;
-            } catch (Exception e) {
-                System.out.println("No se pudo abrir " + e);
+                System.out.println("No se pudo abrir este" + e);
             }
         }
         return null;
     }
+
     /**
      * @return the path
      */

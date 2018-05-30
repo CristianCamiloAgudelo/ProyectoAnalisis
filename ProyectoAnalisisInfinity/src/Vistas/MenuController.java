@@ -5,22 +5,18 @@
  */
 package Vistas;
 
-import Modelo.*;
+import Modelo.VistaGenerica;
+import Modelo.Universo;
 import Controladores.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-
 import Modelo.FileLoader;
-import java.io.File;
 import java.net.MalformedURLException;
-import java.util.Scanner;
+import javafx.scene.control.Button;
 //import org.json.JSONObject;
 
 /**
@@ -36,58 +32,30 @@ public class MenuController implements Initializable {
     private AnchorPane MenuPane;
 
     private ControlGeneral controlGeneral;
-    private UniversoController universoController;
+
+    @FXML
+    private Button BotonCrearMapa;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        this.controlGeneral = new ControlGeneral();
     }
 
-    public MenuController() {
-    }
-    
-
-    public void CambioVista(String ruta) throws MalformedURLException {
-        try {
-            fileloader = new FileLoader(ruta);
-            this.marco.getChildren().clear();
-            this.marco.getChildren().add(fileloader.open(ruta));
-        } catch (Exception e) {
-            System.out.println("error: " + e);
-        }
-
-//        this.fileloader.open(path);
-    }
-
-    private URL checkFile(String path) throws MalformedURLException {
-        URL response = null;
-        File file = new File(path);
-        if (file.exists()) {
-            response = file.toURI().toURL();
-        }
-        return response;
-    }
-
-    private void PedirRuta(ActionEvent event) throws MalformedURLException {
-        Scanner sc = new Scanner(System.in);
-        String ruta, palabraB;
-        System.out.println("Introduzca la ruta del archivo: ");
-        ruta = sc.nextLine();
-        CambioVista(ruta);
-    }
-
-//    @FXML
-//    private Universo CargarUniverso(JSONObject Universo)
-//    {
-//        return null;
-//    }
     @FXML
-    private void CrearMapa(ActionEvent event) {
-        this.controlGeneral.CrearUniverso();
-        this.universoController = new UniversoController(this.marco);
+    private void CrearMapa(ActionEvent event) throws MalformedURLException {
+        Universo universo = this.controlGeneral.CrearUniverso("Universo1");
+        this.controlGeneral.getPila().add(universo.getNombre());
         
+        this.fileloader = new FileLoader("src/Vistas/Universo.fxml");
+        VistaGenerica vistaUniverso = fileloader.open("universo");
+        UniversoController universoController = (UniversoController) vistaUniverso.getController();
+        universoController.setData(universo);
+        this.marco.getChildren().clear();
+        this.marco.getChildren().add(vistaUniverso.getParent());
+
     }
 
     @FXML
     private void CargarMapa(ActionEvent event) {
     }
-
 }

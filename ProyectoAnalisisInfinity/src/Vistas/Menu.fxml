@@ -48,7 +48,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" onAction="#CrearMapa" text="Crear Mapa" GridPane.columnIndex="1" />
+                  <Button fx:id="BotonCrearMapa" mnemonicParsing="false" onAction="#CrearMapa" text="Crear Mapa" GridPane.columnIndex="1" />
                   <Button mnemonicParsing="false" onAction="#CargarMapa" text="Cargar Mapa" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Button mnemonicParsing="false" text="Manual Usuario" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Button mnemonicParsing="false" text="Estadisticas" GridPane.columnIndex="1" GridPane.rowIndex="3" />

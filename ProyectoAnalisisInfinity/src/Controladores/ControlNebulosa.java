@@ -5,28 +5,28 @@
  */
 package Controladores;
 
+import Modelo.*;
 import Modelo.Nodo;
 import java.util.LinkedList;
+
 import javafx.scene.Parent;
 
 /**
  *
  * @author USER
  */
-public class ControlSistemasPlanetarios {
-   private Parent EntrarPlaneta(int codigoPlaneta)
-    {
+public class ControlNebulosa {
+
+    public SistemaPlanetario crearSistemaPlanetario(int codigoSistemaPlanetario, Nebulosa nebulosa) {
         return null;
     }
 
-    private LinkedList CrearConexion(int codigo, Nodo nodo)
-    {
+    public LinkedList CrearConexion(int codigo, Nodo nodo) {
         return null;
     }
-    
-    
-    private Parent Volver()
-    {
-        return null;// volver a vista nebulosa
-    }   
+
+    private Parent Volver() {
+        return null;// volver a vista universo
+    }
+
 }
