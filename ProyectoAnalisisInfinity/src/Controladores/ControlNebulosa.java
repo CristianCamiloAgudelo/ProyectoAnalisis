@@ -24,9 +24,9 @@ public class ControlNebulosa {
         this.codigoNebulosa = 0;
     }
 
-    public Nebulosa CrearNebulosa(String nombre, Boolean enemigo) {
+    public Nebulosa CrearNebulosa(String nombre, Boolean enemigo, double posicionX, double posicionY) {
         this.codigoNebulosa++;
-        this.setNebulosa(new Nebulosa(this.codigoNebulosa, nombre, enemigo));
+        this.setNebulosa(new Nebulosa(this.codigoNebulosa, nombre, enemigo, posicionX, posicionY));
         return this.getNebulosa();
     }
 

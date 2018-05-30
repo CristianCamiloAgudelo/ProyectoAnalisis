@@ -17,10 +17,10 @@ public class Nebulosa {
     private List<Nodo> adyacencias;
     private List<SistemaPlanetario> listaSistemasPlanetarios;
     private List<String> imagenes;
-    private int posicionX;
-    private int posicionY;
+    private double posicionX;
+    private double posicionY;
 
-    public Nebulosa(int codigo, String nombre, boolean enemigo) {
+    public Nebulosa(int codigo, String nombre, boolean enemigo, double posicionX, double posicionY) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.enemigo = enemigo;
@@ -31,11 +31,11 @@ public class Nebulosa {
         this.imagenes.add("src/Vistas/Nebulosa1");
         this.imagenes.add("src/Vistas/Nebulosa2");
         this.imagenes.add("src/Vistas/Nebulosa3");
-        this.posicionX = 0;
-        this.posicionY = 0;
+        this.posicionX = posicionX;
+        this.posicionY = posicionY;
     }
 
-    public Nebulosa(int codigo, String nombre, boolean enemigo, boolean visitado, List<Nodo> adyacencias, List<SistemaPlanetario> listaSistemasPlanetarios, int posicionX, int posicionY) {
+    public Nebulosa(int codigo, String nombre, boolean enemigo, boolean visitado, List<Nodo> adyacencias, List<SistemaPlanetario> listaSistemasPlanetarios, double posicionX, double posicionY) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.enemigo = enemigo;
@@ -130,7 +130,7 @@ public class Nebulosa {
     /**
      * @return the posicionX
      */
-    public int getPosicionX() {
+    public double getPosicionX() {
         return posicionX;
     }
 
@@ -144,7 +144,7 @@ public class Nebulosa {
     /**
      * @return the posicionY
      */
-    public int getPosicionY() {
+    public double getPosicionY() {
         return posicionY;
     }
 

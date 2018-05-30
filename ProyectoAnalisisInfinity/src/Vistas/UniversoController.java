@@ -5,9 +5,10 @@
  */
 package Vistas;
 
+import Controladores.ControlGeneral;
+import Controladores.ControlNebulosa;
+import Controladores.ControlUniverso;
 import Modelo.*;
-import java.awt.Image;
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -24,16 +25,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-<<<<<<< HEAD
-=======
-import javafx.scene.*;
-import javafx.scene.shape.Rectangle;
-import javax.swing.JButton;
-import java.awt.*;
-import java.awt.event.ActionListener;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
->>>>>>> ac53c6775496871728127e95a6b6a49da221c6e1
 
 /**
  * FXML Controller class
@@ -69,6 +60,8 @@ public class UniversoController implements Initializable {
 
     private boolean bandera = false;
     private String rutaImagen = "";
+    private ControlGeneral controlGeneral;
+    private int contadorNebulosa;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -78,6 +71,7 @@ public class UniversoController implements Initializable {
     public void setData(Universo universo) {
         this.universo = universo;
         this.Texto.setText(universo.getNombre());
+        this.controlGeneral = new ControlGeneral();
     }
 
 //    public UniversoController(Universo universo) {
@@ -106,55 +100,32 @@ public class UniversoController implements Initializable {
         this.Texto.setText("una por la de negrito");
     }
 
-<<<<<<< HEAD
-    @FXML
-    private void Crear(MouseEvent event) {
-        GridPane grid = new GridPane();
-        grid.setLayoutX(event.getX());
-        grid.setLayoutY(event.getY());
-        grid.setPadding(new Insets(10, 10, 10, 10));
-        grid.setVgap(8);
-        grid.setHgap(10);
-
-        //label
-        Label nameLabel = new Label("Nombre Nebulosa");
-
-        //imput
-        final TextField input = new TextField("");
-
-        //boton
-        Button boton = new Button("Crear");
-
-        boton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                 System.out.println("hola");
-            }
-        });
-    
-
-
-        this.Scroll.getChildren().add(grid);
+    private Nebulosa crearNebulosa(String nombre, boolean enemigo, double posicionX, double posicionY) {
+     
+        Nebulosa nebulosa = this.controlGeneral.AgregarNebulosa(nombre, true, posicionX, posicionY);
+        System.out.println(nebulosa.getNombre());
+        return nebulosa;
 
     }
 
-    private void crearNebulosa(String nombre) {
-        System.out.println("hola");
-=======
     @FXML
     private void Agregar(MouseEvent event) {
         if (this.bandera) {
             this.bandera = false;
             System.out.println("creo");
-            GridPane grid = new GridPane();
-            grid.setLayoutX(event.getX());
-            grid.setLayoutY(event.getY());
+            final GridPane grid = new GridPane();
+            this.contadorNebulosa = this.contadorNebulosa + 1;
+            grid.setId("Nebulosa" + this.contadorNebulosa);
+            double posicionX = event.getX();
+            double posicionY = event.getY();
+            grid.setLayoutX(posicionX);
+            grid.setLayoutY(posicionY);
             grid.setPadding(new Insets(10, 10, 10, 10));
             grid.setVgap(8);
             grid.setHgap(10);
 
             //input
-            TextField input = new TextField("");
+            final TextField input = new TextField("");
             input.setPromptText("Nombre Nebulosa");
             grid.setConstraints(input, 0, 0);
 
@@ -163,17 +134,16 @@ public class UniversoController implements Initializable {
             grid.setConstraints(imagen, 0, 1);
 
             // boton
-            Button boton = new Button("Aceptar");
+            final Button boton = new Button("Aceptar");
             EventHandler<ActionEvent> evento = new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    System.out.println("hola");
                     Label label = new Label();
                     label.setTextFill(javafx.scene.paint.Paint.valueOf("#ffffff"));
                     label.setText(input.getText());
                     grid.setVgap(0);
                     grid.setHgap(0);
-
+                    crearNebulosa(nombre, enemigo, posicionX, posicionY); //informacion creacion, retorna una nebulosa 
                     grid.setConstraints(label, 0, 0);
                     boton.setVisible(false);
                     input.setVisible(false);
@@ -195,14 +165,14 @@ public class UniversoController implements Initializable {
     @FXML
     private void crearTipo1(MouseEvent event) {
         this.bandera = true;
-        this.rutaImagen = "Imagenes/nebulosa11.png";
+        this.rutaImagen = "Imagenes/nebulosa.png";
         System.out.println("tipo1");
     }
 
     @FXML
     private void crearTipo2(MouseEvent event) {
         this.bandera = true;
-        this.rutaImagen = "Imagenes/nebulosa11.png";
+        this.rutaImagen = "Imagenes/nebulosa1.png";
         System.out.println("tipo2");
     }
 
@@ -211,7 +181,14 @@ public class UniversoController implements Initializable {
         this.bandera = true;
         this.rutaImagen = "Imagenes/nebulosa11.png";
         System.out.println("tipo3");
->>>>>>> ac53c6775496871728127e95a6b6a49da221c6e1
+
+    }
+
+    /**
+     * @param controlGeneral the controlGeneral to set
+     */
+    public void setControlGeneral(ControlGeneral controlGeneral) {
+        this.controlGeneral = controlGeneral;
     }
 
 }

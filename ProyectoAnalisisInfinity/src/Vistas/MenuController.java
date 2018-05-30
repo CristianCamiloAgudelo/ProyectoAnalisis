@@ -50,6 +50,7 @@ public class MenuController implements Initializable {
         VistaGenerica vistaUniverso = fileloader.open("universo");
         UniversoController universoController = (UniversoController) vistaUniverso.getController();
         universoController.setData(universo);
+        universoController.setControlGeneral(this.controlGeneral);
         this.marco.getChildren().clear();
         this.marco.getChildren().add(vistaUniverso.getParent());
 

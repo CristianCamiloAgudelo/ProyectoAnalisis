@@ -14,11 +14,7 @@
    <children>
       <SplitPane fx:id="Splitpane" dividerPositions="0.2131782945736434" prefHeight="594.0" prefWidth="776.0" AnchorPane.bottomAnchor="-19.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-18.0" AnchorPane.topAnchor="0.0">
         <items>
-<<<<<<< HEAD
-          <AnchorPane fx:id="Scroll" minHeight="0.0" minWidth="0.0" onMouseClicked="#Crear" prefHeight="160.0" prefWidth="100.0">
-=======
           <AnchorPane fx:id="Scroll" minHeight="0.0" minWidth="0.0">
->>>>>>> ac53c6775496871728127e95a6b6a49da221c6e1
                <children>
                   <Label fx:id="Texto" text="Label" />
                   <GridPane fx:id="tipo1" alignment="TOP_CENTER" layoutX="14.0" layoutY="30.0" prefHeight="97.0" prefWidth="142.0">
