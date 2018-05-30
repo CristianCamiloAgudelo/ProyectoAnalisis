@@ -15,14 +15,23 @@ import Modelo.Universo;
 public class ControlUniverso {
 
     private Universo universo;
+    private final ControlNebulosa controlNebulosa;
 
     public ControlUniverso() {
-        
+        this.controlNebulosa = new ControlNebulosa();
+
     }
 
     public Universo CrearUniverso(String nombre) {
         this.setUniverso(new Universo(nombre));
         return this.getUniverso();
+    }
+
+    public Nebulosa AgregarNebulosa(String nombre, Boolean enemigo) {
+        Nebulosa nebulosa = this.controlNebulosa.CrearNebulosa(nombre, enemigo);
+        this.universo.getListaNebulosas().add(nebulosa);
+        return nebulosa;
+
     }
 
     public Nebulosa BuscarNebulosa(int codigoNebulosa) {

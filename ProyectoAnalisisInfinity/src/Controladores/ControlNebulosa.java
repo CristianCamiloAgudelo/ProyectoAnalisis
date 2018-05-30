@@ -17,7 +17,20 @@ import javafx.scene.Parent;
  */
 public class ControlNebulosa {
 
-    public SistemaPlanetario crearSistemaPlanetario(int codigoSistemaPlanetario, Nebulosa nebulosa) {
+    private Nebulosa nebulosa;
+    private int codigoNebulosa;
+
+    public ControlNebulosa() {
+        this.codigoNebulosa = 0;
+    }
+
+    public Nebulosa CrearNebulosa(String nombre, Boolean enemigo) {
+        this.codigoNebulosa++;
+        this.setNebulosa(new Nebulosa(this.codigoNebulosa, nombre, enemigo));
+        return this.getNebulosa();
+    }
+
+    public SistemaPlanetario AgregarSistemaPlanetario(int codigoSistemaPlanetario, Nebulosa nebulosa) {
         return null;
     }
 
@@ -27,6 +40,20 @@ public class ControlNebulosa {
 
     private Parent Volver() {
         return null;// volver a vista universo
+    }
+
+    /**
+     * @return the nebulosa
+     */
+    public Nebulosa getNebulosa() {
+        return nebulosa;
+    }
+
+    /**
+     * @param nebulosa the nebulosa to set
+     */
+    public void setNebulosa(Nebulosa nebulosa) {
+        this.nebulosa = nebulosa;
     }
 
 }

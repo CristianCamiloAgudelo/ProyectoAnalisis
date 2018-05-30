@@ -11,10 +11,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.text.Text;
-import java.util.LinkedList;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -24,7 +22,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.shape.Rectangle;
 
 /**
  * FXML Controller class
@@ -86,35 +83,39 @@ public class UniversoController implements Initializable {
         this.Texto.setText("una por la de negrito");
     }
 
-    private void crear(MouseEvent event) {
-      
-        
-        
-    }
-
     @FXML
-    private void Agregar(MouseEvent event) {
-          System.out.println("creo");
+    private void Crear(MouseEvent event) {
         GridPane grid = new GridPane();
         grid.setLayoutX(event.getX());
         grid.setLayoutY(event.getY());
         grid.setPadding(new Insets(10, 10, 10, 10));
         grid.setVgap(8);
         grid.setHgap(10);
-        
+
         //label
         Label nameLabel = new Label("Nombre Nebulosa");
-        
-        
-        //imput
-        TextField input = new TextField("");
-               
-        grid.getChildren().addAll(nameLabel, input);
 
-        
-        
-        Scroll.getChildren().add(grid);
-        
+        //imput
+        final TextField input = new TextField("");
+
+        //boton
+        Button boton = new Button("Crear");
+
+        boton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                 System.out.println("hola");
+            }
+        });
+    
+
+
+        this.Scroll.getChildren().add(grid);
+
+    }
+
+    private void crearNebulosa(String nombre) {
+        System.out.println("hola");
     }
 
 }

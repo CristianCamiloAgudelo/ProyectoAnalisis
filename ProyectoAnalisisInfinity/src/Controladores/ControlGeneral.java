@@ -6,7 +6,6 @@
 package Controladores;
 
 import Modelo.*;
-import Vistas.*;
 import java.util.Stack;
 
 /**
@@ -16,18 +15,25 @@ import java.util.Stack;
 public class ControlGeneral {
 
     private Stack<String> pila;
-    private ControlUniverso controlUniverso;
+    private final ControlUniverso controlUniverso;
     private ControlNebulosa controlNebulosa;
+
     private ControlSistemaPlanetario controlSistemasPlanetarios;
     private ControlPlaneta controlPlaneta;
 
     public ControlGeneral() {
         this.pila = new Stack<>();
         this.controlUniverso = new ControlUniverso();
+        this.controlNebulosa = new ControlNebulosa();
     }
 
     public Universo CrearUniverso(String nombre) {
         return this.controlUniverso.CrearUniverso(nombre);
+    }
+
+    public Nebulosa AgregarNebulosa(String nombre, Boolean enemigo) {
+        Nebulosa nebulosa =  this.controlUniverso.AgregarNebulosa(nombre, enemigo);
+        return nebulosa;
     }
 
     public SistemaPlanetario CrearSistemaPlanetario(String nombre, int posicionX, int posicionY) {
