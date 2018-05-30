@@ -6,6 +6,8 @@
 package Vistas;
 
 import Modelo.*;
+import java.awt.Image;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -24,7 +26,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.*;
 import javafx.scene.shape.Rectangle;
+import javax.swing.JButton;
+import java.awt.*;
+import java.awt.event.ActionListener;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 
 /**
  * FXML Controller class
@@ -45,13 +53,21 @@ public class UniversoController implements Initializable {
     @FXML
     private AnchorPane Vista;
     @FXML
-    private AnchorPane Vistapane;
-    @FXML
     private ImageView Imagen;
+
     @FXML
     private Label Texto;
     @FXML
     private Button Btn1;
+    @FXML
+    private GridPane tipo1;
+    @FXML
+    private ImageView tipo2;
+    @FXML
+    private ImageView tipo3;
+
+    private boolean bandera = false;
+    private String rutaImagen = "";
 
     /* UniversoController(Universo universo) {
         this.universo = universo;
@@ -86,41 +102,85 @@ public class UniversoController implements Initializable {
         this.universo = universo;
     }
 
+    public void actionPerformed() {
+    }
+
     @FXML
     private void CambiarTexto(ActionEvent event) {
         this.Texto.setText("una por la de negrito");
         this.Texto.setVisible(true);
     }
 
-    private void crear(MouseEvent event) {
-      
-        
-        
+    @FXML
+    private void Agregar(MouseEvent event) {
+        if (this.bandera) {
+            this.bandera = false;
+            System.out.println("creo");
+            GridPane grid = new GridPane();
+            grid.setLayoutX(event.getX());
+            grid.setLayoutY(event.getY());
+            grid.setPadding(new Insets(10, 10, 10, 10));
+            grid.setVgap(8);
+            grid.setHgap(10);
+
+            //input
+            TextField input = new TextField("");
+            input.setPromptText("Nombre Nebulosa");
+            grid.setConstraints(input, 0, 0);
+
+            //imagen
+            ImageView imagen = new ImageView(this.rutaImagen);
+            grid.setConstraints(imagen, 0, 1);
+
+            // boton
+            Button boton = new Button("Aceptar");
+            EventHandler<ActionEvent> evento = new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    System.out.println("hola");
+                    Label label = new Label();
+                    label.setTextFill(javafx.scene.paint.Paint.valueOf("#ffffff"));
+                    label.setText(input.getText());
+                    grid.setVgap(0);
+                    grid.setHgap(0);
+
+                    grid.setConstraints(label, 0, 0);
+                    boton.setVisible(false);
+                    input.setVisible(false);
+
+                    grid.getChildren().addAll(label);
+                    //Vista.getChildren().add(grid);
+                }
+            };
+            boton.setOnAction(evento);
+            grid.setConstraints(boton, 0, 2);
+
+            grid.getChildren().addAll(input, imagen, boton);
+
+            Vista.getChildren().add(grid);
+
+        }
     }
 
     @FXML
-    private void Agregar(MouseEvent event) {
-          System.out.println("creo");
-        GridPane grid = new GridPane();
-        grid.setLayoutX(event.getX());
-        grid.setLayoutY(event.getY());
-        grid.setPadding(new Insets(10, 10, 10, 10));
-        grid.setVgap(8);
-        grid.setHgap(10);
-        
-        //label
-        Label nameLabel = new Label("Nombre Nebulosa");
-        
-        
-        //imput
-        TextField input = new TextField("");
-               
-        grid.getChildren().addAll(nameLabel, input);
+    private void crearTipo1(MouseEvent event) {
+        this.bandera = true;
+        this.rutaImagen = "Imagenes/nebulosa11.png";
+        System.out.println("tipo1");
+    }
 
-        
-        
-        Scroll.getChildren().add(grid);
-        
+    @FXML
+    private void crearTipo2(MouseEvent event) {
+        this.bandera = true;
+        this.rutaImagen = "Imagenes/nebulosa11.png";
+        System.out.println("tipo2");
+    }
+
+    @FXML
+    private void crearTipo3(MouseEvent event) {
+        this.bandera = true;
+        this.rutaImagen = "Imagenes/nebulosa11.png";
+        System.out.println("tipo3");
     }
 
 }
