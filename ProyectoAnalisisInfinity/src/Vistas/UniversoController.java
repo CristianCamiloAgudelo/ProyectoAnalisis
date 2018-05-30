@@ -15,11 +15,16 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import java.util.LinkedList;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Rectangle;
 
 /**
  * FXML Controller class
@@ -36,7 +41,6 @@ public class UniversoController implements Initializable {
     private SplitPane Splitpane;
     @FXML
     private AnchorPane Scroll;
-    @FXML
     private ScrollPane Scrollpane;
     @FXML
     private AnchorPane Vista;
@@ -86,6 +90,37 @@ public class UniversoController implements Initializable {
     private void CambiarTexto(ActionEvent event) {
         this.Texto.setText("una por la de negrito");
         this.Texto.setVisible(true);
+    }
+
+    private void crear(MouseEvent event) {
+      
+        
+        
+    }
+
+    @FXML
+    private void Agregar(MouseEvent event) {
+          System.out.println("creo");
+        GridPane grid = new GridPane();
+        grid.setLayoutX(event.getX());
+        grid.setLayoutY(event.getY());
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setVgap(8);
+        grid.setHgap(10);
+        
+        //label
+        Label nameLabel = new Label("Nombre Nebulosa");
+        
+        
+        //imput
+        TextField input = new TextField("");
+               
+        grid.getChildren().addAll(nameLabel, input);
+
+        
+        
+        Scroll.getChildren().add(grid);
+        
     }
 
 }
