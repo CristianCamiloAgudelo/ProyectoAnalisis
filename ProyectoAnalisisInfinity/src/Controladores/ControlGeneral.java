@@ -32,8 +32,8 @@ public class ControlGeneral {
     }
 
     public Nebulosa AgregarNebulosa(String nombre, Boolean enemigo, double posicionX, double posicionY) {
-        Nebulosa nebulosa =  this.controlUniverso.AgregarNebulosa(nombre, enemigo, posicionX, posicionY);
-        return nebulosa;
+        return this.controlUniverso.AgregarNebulosa(nombre, enemigo, posicionX, posicionY);
+
     }
 
     public SistemaPlanetario CrearSistemaPlanetario(String nombre, int posicionX, int posicionY) {

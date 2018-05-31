@@ -10,6 +10,7 @@ import Controladores.ControlNebulosa;
 import Controladores.ControlUniverso;
 import Modelo.*;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -62,6 +63,7 @@ public class UniversoController implements Initializable {
     private String rutaImagen = "";
     private ControlGeneral controlGeneral;
     private int contadorNebulosa;
+    private List<Nebulosa> nebulosas;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -101,11 +103,15 @@ public class UniversoController implements Initializable {
     }
 
     private Nebulosa crearNebulosa(String nombre, boolean enemigo, double posicionX, double posicionY) {
-     
-        Nebulosa nebulosa = this.controlGeneral.AgregarNebulosa(nombre, true, posicionX, posicionY);
-        System.out.println(nebulosa.getNombre());
-        return nebulosa;
 
+        Nebulosa nebulosa = this.controlGeneral.AgregarNebulosa(nombre, true, posicionX, posicionY);
+        PintarNebulosa(nebulosa);
+        return nebulosa;
+    }
+    
+    private Nebulosa EntrarNebulosa(double posicionX, double posicionY, double anchoPane, double largoPane){
+    
+    return null;
     }
 
     @FXML
@@ -189,6 +195,12 @@ public class UniversoController implements Initializable {
      */
     public void setControlGeneral(ControlGeneral controlGeneral) {
         this.controlGeneral = controlGeneral;
+    }
+
+    private void PintarNebulosa(Nebulosa nebulosa) {
+        GridPane grid = new GridPane();
+        
+        nebulosa.getImagenes().get(1);
     }
 
 }
