@@ -7,37 +7,23 @@ package Vistas;
 
 import Controladores.ControlGeneral;
 import Modelo.*;
-import java.awt.Image;
-import java.io.File;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
+import javafx.geometry.HPos;
 import javafx.scene.control.Button;
-import javafx.scene.text.Text;
-import java.util.LinkedList;
 import javafx.geometry.Insets;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.control.CheckBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.*;
-import javafx.scene.shape.Rectangle;
-import javax.swing.JButton;
-import java.awt.*;
-import java.awt.event.ActionListener;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
-import javafx.geometry.HPos;
-import javafx.geometry.Pos;
-import javafx.scene.control.CheckBox;
+
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.Priority;
 
@@ -64,8 +50,6 @@ public class UniversoController implements Initializable {
 
     @FXML
     private Label Texto;
-    @FXML
-    private Button Btn1;
     @FXML
     private GridPane tipo1;
     @FXML
@@ -99,7 +83,7 @@ public class UniversoController implements Initializable {
 
     private Nebulosa crearNebulosa(String nombre, boolean enemigo, double posicionX, double posicionY) {
 
-        Nebulosa nebulosa = this.getControlGeneral().AgregarNebulosa(nombre, true, posicionX, posicionY);
+        Nebulosa nebulosa = this.getControlGeneral().AgregarNebulosa(nombre, enemigo, posicionX, posicionY);
         PintarNebulosa(nebulosa);
         return nebulosa;
     }
@@ -167,7 +151,7 @@ public class UniversoController implements Initializable {
                     }
 
                     //informacion creacion, retorna una nebulosa 
-                    //crearNebulosa(label.getText(), banderaEnemigo, grid.getLayoutX(), grid.getLayoutY());
+                    Nebulosa nebulosa = crearNebulosa(label.getText(), banderaEnemigo, grid.getLayoutX(), grid.getLayoutY());
                     boton.setDisable(true);
                     boton.setVisible(false);
                     input.setVisible(false);
