@@ -5,8 +5,7 @@
  */
 package Controladores;
 
-import Modelo.Nebulosa;
-import Modelo.Universo;
+import Modelo.*;
 
 /**
  *
@@ -19,7 +18,6 @@ public class ControlUniverso {
 
     public ControlUniverso() {
         this.controlNebulosa = new ControlNebulosa();
-
     }
 
     public Universo CrearUniverso(String nombre) {
@@ -34,7 +32,13 @@ public class ControlUniverso {
 
     }
 
-    public Nebulosa BuscarNebulosa(String nombreNebulosa) {
+    public Nebulosa EntrarNebulosa(String nombreNebulosa) {
+        Nebulosa nebulosa = BuscarNebulosa(nombreNebulosa);
+        this.ActualizarNebulosa(nebulosa);
+        return nebulosa;
+    }
+
+    private Nebulosa BuscarNebulosa(String nombreNebulosa) {
 
         for (Nebulosa nebulosa : this.universo.getListaNebulosas()) {
             if (nebulosa.getNombre().equals(nombreNebulosa)) {
@@ -44,8 +48,18 @@ public class ControlUniverso {
         return null;
     }
 
-    void ActualizarNebulosa(Nebulosa nebulosa) {
+    private void ActualizarNebulosa(Nebulosa nebulosa) {
         this.controlNebulosa.setNebulosa(nebulosa);
+    }
+
+    public SistemaPlanetario AgregarSistemaPlanetario(String nombre, Boolean enemigo, double posicionX, double posicionY) {
+        SistemaPlanetario sistemaPlanetario = this.controlNebulosa.AgregarSistemaPlanetario(nombre, enemigo, posicionX, posicionY);
+        return sistemaPlanetario;
+    }
+
+    public SistemaPlanetario EntrarSistemaPlanetario(String nombreSistemaPlanetario) {
+        SistemaPlanetario sistemaPlanetario = this.controlNebulosa.EntrarSistemaPlanetario(nombreSistemaPlanetario);
+        return sistemaPlanetario;
     }
 
     /**

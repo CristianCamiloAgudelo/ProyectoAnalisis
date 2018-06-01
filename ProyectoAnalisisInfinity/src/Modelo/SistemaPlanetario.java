@@ -13,18 +13,18 @@ public class SistemaPlanetario
     private int codigo;
     private String nombre;
     private boolean visitado;
-    private List<Enemigo> enemigos;
+    private Boolean enemigos;
     private List<Nodo> adyacencias;
     private List<Planeta> listaPlanetas;
     private List<String> imagenes;
-    private int posicionX;
-    private int posicionY;
+    private double posicionX;
+    private double posicionY;
 
-    public SistemaPlanetario(int codigo, String nombre, int posicionX, int posicionY) {
+    public SistemaPlanetario(int codigo, String nombre, Boolean enemigo, double posicionX, double posicionY) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.visitado = false;
-        this.enemigos = new LinkedList<>();
+        this.enemigos = enemigo;
         this.adyacencias = new LinkedList<>();
         this.listaPlanetas = new LinkedList<>();
         this.imagenes = new LinkedList<>();
@@ -37,11 +37,11 @@ public class SistemaPlanetario
     
     
 
-    public SistemaPlanetario(int codigo, String nombre, boolean visitado, List<Enemigo> enemigos, List<Nodo> adyacencias, List<Planeta> listaPlanetas, int posicionX, int posicionY) {
+    public SistemaPlanetario(int codigo, String nombre, boolean visitado, Boolean enemigo, List<Nodo> adyacencias, List<Planeta> listaPlanetas, double posicionX, double posicionY) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.visitado = visitado;
-        this.enemigos = enemigos;
+        this.enemigos = enemigo;
         this.adyacencias = adyacencias;
         this.listaPlanetas = listaPlanetas;
         this.imagenes = new LinkedList<>();
@@ -83,15 +83,15 @@ public class SistemaPlanetario
     /**
      * @return the enemigos
      */
-    public List<Enemigo> getEnemigos() {
+    public Boolean getEnemigos() {
         return enemigos;
     }
 
     /**
-     * @param enemigos the enemigos to set
+     * @param enemigo   the enemigos to set
      */
-    public void setEnemigos(List<Enemigo> enemigos) {
-        this.enemigos = enemigos;
+    public void setEnemigos(Boolean enemigo) {
+        this.enemigos = enemigo;
     }
 
     /**
@@ -132,7 +132,7 @@ public class SistemaPlanetario
     /**
      * @return the posicionX
      */
-    public int getPosicionX() {
+    public double getPosicionX() {
         return posicionX;
     }
 
@@ -146,7 +146,7 @@ public class SistemaPlanetario
     /**
      * @return the posicionY
      */
-    public int getPosicionY() {
+    public double getPosicionY() {
         return posicionY;
     }
 

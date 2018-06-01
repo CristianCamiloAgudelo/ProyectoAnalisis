@@ -16,28 +16,52 @@ import javafx.scene.Parent;
  * @author USER
  */
 public class ControlNebulosa {
-
+    
     private Nebulosa nebulosa;
     private int codigoNebulosa;
-
+    private final ControlSistemaPlanetario controlSistemaPlanetario;
+    
     public ControlNebulosa() {
         this.codigoNebulosa = 0;
+        this.controlSistemaPlanetario = new ControlSistemaPlanetario();
     }
-
+    
     public Nebulosa CrearNebulosa(String nombre, Boolean enemigo, double posicionX, double posicionY) {
         this.codigoNebulosa++;
         this.setNebulosa(new Nebulosa(this.codigoNebulosa, nombre, enemigo, posicionX, posicionY));
         return this.getNebulosa();
     }
-
-    public SistemaPlanetario AgregarSistemaPlanetario(int codigoSistemaPlanetario, Nebulosa nebulosa) {
+    
+    public SistemaPlanetario AgregarSistemaPlanetario(String nombre, Boolean enemigo, double posicionX, double posicionY) {
+        SistemaPlanetario sistemaPlanetario = this.controlSistemaPlanetario.CrearSistamPlanetario(nombre, enemigo, posicionX, posicionY);
+        this.nebulosa.getListaSistemasPlanetarios().add(sistemaPlanetario);
+        return sistemaPlanetario;
+    }
+    
+    public SistemaPlanetario EntrarSistemaPlanetario(String nombreSistemaPlanetario) {
+        SistemaPlanetario sistemaPlanetario = BuscarSistemaPlanetario(nombreSistemaPlanetario);
+        this.ActualizarSistemaPlanetario(sistemaPlanetario);
+        return sistemaPlanetario;
+    }
+    
+    private SistemaPlanetario BuscarSistemaPlanetario(String nombreSistemaPlanetario) {
+        for (SistemaPlanetario sistemasPlanetario : this.nebulosa.getListaSistemasPlanetarios()) {
+            if (sistemasPlanetario.getNombre().equals(nombreSistemaPlanetario)) {
+                return sistemasPlanetario;
+                
+            }
+        }
         return null;
     }
-
+    
+    private void ActualizarSistemaPlanetario(SistemaPlanetario sistemaPlanetario) {
+        this.controlSistemaPlanetario.setSistemaPlanetario(sistemaPlanetario);
+    }
+    
     public LinkedList CrearConexion(int codigo, Nodo nodo) {
         return null;
     }
-
+    
     private Parent Volver() {
         return null;// volver a vista universo
     }
@@ -55,5 +79,5 @@ public class ControlNebulosa {
     public void setNebulosa(Nebulosa nebulosa) {
         this.nebulosa = nebulosa;
     }
-
+    
 }

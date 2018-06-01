@@ -22,7 +22,8 @@ public class ProyectoAnalisisInfinity extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Scene scene = new Scene(root);
-        stage.setFullScreen(true);
+        stage.setWidth(1300);
+        stage.setHeight(700);
         stage.setScene(scene);
         stage.show();
     }

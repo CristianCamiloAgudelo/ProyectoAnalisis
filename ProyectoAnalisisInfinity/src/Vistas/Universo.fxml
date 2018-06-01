@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane fx:id="Anchorpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vistas.UniversoController">
+<AnchorPane fx:id="Anchorpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#Agr" prefHeight="700.0" prefWidth="1300.0" stylesheets="@Estilos.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vistas.UniversoController">
     <children>
-        <SplitPane fx:id="Splitpane" dividerPositions="0.2131782945736434" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <SplitPane fx:id="Splitpane" dividerPositions="0.15" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
                 <AnchorPane fx:id="Scroll" SplitPane.resizableWithParent="false">
                     <children>
-                        <GridPane fx:id="tipo1" alignment="TOP_CENTER" layoutX="14.0" layoutY="30.0" prefHeight="97.0" prefWidth="142.0">
+                        <GridPane fx:id="tipo1" alignment="TOP_CENTER" layoutX="25.0" layoutY="14.0" prefHeight="97.0" prefWidth="142.0">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             </columnConstraints>
@@ -24,7 +24,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Label prefHeight="23.0" prefWidth="140.0" text="NebulosaTipo1" />
+                                <Label alignment="CENTER" prefHeight="23.0" prefWidth="140.0" text="Nebulosa Tipo 1" />
                                 <ImageView fitHeight="31.0" fitWidth="135.0" onMouseClicked="#crearTipo1" pickOnBounds="true" GridPane.rowIndex="1">
                                     <image>
                                         <Image url="@../Imagenes/nebulosa11.png" />
@@ -32,7 +32,7 @@
                                 </ImageView>
                             </children>
                         </GridPane>
-                        <GridPane alignment="TOP_CENTER" layoutX="10.0" layoutY="127.0" prefHeight="97.0" prefWidth="142.0">
+                        <GridPane alignment="TOP_CENTER" layoutX="25.0" layoutY="112.0" prefHeight="97.0" prefWidth="142.0">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             </columnConstraints>
@@ -41,7 +41,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Label prefHeight="23.0" prefWidth="140.0" text="NebulosaTipo1" />
+                                <Label alignment="CENTER" prefHeight="23.0" prefWidth="140.0" text="Nebulosa Tipo2" />
                                 <ImageView fx:id="tipo2" fitHeight="31.0" fitWidth="135.0" onMouseClicked="#crearTipo2" pickOnBounds="true" GridPane.rowIndex="1">
                                     <image>
                                         <Image url="@../Imagenes/nebulosa11.png" />
@@ -49,34 +49,9 @@
                                 </ImageView>
                             </children>
                         </GridPane>
-                        <GridPane alignment="TOP_CENTER" layoutX="10.0" layoutY="266.0" prefHeight="97.0" prefWidth="142.0">
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            </rowConstraints>
-                            <children>
-                                <Label onMouseClicked="#crearTipo3" prefHeight="23.0" prefWidth="140.0" text="NebulosaTipo1" />
-                                <ImageView fx:id="tipo3" fitHeight="31.0" fitWidth="135.0" pickOnBounds="true" GridPane.rowIndex="1">
-                                    <image>
-                                        <Image url="@../Imagenes/nebulosa11.png" />
-                                    </image>
-                                </ImageView>
-                            </children>
-                        </GridPane>
                     </children>
                 </AnchorPane>
-                <AnchorPane fx:id="Vista" style="-fx-background-image: ..\Imagenes\1065651800.jpg;" SplitPane.resizableWithParent="false">
-                    <children>
-                        <ImageView fx:id="imagenVista" layoutX="33.0" layoutY="25.0" onMouseClicked="#Agregar" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                            <image>
-                                <Image url="@../Imagenes/Universo.jpg" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </AnchorPane>
+                <AnchorPane fx:id="VistaUniverso" onMouseClicked="#Agregar" prefHeight="481.0" prefWidth="1090.0" style="-fx-background-image: src/Imagenes\Universo.jpg;" SplitPane.resizableWithParent="false" />
             </items>
         </SplitPane>
     </children>

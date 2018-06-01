@@ -5,7 +5,7 @@
  */
 package Controladores;
 
-import Modelo.Nodo;
+import Modelo.*;
 import java.util.LinkedList;
 import javafx.scene.Parent;
 
@@ -14,19 +14,45 @@ import javafx.scene.Parent;
  * @author USER
  */
 public class ControlSistemaPlanetario {
-   private Parent EntrarPlaneta(int codigoPlaneta)
-    {
+
+    private int codigoSistemaPlanetario;
+    private ControlPlaneta controlPlaneta;
+    private SistemaPlanetario sistemaPlanetario;
+
+    public ControlSistemaPlanetario() {
+        this.codigoSistemaPlanetario = 0;
+        this.controlPlaneta = new ControlPlaneta();
+    }
+
+    public SistemaPlanetario CrearSistamPlanetario(String nombre, Boolean enemigo, double posicionX, double posicionY) {
+        this.codigoSistemaPlanetario++;
+        SistemaPlanetario sistemaPlanetario = new SistemaPlanetario(this.codigoSistemaPlanetario, nombre, enemigo, posicionX, posicionY);
+        return sistemaPlanetario;
+    }
+
+    private Parent EntrarPlaneta(int codigoPlaneta) {
         return null;
     }
 
-    private LinkedList CrearConexion(int codigo, Nodo nodo)
-    {
+    private LinkedList CrearConexion(int codigo, Nodo nodo) {
         return null;
     }
-    
-    
-    private Parent Volver()
-    {
+
+    private Parent Volver() {
         return null;// volver a vista nebulosa
-    }   
+    }
+
+    /**
+     * @return the sistemaPlanetario
+     */
+    public SistemaPlanetario getSistemaPlanetario() {
+        return sistemaPlanetario;
+    }
+
+    /**
+     * @param sistemaPlanetario the sistemaPlanetario to set
+     */
+    public void setSistemaPlanetario(SistemaPlanetario sistemaPlanetario) {
+        this.sistemaPlanetario = sistemaPlanetario;
+    }
 }

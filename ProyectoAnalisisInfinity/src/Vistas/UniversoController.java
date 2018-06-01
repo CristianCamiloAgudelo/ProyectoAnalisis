@@ -5,7 +5,7 @@
  */
 package Vistas;
 
-import Controladores.ControlGeneral;
+import Controladores.ControlUniverso;
 import Modelo.*;
 import java.net.URL;
 import java.util.LinkedList;
@@ -37,7 +37,6 @@ import javafx.scene.layout.Priority;
 public class UniversoController implements Initializable {
 
     private FileLoader fileLoader;
-    private Universo universo;
     @FXML
     private AnchorPane Anchorpane;
     @FXML
@@ -45,65 +44,55 @@ public class UniversoController implements Initializable {
     @FXML
     private AnchorPane Scroll;
     private ScrollPane Scrollpane;
-    @FXML
-    private AnchorPane Vista;
+
     @FXML
     private GridPane tipo1;
     @FXML
     private ImageView tipo2;
-    @FXML
-    private ImageView tipo3;
     private AnchorPane marco;
     private boolean bandera = false;
     private String rutaImagen = "";
-    private ControlGeneral controlGeneral;
+    private ControlUniverso controlUniverso;
     private int contadorImagenNebulosa;
     private List<Nebulosa> nebulosas;
     private boolean banderaEnemigo = false;
     private double posicionX;
     private double posicionY;
-
     @FXML
-    private ImageView imagenVista;
+    private AnchorPane VistaUniverso;
 
-
-    /* UniversoController(Universo universo) {
-        this.universo = universo;
-        this.Texto.setText(this.universo.getNombre()); 
-        
-    }*/
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
-    public void setData(Universo universo, AnchorPane marco) {
+    public void setData(AnchorPane marco, List<Nebulosa> nebulosas) {
         this.marco = marco;
-        this.universo = universo;
         this.contadorImagenNebulosa = 0;
-        this.nebulosas = new LinkedList<>();
-
-    }
-
-    private void crearNebulosa(String nombre, boolean enemigo, double posicionX, double posicionY) {
-
-        Nebulosa nebulosa = this.getControlGeneral().AgregarNebulosa(nombre, enemigo, posicionX, posicionY);
-        this.nebulosas.add(nebulosa);
-        PintarNebulosa(this.nebulosas);
+        this.nebulosas = nebulosas;
+        if (!this.nebulosas.isEmpty()) {
+            PintarNebulosa(this.nebulosas);
+        }
 
     }
 
     private void EntrarNebulosa(String nombreNebulosa) {
-        Nebulosa nebulosa = this.controlGeneral.EntrarNebulosa(nombreNebulosa);
-        this.controlGeneral.getPila().add(nebulosa.getNombre());
-
+        Nebulosa nebulosa = this.controlUniverso.EntrarNebulosa(nombreNebulosa);
         this.fileLoader = new FileLoader("src/Vistas/Nebulosa.fxml");
         VistaGenerica vistaNebulosa = fileLoader.open("nebulosa");
         NebulosaController nebulosaController = (NebulosaController) vistaNebulosa.getController();
-        nebulosaController.setData(nebulosa);
-        nebulosaController.setControlGeneral(this.controlGeneral);
+        nebulosaController.setData(nebulosa, this.marco, this.VistaUniverso);
+        nebulosaController.setControlUniverso(this.controlUniverso);
         this.marco.getChildren().clear();
         this.marco.getChildren().add(vistaNebulosa.getParent());
+    }
+
+    private void crearNebulosa(String nombre, boolean enemigo, double posicionX, double posicionY) {
+
+        Nebulosa nebulosa = this.controlUniverso.AgregarNebulosa(nombre, enemigo, posicionX, posicionY);
+        this.nebulosas.add(nebulosa);
+        PintarNebulosa(this.nebulosas);
+
     }
 
     @FXML
@@ -171,30 +160,9 @@ public class UniversoController implements Initializable {
             };
             boton.setOnAction(evento);
             grid.addRow(3, boton);
-            Vista.getChildren().add(grid);
+            VistaUniverso.getChildren().add(grid);
 
         }
-    }
-
-    @FXML
-    private void crearTipo1(MouseEvent event) {
-        this.bandera = true;
-        this.rutaImagen = "Imagenes/nebulosa11.png";
-        System.out.println("tipo1");
-    }
-
-    @FXML
-    private void crearTipo2(MouseEvent event) {
-        this.bandera = true;
-        this.rutaImagen = "Imagenes/nebulosa11.png";
-        System.out.println("tipo2");
-    }
-
-    @FXML
-    private void crearTipo3(MouseEvent event) {
-        this.bandera = true;
-        this.rutaImagen = "Imagenes/nebulosa11.png";
-        System.out.println("tipo3");
     }
 
     private void PintarNebulosa(List<Nebulosa> nebulosas) {
@@ -232,11 +200,11 @@ public class UniversoController implements Initializable {
             } else {
                 this.contadorImagenNebulosa++;
             }
-            Vista.setOnMouseClicked(e -> {
+            VistaUniverso.setOnMouseClicked(e -> {
                 posicionX = e.getX();
                 posicionY = e.getY();
             });
-            this.Vista.getChildren().add(grid);
+            this.VistaUniverso.getChildren().add(grid);
         }
 
     }
@@ -245,31 +213,55 @@ public class UniversoController implements Initializable {
         String rutaElemento = ("javafx.scene.layout." + tipoElemento);
         List<Node> nodos = new LinkedList<>();
         try {
-            for (Node node : this.Vista.getChildren()) {
+            for (Node node : this.VistaUniverso.getChildren()) {
                 if (node.getClass().getName().equals(rutaElemento)) {
                     nodos.add(node);
 
                 }
             }
-            this.Vista.getChildren().removeAll(nodos);
+            this.VistaUniverso.getChildren().removeAll(nodos);
         } catch (Exception e) {
             System.out.println("Errrorrrrrrrrrrrrrrrrrrrrrrrr: " + e);
         }
 
     }
 
-    /**
-     * @return the controlGeneral
-     */
-    public ControlGeneral getControlGeneral() {
-        return controlGeneral;
+    @FXML
+    private void crearTipo1(MouseEvent event) {
+        this.bandera = true;
+        this.rutaImagen = "Imagenes/nebulosa11.png";
+        System.out.println("tipo1");
+    }
+
+    @FXML
+    private void crearTipo2(MouseEvent event) {
+        this.bandera = true;
+        this.rutaImagen = "Imagenes/nebulosa11.png";
+        System.out.println("tipo2");
+    }
+
+    private void crearTipo3(MouseEvent event) {
+        this.bandera = true;
+        this.rutaImagen = "Imagenes/nebulosa11.png";
+        System.out.println("tipo3");
     }
 
     /**
-     * @param controlGeneral the controlGeneral to set
+     * @return the controlUniverso
      */
-    public void setControlGeneral(ControlGeneral controlGeneral) {
-        this.controlGeneral = controlGeneral;
+    public ControlUniverso getControlUniverso() {
+        return controlUniverso;
+    }
+
+    /**
+     * @param controlUniverso the controlUniverso to set
+     */
+    public void setControlUniverso(ControlUniverso controlUniverso) {
+        this.controlUniverso = controlUniverso;
+    }
+
+    @FXML
+    private void Agr(MouseEvent event) {
     }
 
 }

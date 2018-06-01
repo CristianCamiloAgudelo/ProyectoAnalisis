@@ -31,28 +31,31 @@ public class MenuController implements Initializable {
     @FXML
     private AnchorPane MenuPane;
 
-    private ControlGeneral controlGeneral;
+    private ControlUniverso controlUniverso;
 
     @FXML
     private Button BotonCrearMapa;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        this.controlGeneral = new ControlGeneral();
+        this.controlUniverso = new ControlUniverso();
     }
 
     @FXML
     private void CrearMapa(ActionEvent event) throws MalformedURLException {
-        Universo universo = this.controlGeneral.CrearUniverso("Universo1");
-        this.controlGeneral.getPila().add(universo.getNombre());
-
-        this.fileloader = new FileLoader("src/Vistas/Universo.fxml");
-        VistaGenerica vistaUniverso = fileloader.open("universo");
-        UniversoController universoController = (UniversoController) vistaUniverso.getController();
-        universoController.setData(universo, this.marco);
-        universoController.setControlGeneral(this.controlGeneral);
-        this.marco.getChildren().clear();
-        this.marco.getChildren().add(vistaUniverso.getParent());
+        try {
+            Universo universo = this.controlUniverso.CrearUniverso("Universo1");
+            System.out.println(universo.getListaNebulosas().isEmpty());
+            this.fileloader = new FileLoader("src/Vistas/Universo.fxml");
+            VistaGenerica vistaUniverso = fileloader.open("universo");
+            UniversoController universoController = (UniversoController) vistaUniverso.getController();
+            universoController.setData(marco, universo.getListaNebulosas());
+            universoController.setControlUniverso(this.controlUniverso);
+            this.marco.getChildren().clear();
+            this.marco.getChildren().add(vistaUniverso.getParent());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }
 

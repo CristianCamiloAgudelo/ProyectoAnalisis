@@ -10,8 +10,22 @@ and open the template in the editor.
 
 .marco{
     -fx-background-color: gray;
-    
-    
-    
+        
 }
 
+#VistaUniverso{
+    
+    -fx-background-image: url("../Imagenes/UniversoFondo2.jpg");
+    -fx-background-size: cover;
+}
+#VistaNebulosa{
+    
+    -fx-background-image: url("../Imagenes/NebulosaFondo.jpg");
+    -fx-background-size: cover;
+}
+
+#VistaSistemaPlanetario{
+    
+    -fx-background-image: url("../Imagenes/SistemaPlanetarioFondo.jpg");
+    -fx-background-size: cover;
+}
