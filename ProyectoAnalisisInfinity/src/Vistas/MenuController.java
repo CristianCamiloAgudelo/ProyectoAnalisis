@@ -45,11 +45,11 @@ public class MenuController implements Initializable {
     private void CrearMapa(ActionEvent event) throws MalformedURLException {
         Universo universo = this.controlGeneral.CrearUniverso("Universo1");
         this.controlGeneral.getPila().add(universo.getNombre());
-        
+
         this.fileloader = new FileLoader("src/Vistas/Universo.fxml");
         VistaGenerica vistaUniverso = fileloader.open("universo");
         UniversoController universoController = (UniversoController) vistaUniverso.getController();
-        universoController.setData(universo);
+        universoController.setData(universo, this.marco);
         universoController.setControlGeneral(this.controlGeneral);
         this.marco.getChildren().clear();
         this.marco.getChildren().add(vistaUniverso.getParent());

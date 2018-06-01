@@ -34,14 +34,18 @@ public class ControlUniverso {
 
     }
 
-    public Nebulosa BuscarNebulosa(int codigoNebulosa) {
+    public Nebulosa BuscarNebulosa(String nombreNebulosa) {
 
         for (Nebulosa nebulosa : this.universo.getListaNebulosas()) {
-            if (nebulosa.getCodigo() == codigoNebulosa) {
+            if (nebulosa.getNombre().equals(nombreNebulosa)) {
                 return nebulosa;
             }
         }
         return null;
+    }
+
+    void ActualizarNebulosa(Nebulosa nebulosa) {
+        this.controlNebulosa.setNebulosa(nebulosa);
     }
 
     /**

@@ -28,9 +28,9 @@ public class Nebulosa {
         this.adyacencias = new LinkedList<>();
         this.listaSistemasPlanetarios = new LinkedList<>();
         this.imagenes = new LinkedList<>();
-        this.imagenes.add("src/Vistas/Nebulosa1");
-        this.imagenes.add("src/Vistas/Nebulosa2");
-        this.imagenes.add("src/Vistas/Nebulosa3");
+        this.imagenes.add("src/Imagenes/nebulosa11");
+        this.imagenes.add("src/Imagenes/nebulosa11");
+        this.imagenes.add("src/Imagenes/nebulosa11");
         this.posicionX = posicionX;
         this.posicionY = posicionY;
     }
@@ -43,9 +43,9 @@ public class Nebulosa {
         this.adyacencias = adyacencias;
         this.listaSistemasPlanetarios = listaSistemasPlanetarios;
         this.imagenes = new LinkedList<>();
-        this.imagenes.add("src/Vistas/Nebulosa1");
-        this.imagenes.add("src/Vistas/Nebulosa2");
-        this.imagenes.add("src/Vistas/Nebulosa3");
+        this.imagenes.add("src/Imagenes/nebulosa11");
+        this.imagenes.add("src/Imagenes/nebulosa11");
+        this.imagenes.add("src/Imagenes/nebulosa11");
         this.posicionX = posicionX;
         this.posicionY = posicionY;
     }

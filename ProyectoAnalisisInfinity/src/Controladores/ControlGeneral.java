@@ -36,6 +36,17 @@ public class ControlGeneral {
 
     }
 
+    public Nebulosa EntrarNebulosa(String nombreNebulosa) {
+        Nebulosa nebulosa = this.controlUniverso.BuscarNebulosa(nombreNebulosa);
+        this.ActualizarNebulosa(nebulosa);
+        return nebulosa;
+
+    }
+
+    private void ActualizarNebulosa(Nebulosa nebulosa) {
+       this.controlUniverso.ActualizarNebulosa(nebulosa);
+    }
+
     public SistemaPlanetario CrearSistemaPlanetario(String nombre, int posicionX, int posicionY) {
 
         return null;
