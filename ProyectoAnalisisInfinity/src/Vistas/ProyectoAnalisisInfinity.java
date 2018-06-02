@@ -6,6 +6,8 @@
 package Vistas;
 
 import Modelo.Universo;
+import java.awt.Image;
+import java.net.URL;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,6 +27,8 @@ public class ProyectoAnalisisInfinity extends Application {
         stage.setWidth(1300);
         stage.setHeight(700);
         stage.setScene(scene);
+     
+        stage.getIcons().add(new javafx.scene.image.Image("Imagenes/IconoEstrella.png"));
         stage.show();
     }
 

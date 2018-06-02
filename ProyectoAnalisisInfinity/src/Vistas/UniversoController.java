@@ -53,13 +53,14 @@ public class UniversoController implements Initializable {
     private boolean bandera = false;
     private String rutaImagen = "";
     private ControlUniverso controlUniverso;
-    private int contadorImagenNebulosa;
+
     private List<Nebulosa> nebulosas;
     private boolean banderaEnemigo = false;
     private double posicionX;
     private double posicionY;
     @FXML
     private AnchorPane VistaUniverso;
+    private int tipoNebulosa;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -68,12 +69,11 @@ public class UniversoController implements Initializable {
 
     public void setData(AnchorPane marco, List<Nebulosa> nebulosas) {
         this.marco = marco;
-        this.contadorImagenNebulosa = 0;
         this.nebulosas = nebulosas;
         if (!this.nebulosas.isEmpty()) {
             PintarNebulosa(this.nebulosas);
         }
-
+        this.tipoNebulosa = 0;
     }
 
     private void EntrarNebulosa(String nombreNebulosa) {
@@ -87,9 +87,9 @@ public class UniversoController implements Initializable {
         this.marco.getChildren().add(vistaNebulosa.getParent());
     }
 
-    private void crearNebulosa(String nombre, boolean enemigo, double posicionX, double posicionY) {
+    private void crearNebulosa(String nombre, boolean enemigo, double posicionX, double posicionY, int tipoNebulosa) {
 
-        Nebulosa nebulosa = this.controlUniverso.AgregarNebulosa(nombre, enemigo, posicionX, posicionY);
+        Nebulosa nebulosa = this.controlUniverso.AgregarNebulosa(nombre, enemigo, posicionX, posicionY, tipoNebulosa);
         this.nebulosas.add(nebulosa);
         PintarNebulosa(this.nebulosas);
 
@@ -97,10 +97,9 @@ public class UniversoController implements Initializable {
 
     @FXML
     private void Agregar(MouseEvent event) {
-
+        System.out.println("entreee");
         if (this.bandera) {
             this.bandera = false;
-
             final GridPane grid = new GridPane();
             grid.setLayoutX(event.getX());
             grid.setLayoutY(event.getY());
@@ -141,7 +140,6 @@ public class UniversoController implements Initializable {
                 @Override
                 public void handle(ActionEvent event) {
                     Label label = new Label();
-
                     label.setTextFill(javafx.scene.paint.Paint.valueOf("#ffffff"));
                     label.setText(input.getText());
 
@@ -154,13 +152,14 @@ public class UniversoController implements Initializable {
                         banderaEnemigo = false;
                     }
                     grid.setVisible(false);
-                    crearNebulosa(label.getText(), banderaEnemigo, grid.getLayoutX(), grid.getLayoutY());
+                    crearNebulosa(label.getText(), banderaEnemigo, grid.getLayoutX(), grid.getLayoutY(), tipoNebulosa);
 
                 }
             };
             boton.setOnAction(evento);
             grid.addRow(3, boton);
             VistaUniverso.getChildren().add(grid);
+            System.out.println("sali");
 
         }
     }
@@ -174,7 +173,7 @@ public class UniversoController implements Initializable {
             grid.setLayoutY(nebulosa.getPosicionY());
             grid.setVgap(10);
             grid.setGridLinesVisible(false);
-            System.out.println(nebulosa.getPosicionX() + " " + nebulosa.getPosicionY());
+
             ColumnConstraints leftCol = new ColumnConstraints();
             leftCol.setHalignment(HPos.CENTER);
             leftCol.setHgrow(Priority.ALWAYS);
@@ -186,24 +185,14 @@ public class UniversoController implements Initializable {
 
             grid.getColumnConstraints().addAll(leftCol, rightCol);
             Label label = new Label(nebulosa.getNombre());
-            label.setTextFill(javafx.scene.paint.Paint.valueOf("ff0000"));
-            ImageView imagenNebulosa = new ImageView(rutaImagen);
+            label.setTextFill(javafx.scene.paint.Paint.valueOf("#ffffff"));
+            ImageView imagenNebulosa = new ImageView(nebulosa.getImagen());
 
             imagenNebulosa.setOnMouseClicked(e -> {
                 EntrarNebulosa(label.getText());
             });
             grid.addRow(1, imagenNebulosa);
             grid.addRow(0, label);
-
-            if (this.contadorImagenNebulosa == 2) {
-                this.contadorImagenNebulosa = 0;
-            } else {
-                this.contadorImagenNebulosa++;
-            }
-            VistaUniverso.setOnMouseClicked(e -> {
-                posicionX = e.getX();
-                posicionY = e.getY();
-            });
             this.VistaUniverso.getChildren().add(grid);
         }
 
@@ -230,6 +219,7 @@ public class UniversoController implements Initializable {
     private void crearTipo1(MouseEvent event) {
         this.bandera = true;
         this.rutaImagen = "Imagenes/nebulosa11.png";
+        this.tipoNebulosa = 0;
         System.out.println("tipo1");
     }
 
@@ -237,12 +227,14 @@ public class UniversoController implements Initializable {
     private void crearTipo2(MouseEvent event) {
         this.bandera = true;
         this.rutaImagen = "Imagenes/nebulosa11.png";
+        this.tipoNebulosa = 1;
         System.out.println("tipo2");
     }
 
     private void crearTipo3(MouseEvent event) {
         this.bandera = true;
         this.rutaImagen = "Imagenes/nebulosa11.png";
+        this.tipoNebulosa = 2;
         System.out.println("tipo3");
     }
 
@@ -260,8 +252,5 @@ public class UniversoController implements Initializable {
         this.controlUniverso = controlUniverso;
     }
 
-    @FXML
-    private void Agr(MouseEvent event) {
-    }
 
 }

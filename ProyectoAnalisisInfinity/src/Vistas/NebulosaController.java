@@ -67,10 +67,10 @@ public class NebulosaController implements Initializable {
         this.contadorImagenSistemaPlanetario = 0;
         this.sistemasPlanetarios = new LinkedList<>();
         this.marco = marco;
-
         if (!this.sistemasPlanetarios.isEmpty()) {
             PintarSistemaPlanetario(this.sistemasPlanetarios);
         }
+        System.out.println(this.nebulosa.getNombre());
     }
 
     private void EntrarSistemaPlanetario(String nombreSistemaPlanetario) {
@@ -199,7 +199,7 @@ public class NebulosaController implements Initializable {
 
             grid.getColumnConstraints().addAll(leftCol, rightCol);
             Label label = new Label(sistemaPlanetario.getNombre());
-            label.setTextFill(javafx.scene.paint.Paint.valueOf("ff0000"));
+            label.setTextFill(javafx.scene.paint.Paint.valueOf("#ffffff"));
             ImageView imagenNebulosa = new ImageView(this.rutaImagen);
 
             imagenNebulosa.setOnMouseClicked(e -> {

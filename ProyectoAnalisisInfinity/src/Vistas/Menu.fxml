@@ -36,10 +36,10 @@
       </MenuBar>
       <AnchorPane fx:id="marco" layoutX="181.0" layoutY="118.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.0">
          <children>
-            <GridPane layoutX="94.0" layoutY="167.0" prefHeight="158.0" prefWidth="355.0">
+            <GridPane layoutX="392.0" layoutY="94.0" prefHeight="158.0" prefWidth="386.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.199951171875" minWidth="10.0" prefWidth="45.80000305175781" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.1999969482422" minWidth="10.0" prefWidth="140.1999969482422" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.60000000000002" minWidth="10.0" prefWidth="161.6" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="230.40003662109373" minWidth="0.0" prefWidth="216.79999999999998" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -59,7 +59,7 @@
                   </ImageView>
                   <ImageView fitHeight="39.0" fitWidth="85.0" pickOnBounds="true" GridPane.rowIndex="1">
                      <image>
-                        <Image url="@../Imagenes/2.1-Mercurio.png" />
+                        <Image url="@../Imagenes/Nave1.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="39.0" fitWidth="85.0" pickOnBounds="true" GridPane.rowIndex="2">
@@ -74,7 +74,7 @@
                   </ImageView>
                </children>
             </GridPane>
-            <Text layoutX="228.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu">
+            <Text layoutX="489.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu">
                <font>
                   <Font size="34.0" />
                </font>

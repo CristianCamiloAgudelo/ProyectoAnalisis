@@ -10,42 +10,36 @@ import java.util.List;
  */
 public class Nebulosa {
 
-    private int codigo;
-    private String nombre;
+    private final int codigo;
+    private final String nombre;
     private boolean enemigo;
     private boolean visitado;
     private List<Nodo> adyacencias;
     private List<SistemaPlanetario> listaSistemasPlanetarios;
-    private List<String> imagenes;
+    private final String imagen;
     private double posicionX;
     private double posicionY;
 
-    public Nebulosa(int codigo, String nombre, boolean enemigo, double posicionX, double posicionY) {
+    public Nebulosa(int codigo, String nombre, boolean enemigo, double posicionX, double posicionY, String imagen) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.enemigo = enemigo;
         this.visitado = false;
         this.adyacencias = new LinkedList<>();
         this.listaSistemasPlanetarios = new LinkedList<>();
-        this.imagenes = new LinkedList<>();
-        this.imagenes.add("src/Imagenes/nebulosa11");
-        this.imagenes.add("src/Imagenes/nebulosa11");
-        this.imagenes.add("src/Imagenes/nebulosa11");
+        this.imagen = imagen;
         this.posicionX = posicionX;
         this.posicionY = posicionY;
     }
 
-    public Nebulosa(int codigo, String nombre, boolean enemigo, boolean visitado, List<Nodo> adyacencias, List<SistemaPlanetario> listaSistemasPlanetarios, double posicionX, double posicionY) {
+    public Nebulosa(int codigo, String nombre, boolean enemigo, boolean visitado, List<Nodo> adyacencias, List<SistemaPlanetario> listaSistemasPlanetarios, double posicionX, double posicionY, String imagen) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.enemigo = enemigo;
         this.visitado = visitado;
         this.adyacencias = adyacencias;
+        this.imagen = imagen;
         this.listaSistemasPlanetarios = listaSistemasPlanetarios;
-        this.imagenes = new LinkedList<>();
-        this.imagenes.add("src/Imagenes/nebulosa11");
-        this.imagenes.add("src/Imagenes/nebulosa11");
-        this.imagenes.add("src/Imagenes/nebulosa11");
         this.posicionX = posicionX;
         this.posicionY = posicionY;
     }
@@ -121,10 +115,10 @@ public class Nebulosa {
     }
 
     /**
-     * @return the imagenes
+     * @return the imagen
      */
-    public List<String> getImagenes() {
-        return imagenes;
+    public String getImagen() {
+        return imagen;
     }
 
     /**

@@ -25,8 +25,8 @@ public class ControlUniverso {
         return this.getUniverso();
     }
 
-    public Nebulosa AgregarNebulosa(String nombre, Boolean enemigo, double posicionX, double posicionY) {
-        Nebulosa nebulosa = this.controlNebulosa.CrearNebulosa(nombre, enemigo, posicionX, posicionY);
+    public Nebulosa AgregarNebulosa(String nombre, Boolean enemigo, double posicionX, double posicionY, int tipoNebulosa) {
+        Nebulosa nebulosa = this.controlNebulosa.CrearNebulosa(nombre, enemigo, posicionX, posicionY, tipoNebulosa);
         this.universo.getListaNebulosas().add(nebulosa);
         return nebulosa;
 

@@ -8,6 +8,7 @@ package Controladores;
 import Modelo.*;
 import Modelo.Nodo;
 import java.util.LinkedList;
+import java.util.List;
 
 import javafx.scene.Parent;
 
@@ -19,17 +20,23 @@ public class ControlNebulosa {
     
     private Nebulosa nebulosa;
     private int codigoNebulosa;
+    private int codigoImagen;
+    private List<String> imagenes;
     private final ControlSistemaPlanetario controlSistemaPlanetario;
     
     public ControlNebulosa() {
         this.codigoNebulosa = 0;
         this.controlSistemaPlanetario = new ControlSistemaPlanetario();
+        this.imagenes = new LinkedList<>();
+        this.imagenes.add("Imagenes/nebulosa11.png");
+        this.imagenes.add("Imagenes/nebulosa11.png");
+        this.imagenes.add("Imagenes/nebulosa11.png");
     }
     
-    public Nebulosa CrearNebulosa(String nombre, Boolean enemigo, double posicionX, double posicionY) {
+    public Nebulosa CrearNebulosa(String nombre, Boolean enemigo, double posicionX, double posicionY, int tipoNebulosa) {
         this.codigoNebulosa++;
-        this.setNebulosa(new Nebulosa(this.codigoNebulosa, nombre, enemigo, posicionX, posicionY));
-        return this.getNebulosa();
+        Nebulosa nebulosa = (new Nebulosa(this.codigoNebulosa, nombre, enemigo, posicionX, posicionY, this.imagenes.get(tipoNebulosa)));
+        return nebulosa;
     }
     
     public SistemaPlanetario AgregarSistemaPlanetario(String nombre, Boolean enemigo, double posicionX, double posicionY) {
