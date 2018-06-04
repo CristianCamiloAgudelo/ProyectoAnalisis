@@ -39,8 +39,7 @@ public class ControlUniverso {
         return nebulosa;
     }
 
-    private Nebulosa BuscarNebulosa(String nombreNebulosa) {
-
+    public Nebulosa BuscarNebulosa(String nombreNebulosa) {
         for (Nebulosa nebulosa : this.universo.getListaNebulosas()) {
             if (nebulosa.getNombre().equals(nombreNebulosa)) {
                 return nebulosa;

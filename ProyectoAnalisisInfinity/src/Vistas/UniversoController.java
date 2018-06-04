@@ -23,7 +23,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.CheckBox;
-import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
@@ -56,7 +55,6 @@ public class UniversoController implements Initializable {
     private boolean bandera = false;
     private String rutaImagen = "";
     private ControlUniverso controlUniverso;
-
     private List<Nebulosa> nebulosas;
     private boolean banderaEnemigo = false;
     private double posicionX;
@@ -66,6 +64,8 @@ public class UniversoController implements Initializable {
     private int tipoNebulosa;
     @FXML
     private Button botonConexion;
+    private String nombreNebulosaInicial;
+    private String nombreNebulosaFinal;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -75,6 +75,8 @@ public class UniversoController implements Initializable {
     public void setData(AnchorPane marco, List<Nebulosa> nebulosas) {
         this.marco = marco;
         this.nebulosas = nebulosas;
+        this.nombreNebulosaInicial = "";
+        this.nombreNebulosaFinal = "";
         if (!this.nebulosas.isEmpty()) {
             PintarNebulosa(this.nebulosas);
         }
@@ -195,7 +197,7 @@ public class UniversoController implements Initializable {
 
             imagenNebulosa.setOnMouseClicked(e -> {
                 if (e.isPopupTrigger()) {
-                    Conexion(e);
+                    Conexion(label.getText());
                 } else {
                     EntrarNebulosa(label.getText());
                 }
@@ -262,22 +264,28 @@ public class UniversoController implements Initializable {
     }
 
     @FXML
-    private void Conexion(MouseEvent event) {
-        double xInicial = event.getX();
-        double yInicial = event.getY();
-        
-        
-        
-        
+    private void Conexion(String nombreNebulosa) {
+        if (this.nombreNebulosaInicial.equals("")) {
+            this.nombreNebulosaInicial = nombreNebulosa;
+        } else {
+            this.nombreNebulosaFinal = nombreNebulosa;
+            Nebulosa nebulosaInicial = this.controlUniverso.BuscarNebulosa(this.nombreNebulosaInicial);
+            Nebulosa nebulosaFinal = this.controlUniverso.BuscarNebulosa(this.nombreNebulosaFinal);
+            PintarLinea(nebulosaInicial, nebulosaFinal);
+            this.nombreNebulosaInicial = "";
+            this.nombreNebulosaFinal = "";
+
+        }
+
     }
 
-    public Line crearLinea(double XInicial, double YInicial, double XFinal, double YFinal) {
-        Line linea = new Line(XInicial, YInicial, XFinal, YFinal);
+    public void PintarLinea(Nebulosa nebulosaInicial, Nebulosa nebulosaFinal) {
+        Line linea = new Line(nebulosaInicial.getPosicionX() + 10, nebulosaInicial.getPosicionY() + 10, nebulosaFinal.getPosicionX() + 10, nebulosaFinal.getPosicionY() + 10);
         linea.setStroke(Color.DODGERBLUE);
         linea.setStrokeWidth(3);
         linea.setStrokeDashOffset(5); //separacion
         linea.getStrokeDashArray().addAll(15d);
-        return linea;
+        this.VistaUniverso.getChildren().add(linea);
     }
 
 }
