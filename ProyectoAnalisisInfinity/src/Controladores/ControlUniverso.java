@@ -6,6 +6,7 @@
 package Controladores;
 
 import Modelo.*;
+import java.util.List;
 
 /**
  *
@@ -52,14 +53,34 @@ public class ControlUniverso {
         this.controlNebulosa.setNebulosa(nebulosa);
     }
 
-    public SistemaPlanetario AgregarSistemaPlanetario(String nombre, Boolean enemigo, double posicionX, double posicionY) {
-        SistemaPlanetario sistemaPlanetario = this.controlNebulosa.AgregarSistemaPlanetario(nombre, enemigo, posicionX, posicionY);
+    public List<Nebulosa> ListaNebulosas() {
+        List<Nebulosa> nebulosas = this.universo.getListaNebulosas();
+        return nebulosas;
+    }
+
+    public SistemaPlanetario AgregarSistemaPlanetario(String nombreSistemaPlanetario, Boolean enemigo, double posicionX, double posicionY, int tipoSistemaPlanetario) {
+        SistemaPlanetario sistemaPlanetario = this.controlNebulosa.AgregarSistemaPlanetario(nombreSistemaPlanetario, enemigo, posicionX, posicionY, tipoSistemaPlanetario);
         return sistemaPlanetario;
     }
 
     public SistemaPlanetario EntrarSistemaPlanetario(String nombreSistemaPlanetario) {
         SistemaPlanetario sistemaPlanetario = this.controlNebulosa.EntrarSistemaPlanetario(nombreSistemaPlanetario);
         return sistemaPlanetario;
+    }
+
+    public List<SistemaPlanetario> ListaSistemasPlanetarios() {
+        List<SistemaPlanetario> sistemasPlanetarios = this.controlNebulosa.ListaSistemasPlanetarios();
+        return sistemasPlanetarios;
+    }
+
+    public Planeta AgregarPlaneta(String nombrePlaneta, Boolean enemigo, double posicionX, double posicionY, int tipoPlaneta, int zero, int iridio, int paladio, int platino) {
+        Planeta planeta = this.controlNebulosa.AgregarPlaneta(nombrePlaneta, enemigo, posicionX, posicionY, tipoPlaneta, zero, iridio, platino, paladio);
+        return planeta;
+    }
+
+    public Planeta EntrarPlaneta(String nombrePlaneta) {
+        Planeta planeta = this.controlNebulosa.EntrarPlaneta(nombrePlaneta);
+        return planeta;
     }
 
     /**

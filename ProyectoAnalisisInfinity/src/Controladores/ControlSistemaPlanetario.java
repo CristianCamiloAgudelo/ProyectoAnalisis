@@ -7,6 +7,7 @@ package Controladores;
 
 import Modelo.*;
 import java.util.LinkedList;
+import java.util.List;
 import javafx.scene.Parent;
 
 /**
@@ -16,32 +17,32 @@ import javafx.scene.Parent;
 public class ControlSistemaPlanetario {
 
     private int codigoSistemaPlanetario;
-    private ControlPlaneta controlPlaneta;
+    private final ControlPlaneta controlPlaneta;
     private SistemaPlanetario sistemaPlanetario;
+    private final List<String> imagenesSistemasPlanetarios;
 
     public ControlSistemaPlanetario() {
         this.codigoSistemaPlanetario = 0;
         this.controlPlaneta = new ControlPlaneta();
+        this.imagenesSistemasPlanetarios = new LinkedList<>();
+        this.imagenesSistemasPlanetarios.add("Imagenes/SistemaPlanetarioTipo1.png");
+        this.imagenesSistemasPlanetarios.add("Imagenes/SistemaPlanetarioTipo2.png");
+        this.imagenesSistemasPlanetarios.add("Imagenes/SistemaPlanetarioTipo3.png");
     }
 
-    public SistemaPlanetario CrearSistamPlanetario(String nombre, Boolean enemigo, double posicionX, double posicionY) {
+    public SistemaPlanetario CrearSistamPlanetario(String nombre, Boolean enemigo, double posicionX, double posicionY, int tipoSistemaPlanetario) {
         this.codigoSistemaPlanetario++;
-        SistemaPlanetario sistemaPlanetario = new SistemaPlanetario(this.codigoSistemaPlanetario, nombre, enemigo, posicionX, posicionY);
+        SistemaPlanetario sistemaPlanetario = new SistemaPlanetario(this.codigoSistemaPlanetario, nombre, enemigo, posicionX, posicionY, this.imagenesSistemasPlanetarios.get(tipoSistemaPlanetario));
         return sistemaPlanetario;
     }
 
-    private Parent EntrarPlaneta(int codigoPlaneta) {
-        return null;
+    Planeta AgregarPlaneta(String nombrePlaneta, Boolean enemigo, double posicionX, double posicionY, int tipoPlaneta, int zero, int iridio, int paladio, int platino) {
+        Planeta planeta = this.controlPlaneta.CrearPlaneta(nombrePlaneta, enemigo, posicionX, posicionY, tipoPlaneta, zero, iridio, paladio, platino);
+        this.sistemaPlanetario.getListaPlanetas().add(planeta);
+        return planeta;
     }
 
-    private LinkedList CrearConexion(int codigo, Nodo nodo) {
-        return null;
-    }
-
-    private Parent Volver() {
-        return null;// volver a vista nebulosa
-    }
-
+   
     /**
      * @return the sistemaPlanetario
      */
@@ -55,4 +56,5 @@ public class ControlSistemaPlanetario {
     public void setSistemaPlanetario(SistemaPlanetario sistemaPlanetario) {
         this.sistemaPlanetario = sistemaPlanetario;
     }
+
 }

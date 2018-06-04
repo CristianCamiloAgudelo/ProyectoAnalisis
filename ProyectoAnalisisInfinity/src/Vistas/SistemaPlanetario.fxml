@@ -13,7 +13,7 @@
    <children>
       <SplitPane dividerPositions="0.1510015408320493" prefHeight="591.0" prefWidth="752.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane fx:id="scroll" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane fx:id="scroll" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: white;">
                <children>
                   <GridPane alignment="TOP_CENTER" layoutX="25.0" layoutY="14.0" prefHeight="97.0" prefWidth="142.0">
                      <columnConstraints>
@@ -27,7 +27,7 @@
                         <Label prefHeight="23.0" prefWidth="140.0" text="NebulosaTipo1" />
                         <ImageView fx:id="tipo1" fitHeight="31.0" fitWidth="135.0" onMouseClicked="#crearTipo1" pickOnBounds="true" GridPane.rowIndex="1">
                            <image>
-                              <Image url="@../Imagenes/nebulosa11.png" />
+                              <Image url="@../Imagenes/PlanetaTipo1.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -42,16 +42,23 @@
                      </rowConstraints>
                      <children>
                         <Label prefHeight="23.0" prefWidth="140.0" text="NebulosaTipo1" />
-                        <ImageView fx:id="tipo2" fitHeight="31.0" fitWidth="135.0" onMouseClicked="#crearTipo2" pickOnBounds="true" GridPane.rowIndex="1">
+                        <ImageView fx:id="tipo2" fitHeight="47.0" fitWidth="135.0" onMouseClicked="#crearTipo2" pickOnBounds="true" GridPane.rowIndex="1">
                            <image>
-                              <Image url="@../Imagenes/nebulosa11.png" />
+                              <Image url="@../Imagenes/PlanetaTipo2.png" />
                            </image>
                         </ImageView>
                      </children>
                   </GridPane>
                </children>
             </AnchorPane>
-          <AnchorPane fx:id="VistaSistemaPlanetario" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+          <AnchorPane fx:id="VistaSistemaPlanetario" minHeight="0.0" minWidth="0.0" onMouseClicked="#Agregar" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: white;">
+               <children>
+                  <ImageView fx:id="atrasNebulosa" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#AtrasSistemaPlanetario" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/atras.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
         </items>
       </SplitPane>
    </children>

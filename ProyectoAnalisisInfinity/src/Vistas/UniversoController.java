@@ -81,7 +81,7 @@ public class UniversoController implements Initializable {
         this.fileLoader = new FileLoader("src/Vistas/Nebulosa.fxml");
         VistaGenerica vistaNebulosa = fileLoader.open("nebulosa");
         NebulosaController nebulosaController = (NebulosaController) vistaNebulosa.getController();
-        nebulosaController.setData(nebulosa, this.marco, this.VistaUniverso);
+        nebulosaController.setData(this.marco, nebulosa.getListaSistemasPlanetarios());
         nebulosaController.setControlUniverso(this.controlUniverso);
         this.marco.getChildren().clear();
         this.marco.getChildren().add(vistaNebulosa.getParent());

@@ -16,38 +16,32 @@ public class SistemaPlanetario
     private Boolean enemigos;
     private List<Nodo> adyacencias;
     private List<Planeta> listaPlanetas;
-    private List<String> imagenes;
+    private String imagen;
     private double posicionX;
     private double posicionY;
 
-    public SistemaPlanetario(int codigo, String nombre, Boolean enemigo, double posicionX, double posicionY) {
+    public SistemaPlanetario(int codigo, String nombre, Boolean enemigo, double posicionX, double posicionY, String imagen) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.visitado = false;
         this.enemigos = enemigo;
         this.adyacencias = new LinkedList<>();
         this.listaPlanetas = new LinkedList<>();
-        this.imagenes = new LinkedList<>();
-        this.imagenes.add("src/Vistas/Sistema1");
-        this.imagenes.add("src/Vistas/Sistema2");
-        this.imagenes.add("src/Vistas/Sistema3");
+        this.imagen = imagen;
         this.posicionX = posicionX;
         this.posicionY = posicionY;
     }
     
     
 
-    public SistemaPlanetario(int codigo, String nombre, boolean visitado, Boolean enemigo, List<Nodo> adyacencias, List<Planeta> listaPlanetas, double posicionX, double posicionY) {
+    public SistemaPlanetario(int codigo, String nombre, boolean visitado, Boolean enemigo, List<Nodo> adyacencias, List<Planeta> listaPlanetas, double posicionX, double posicionY, String imagen) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.visitado = visitado;
         this.enemigos = enemigo;
         this.adyacencias = adyacencias;
         this.listaPlanetas = listaPlanetas;
-        this.imagenes = new LinkedList<>();
-        this.imagenes.add("src/Vistas/Sistema1");
-        this.imagenes.add("src/Vistas/Sistema2");
-        this.imagenes.add("src/Vistas/Sistema3");
+        this.imagen = imagen;
         this.posicionX = posicionX;
         this.posicionY = posicionY;
     }
@@ -123,10 +117,10 @@ public class SistemaPlanetario
     }
 
     /**
-     * @return the imagenes
+     * @return the imagen
      */
-    public List<String> getImagenes() {
-        return imagenes;
+    public String getImagen() {
+        return imagen;
     }
 
     /**

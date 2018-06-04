@@ -15,32 +15,32 @@ public class Planeta {
     private Elementos elementos;
     private boolean estacionCombustible;
     private List<Nodo> adyacencias;
-    private List<String> imagenes;
+    private String imagen;
+    private double posicionX;
+    private double posicionY;
 
-    public Planeta(int codigo, String nombre, Elementos elementos, boolean estacionCombustible, List<Nodo> adyacencias) {
+    public Planeta(int codigo, String nombre, Elementos elementos, boolean estacionCombustible, double posicionX, double posicionY, String imagen) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.visitado = false;
         this.elementos = elementos;
         this.estacionCombustible = estacionCombustible;
-        this.adyacencias = adyacencias;
-        this.imagenes = new LinkedList<>();
-        this.imagenes.add("src/Vistas/Planeta1");
-        this.imagenes.add("src/Vistas/Planeta2");
-        this.imagenes.add("src/Vistas/Planeta3");
+        this.posicionX = posicionX;
+        this.posicionY = posicionY;
+        this.adyacencias = new LinkedList<>();
+        this.imagen = imagen;
     }
 
-    public Planeta(int codigo, String nombre, Elementos elementos, boolean estacionCombustible) {
+    public Planeta(int codigo, String nombre, Elementos elementos, boolean estacionCombustible, List<Nodo> adyacencias, double posicionX, double posicionY, String imagen) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.visitado = false;
         this.elementos = elementos;
+        this.posicionX = posicionX;
+        this.posicionY = posicionY;
         this.estacionCombustible = estacionCombustible;
-        this.adyacencias = new LinkedList<>();
-        this.imagenes = new LinkedList<>();
-        this.imagenes.add("src/Vistas/Nebulosa1");
-        this.imagenes.add("src/Vistas/Nebulosa2");
-        this.imagenes.add("src/Vistas/Nebulosa3");
+        this.adyacencias = adyacencias;
+        this.imagen = imagen;
     }
 
     /**
@@ -107,10 +107,38 @@ public class Planeta {
     }
 
     /**
-     * @return the imagenes
+     * @return the imagen
      */
-    public List<String> getImagenes() {
-        return imagenes;
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @return the posicionX
+     */
+    public double getPosicionX() {
+        return posicionX;
+    }
+
+    /**
+     * @param posicionX the posicionX to set
+     */
+    public void setPosicionX(double posicionX) {
+        this.posicionX = posicionX;
+    }
+
+    /**
+     * @return the posicionY
+     */
+    public double getPosicionY() {
+        return posicionY;
+    }
+
+    /**
+     * @param posicionY the posicionY to set
+     */
+    public void setPosicionY(double posicionY) {
+        this.posicionY = posicionY;
     }
 
 }
