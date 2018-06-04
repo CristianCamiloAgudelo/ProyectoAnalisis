@@ -23,11 +23,14 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.CheckBox;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.Priority;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 
 /**
  * FXML Controller class
@@ -61,6 +64,8 @@ public class UniversoController implements Initializable {
     @FXML
     private AnchorPane VistaUniverso;
     private int tipoNebulosa;
+    @FXML
+    private Button botonConexion;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -189,7 +194,11 @@ public class UniversoController implements Initializable {
             ImageView imagenNebulosa = new ImageView(nebulosa.getImagen());
 
             imagenNebulosa.setOnMouseClicked(e -> {
-                EntrarNebulosa(label.getText());
+                if (e.isPopupTrigger()) {
+                    Conexion(e);
+                } else {
+                    EntrarNebulosa(label.getText());
+                }
             });
             grid.addRow(1, imagenNebulosa);
             grid.addRow(0, label);
@@ -252,5 +261,23 @@ public class UniversoController implements Initializable {
         this.controlUniverso = controlUniverso;
     }
 
+    @FXML
+    private void Conexion(MouseEvent event) {
+        double xInicial = event.getX();
+        double yInicial = event.getY();
+        
+        
+        
+        
+    }
+
+    public Line crearLinea(double XInicial, double YInicial, double XFinal, double YFinal) {
+        Line linea = new Line(XInicial, YInicial, XFinal, YFinal);
+        linea.setStroke(Color.DODGERBLUE);
+        linea.setStrokeWidth(3);
+        linea.setStrokeDashOffset(5); //separacion
+        linea.getStrokeDashArray().addAll(15d);
+        return linea;
+    }
 
 }
