@@ -62,10 +62,10 @@ public class UniversoController implements Initializable {
     @FXML
     private AnchorPane VistaUniverso;
     private int tipoNebulosa;
-    @FXML
-    private Button botonConexion;
     private String nombreNebulosaInicial;
     private String nombreNebulosaFinal;
+    @FXML
+    private ImageView tipo3;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -237,14 +237,15 @@ public class UniversoController implements Initializable {
     @FXML
     private void crearTipo2(MouseEvent event) {
         this.bandera = true;
-        this.rutaImagen = "Imagenes/nebulosa11.png";
+        this.rutaImagen = "Imagenes/NebulosaTipo3.png";
         this.tipoNebulosa = 1;
         System.out.println("tipo2");
     }
 
+    @FXML
     private void crearTipo3(MouseEvent event) {
         this.bandera = true;
-        this.rutaImagen = "Imagenes/nebulosa11.png";
+        this.rutaImagen = "Imagenes/NebulosaTipo4.png";
         this.tipoNebulosa = 2;
         System.out.println("tipo3");
     }
@@ -263,7 +264,6 @@ public class UniversoController implements Initializable {
         this.controlUniverso = controlUniverso;
     }
 
-    @FXML
     private void Conexion(String nombreNebulosa) {
         if (this.nombreNebulosaInicial.equals("")) {
             this.nombreNebulosaInicial = nombreNebulosa;

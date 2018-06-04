@@ -35,3 +35,13 @@ and open the template in the editor.
     -fx-background-image: url("../Imagenes/PlanetaFondo5.jpg");
     -fx-background-size: cover;
 }
+
+#btn{
+    -fx-padding: 10px;
+    -fx-background-color: #1883ba;
+    -fx-border-radius: 6px;
+    -fx-border-color: #0016b0;
+
+    
+    
+}

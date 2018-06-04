@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -27,8 +28,9 @@ public class ProyectoAnalisisInfinity extends Application {
         stage.setWidth(1300);
         stage.setHeight(700);
         stage.setScene(scene);
-     
-        stage.getIcons().add(new javafx.scene.image.Image("Imagenes/IconoEstrella.png"));
+        
+        stage.getIcons().add(new javafx.scene.image.Image("Imagenes/IconoCohete.png"));
+        stage.initStyle(StageStyle.DECORATED);
         stage.show();
     }
 

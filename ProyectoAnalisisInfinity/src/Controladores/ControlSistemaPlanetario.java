@@ -36,13 +36,17 @@ public class ControlSistemaPlanetario {
         return sistemaPlanetario;
     }
 
-    Planeta AgregarPlaneta(String nombrePlaneta, Boolean enemigo, double posicionX, double posicionY, int tipoPlaneta, int zero, int iridio, int paladio, int platino) {
+    public Planeta AgregarPlaneta(String nombrePlaneta, Boolean enemigo, double posicionX, double posicionY, int tipoPlaneta, int zero, int iridio, int paladio, int platino) {
         Planeta planeta = this.controlPlaneta.CrearPlaneta(nombrePlaneta, enemigo, posicionX, posicionY, tipoPlaneta, zero, iridio, paladio, platino);
         this.sistemaPlanetario.getListaPlanetas().add(planeta);
         return planeta;
     }
 
-   
+    public List<Planeta> ListaPlanetas() {
+        List<Planeta> planetas = this.sistemaPlanetario.getListaPlanetas();
+        return planetas;
+    }
+
     /**
      * @return the sistemaPlanetario
      */

@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane id="VistaPlaneta" fx:id="VistaPlaneta" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="874.0" prefWidth="1300.0" stylesheets="@Estilos.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vistas.PlanetaController" />
+<AnchorPane id="VistaPlaneta" fx:id="VistaPlaneta" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="874.0" prefWidth="1300.0" stylesheets="@Estilos.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vistas.PlanetaController">
+   <children>
+      <ImageView fx:id="atrasPlaneta" fitHeight="50.0" fitWidth="50.0" layoutX="24.0" layoutY="24.0" onMouseClicked="#AtrasPlaneta" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <image>
+            <Image url="@../Imagenes/atras.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -82,6 +82,11 @@ public class ControlUniverso {
         return planeta;
     }
 
+    public List<Planeta> ListaPlanetas() {
+        List<Planeta> planetas = this.controlNebulosa.ListaPlanetas();
+        return planetas;
+    }
+
     /**
      * @return the universo
      */

@@ -29,8 +29,9 @@ public class ControlNebulosa {
         this.controlSistemaPlanetario = new ControlSistemaPlanetario();
         this.imagenes = new LinkedList<>();
         this.imagenes.add("Imagenes/nebulosa11.png");
-        this.imagenes.add("Imagenes/nebulosa11.png");
-        this.imagenes.add("Imagenes/nebulosa11.png");
+        this.imagenes.add("Imagenes/NebulosaTipo3.png");
+        this.imagenes.add("Imagenes/NebulosaTipo4.png");
+        
     }
 
     public Nebulosa CrearNebulosa(String nombre, Boolean enemigo, double posicionX, double posicionY, int tipoNebulosa) {
@@ -65,7 +66,7 @@ public class ControlNebulosa {
         this.controlSistemaPlanetario.setSistemaPlanetario(sistemaPlanetario);
     }
 
-    List<SistemaPlanetario> ListaSistemasPlanetarios() {
+    public List<SistemaPlanetario> ListaSistemasPlanetarios() {
         List<SistemaPlanetario> sistemasPlanetarios = this.nebulosa.getListaSistemasPlanetarios();
         return sistemasPlanetarios;
     }
@@ -77,6 +78,11 @@ public class ControlNebulosa {
 
     public Planeta EntrarPlaneta(String nombrePlaneta) {
         return null;
+    }
+
+    public List<Planeta> ListaPlanetas() {
+        List<Planeta> planetas = this.controlSistemaPlanetario.ListaPlanetas();
+        return planetas;
     }
 
     public LinkedList CrearConexion(int codigo, Nodo nodo) {
