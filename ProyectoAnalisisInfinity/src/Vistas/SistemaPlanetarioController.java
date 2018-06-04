@@ -88,8 +88,16 @@ public class SistemaPlanetarioController implements Initializable {
         this.marco.getChildren().add(vistaNebulosa.getParent());
     }
 
-    private void EntrarPlaneta(String text) {
+    private void EntrarPlaneta(String nombrePlaneta) {
+        Planeta planeta = this.controlUniverso.EntrarPlaneta(nombrePlaneta);
+        this.fileLoader = new FileLoader("src/Vistas/Planeta.fxml");
+        VistaGenerica vistaPlaneta = fileLoader.open("planeta");
 
+        PlanetaController PlanetaController = (PlanetaController) vistaPlaneta.getController();
+        PlanetaController.setData(this.marco);
+        PlanetaController.setControlUniverso(this.controlUniverso);
+        this.marco.getChildren().clear();
+        this.marco.getChildren().add(vistaPlaneta.getParent());
     }
 
     private void CrearPlaneta(String nombrePlaneta, Boolean enemigo, double PosicionX, double posicionY, int tipoPlaneta, int zero, int iridio, int paladio, int platino) {

@@ -111,51 +111,40 @@ public class NebulosaController implements Initializable {
 
         if (this.bandera) {
             this.bandera = false;
-
             final GridPane grid = new GridPane();
             grid.setLayoutX(event.getX());
             grid.setLayoutY(event.getY());
             grid.setPadding(new Insets(10));
             grid.setVgap(10);
             grid.setHgap(10);
-
             ColumnConstraints leftCol = new ColumnConstraints();
             leftCol.setHalignment(HPos.CENTER);
             leftCol.setHgrow(Priority.ALWAYS);
-
             ColumnConstraints rightCol = new ColumnConstraints();
             rightCol.setHalignment(HPos.CENTER);
             rightCol.setHgrow(Priority.ALWAYS);
-
             grid.getColumnConstraints().addAll(leftCol, rightCol);
-
             //input
             TextField input = new TextField("");
             input.setPromptText("Nombre Nebulosa");
             grid.addRow(0, input);
-
             //imagen
             ImageView imagen = new ImageView(this.rutaImagen);
             grid.addRow(2, imagen);
-
             //checkbox
             Label checkboxLabel = new Label("¿Enemigos? ");
             checkboxLabel.setTextFill(javafx.scene.paint.Paint.valueOf("#ffffff"));
             CheckBox checkBox = new CheckBox("enemigos");
-
             checkboxLabel.setLabelFor(checkBox);
             grid.addRow(1, checkboxLabel, checkBox);
-
             // boton
             Button boton = new Button("Aceptar");
             EventHandler<ActionEvent> evento = new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
                     Label label = new Label();
-
                     label.setTextFill(javafx.scene.paint.Paint.valueOf("#ffffff"));
                     label.setText(input.getText());
-
                     grid.add(label, 0, 1);
 
                     //enemigos activos
@@ -166,7 +155,6 @@ public class NebulosaController implements Initializable {
                     }
                     grid.setVisible(false);
                     crearSistemaPlanetario(label.getText(), banderaEnemigo, grid.getLayoutX(), grid.getLayoutY(), tipoSistemaPlanetario);
-
                 }
             };
             boton.setOnAction(evento);

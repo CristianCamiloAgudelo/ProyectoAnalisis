@@ -29,3 +29,9 @@ and open the template in the editor.
     -fx-background-image: url("../Imagenes/SistemaPlanetarioFondo.jpg");
     -fx-background-size: cover;
 }
+
+#VistaPlaneta{
+    
+    -fx-background-image: url("../Imagenes/PlanetaFondo5.jpg");
+    -fx-background-size: cover;
+}
