@@ -14,7 +14,15 @@ import java.util.List;
  */
 public class ControlUniverso {
 
+    /**
+     * @return the nave
+     */
+    public Nave getNave() {
+        return nave;
+    }
+
     private Universo universo;
+    private Nave nave;
     private final ControlNebulosa controlNebulosa;
 
     public ControlUniverso() {
@@ -24,6 +32,9 @@ public class ControlUniverso {
     public void CrearUniverso(String nombre) {
         this.setUniverso(new Universo(nombre));
 
+    }
+     public void CrearNave(String nombreNave) {
+        this.nave = new Nave(nombreNave, this.universo.getListaNebulosas().get(0).getPosicionX(),this.universo.getListaNebulosas().get(0).getPosicionY());
     }
 
     public void AgregarNebulosa(String nombre, Boolean enemigo, double posicionX, double posicionY, int tipoNebulosa) {
@@ -120,5 +131,7 @@ public class ControlUniverso {
     public void setUniverso(Universo universo) {
         this.universo = universo;
     }
+
+   
 
 }

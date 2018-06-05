@@ -64,6 +64,8 @@ public class UniversoController implements Initializable {
     private int tipoNebulosa;
     private String nombreNebulosaInicial;
     private String nombreNebulosaFinal;
+    private ImageView nave;
+    private Boolean simulacion;
     @FXML
     private ImageView tipo3;
 
@@ -76,10 +78,12 @@ public class UniversoController implements Initializable {
         this.nebulosas = nebulosas;
         this.nombreNebulosaInicial = "";
         this.nombreNebulosaFinal = "";
+        this.setSimulacion((Boolean) false);
         if (!this.nebulosas.isEmpty()) {
             PintarNebulosa(this.nebulosas);
         }
         this.tipoNebulosa = 0;
+
     }
 
     private void EntrarNebulosa(String nombreNebulosa) {
@@ -99,7 +103,23 @@ public class UniversoController implements Initializable {
     }
 
     @FXML
-    private void Agregar(MouseEvent event) {
+    private void Agregar(MouseEvent event) throws InterruptedException{
+        if (getSimulacion()) {
+            double destinoNaveX = event.getX();
+            double destinoNaveY = event.getY();
+            while (this.controlUniverso.getNave().getPosicionX() != destinoNaveX && this.controlUniverso.getNave().getPosicionY() != destinoNaveY) {
+                if (this.controlUniverso.getNave().getPosicionX() < destinoNaveX) {
+                    this.controlUniverso.getNave().setPosicionX(this.controlUniverso.getNave().getPosicionX() + 1);
+                }
+                if (this.controlUniverso.getNave().getPosicionY() < destinoNaveY) {
+                    this.controlUniverso.getNave().setPosicionY(this.controlUniverso.getNave().getPosicionY() + 1);
+                }
+                
+                this.VistaUniverso.getChildren().remove(this.VistaUniverso.getChildren().size()-1);
+                PintarNave();
+                Thread.sleep(100);
+            }
+        }
         if (this.bandera) {
             this.bandera = false;
             final GridPane grid = new GridPane();
@@ -212,6 +232,13 @@ public class UniversoController implements Initializable {
 
     }
 
+    public void PintarNave() {
+        this.nave = new ImageView(this.controlUniverso.getNave().getImagen());
+        this.nave.setLayoutX(this.controlUniverso.getNave().getPosicionX());
+        this.nave.setLayoutY(this.controlUniverso.getNave().getPosicionY());
+        this.VistaUniverso.getChildren().add(nave);
+    }
+
     private void Conexion(String nombreNebulosa) {
         if (this.nombreNebulosaInicial.equals("")) {
             this.nombreNebulosaInicial = nombreNebulosa;
@@ -285,5 +312,19 @@ public class UniversoController implements Initializable {
      */
     public void setControlUniverso(ControlUniverso controlUniverso) {
         this.controlUniverso = controlUniverso;
+    }
+
+    /**
+     * @return the simulacion
+     */
+    public Boolean getSimulacion() {
+        return simulacion;
+    }
+
+    /**
+     * @param simulacion the simulacion to set
+     */
+    public void setSimulacion(Boolean simulacion) {
+        this.simulacion = simulacion;
     }
 }

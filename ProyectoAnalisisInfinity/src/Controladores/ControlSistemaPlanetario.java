@@ -46,6 +46,12 @@ public class ControlSistemaPlanetario {
         planetaInicial.getAdyacencias().add(new Nodo(planetaFinal.getNombre(), 0));
     }
 
+    public Planeta EntrarPlaneta(String nombrePlaneta) {
+        Planeta planeta = BuscarPlaneta(nombrePlaneta);
+        this.ActualizarPlaneta(planeta);
+        return planeta;
+    }
+
     public Planeta BuscarPlaneta(String nombrePlaneta) {
         for (Planeta planeta : this.sistemaPlanetario.getListaPlanetas()) {
             if (planeta.getNombre().equals(nombrePlaneta)) {
@@ -53,6 +59,10 @@ public class ControlSistemaPlanetario {
             }
         }
         return null;
+    }
+
+    private void ActualizarPlaneta(Planeta planeta) {
+        this.controlPlaneta.setPlaneta(planeta);
     }
 
     public List<Planeta> ListaPlanetas() {

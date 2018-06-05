@@ -89,7 +89,7 @@ public class ControlNebulosa {
     }
 
     public Planeta EntrarPlaneta(String nombrePlaneta) {
-        return null;
+        return this.controlSistemaPlanetario.EntrarPlaneta(nombrePlaneta);
     }
 
     public List<Planeta> ListaPlanetas() {

@@ -6,6 +6,7 @@ package Modelo;
  */
 import Controladores.ControlSistemaNavegacion;
 import java.awt.Image;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Nave {
@@ -21,32 +22,32 @@ public class Nave {
     private int vida;
     private int daño;
     private int velocidad;
-    private int posicionX;
-    private int posicionY;
+    private double posicionX;
+    private double posicionY;
     private String imagen;
     private int experiencia;
     private int nivel;
 
-    public Nave(String nombre, int cantidadSonda, int cantidadCombustible, List<Arma> armas, List<Escudo> escudos, List<Propulsor> propulsores) {
+    public Nave(String nombre, double posicionX, double posicionY) {
         this.nombre = nombre;
-        this.cantidadSonda = cantidadSonda;
-        this.cantidadCombustible = cantidadCombustible;
-        this.armas = armas;
-        this.escudos = escudos;
-        this.propulsores = propulsores;
+        this.cantidadSonda = 10;
+        this.cantidadCombustible = 100;
+        this.armas = new LinkedList<>();
+        this.escudos =  new LinkedList<>();
+        this.propulsores =  new LinkedList<>();
         this.elementos = new Elementos(0, 0, 0, 0);
         this.radar = new ControlSistemaNavegacion();
         this.vida = 100;
         this.daño = 10;
         this.velocidad = 10;
-        this.posicionX = 0;
-        this.posicionY = 0;
-        this.imagen = "src/Imagenes/Nave.gif";
+        this.posicionX = posicionX;
+        this.posicionY = posicionY;
+        this.imagen = "Imagenes/Nave1.png";
         this.experiencia = 10;
         this.nivel = 1;
     }
 
-    public Nave(String nombre, int cantidadSonda, int cantidadCombustible, List<Arma> armas, List<Escudo> escudos, List<Propulsor> propulsores, Elementos elementos, ControlSistemaNavegacion radar, int vida, int daño, int velocidad, int posicionX, int posicionY, int experiencia, int nivel) {
+    public Nave(String nombre, int cantidadSonda, int cantidadCombustible, List<Arma> armas, List<Escudo> escudos, List<Propulsor> propulsores, Elementos elementos, ControlSistemaNavegacion radar, int vida, int daño, int velocidad, double posicionX, double posicionY, int experiencia, int nivel) {
         this.nombre = nombre;
         this.cantidadSonda = cantidadSonda;
         this.cantidadCombustible = cantidadCombustible;
@@ -208,28 +209,28 @@ public class Nave {
     /**
      * @return the posicionX
      */
-    public int getPosicionX() {
+    public double getPosicionX() {
         return posicionX;
     }
 
     /**
      * @param posicionX the posicionX to set
      */
-    public void setPosicionX(int posicionX) {
+    public void setPosicionX(double posicionX) {
         this.posicionX = posicionX;
     }
 
     /**
      * @return the posicionY
      */
-    public int getPosicionY() {
+    public double getPosicionY() {
         return posicionY;
     }
 
     /**
      * @param posicionY the posicionY to set
      */
-    public void setPosicionY(int posicionY) {
+    public void setPosicionY(double posicionY) {
         this.posicionY = posicionY;
     }
 

@@ -20,6 +20,7 @@ public class ControlPlaneta {
 
     private int codigoPlaneta;
     private List<String> imagenPlanetas;
+    private Planeta planeta;
 
     public ControlPlaneta() {
         this.codigoPlaneta = 0;
@@ -44,6 +45,20 @@ public class ControlPlaneta {
 
     private void EntrarEstacionCombustible() {
 
+    }
+
+    /**
+     * @return the planeta
+     */
+    public Planeta getPlaneta() {
+        return planeta;
+    }
+
+    /**
+     * @param planeta the planeta to set
+     */
+    public void setPlaneta(Planeta planeta) {
+        this.planeta = planeta;
     }
 
 }
