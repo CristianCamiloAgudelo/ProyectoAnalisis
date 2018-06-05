@@ -42,6 +42,19 @@ public class ControlSistemaPlanetario {
         return planeta;
     }
 
+    void AgregarAdyasenciaPlaneta(Planeta planetaInicial, Planeta planetaFinal) {
+        planetaInicial.getAdyacencias().add(new Nodo(planetaFinal.getNombre(), 0));
+    }
+
+    public Planeta BuscarPlaneta(String nombrePlaneta) {
+        for (Planeta planeta : this.sistemaPlanetario.getListaPlanetas()) {
+            if (planeta.getNombre().equals(nombrePlaneta)) {
+                return planeta;
+            }
+        }
+        return null;
+    }
+
     public List<Planeta> ListaPlanetas() {
         List<Planeta> planetas = this.sistemaPlanetario.getListaPlanetas();
         return planetas;

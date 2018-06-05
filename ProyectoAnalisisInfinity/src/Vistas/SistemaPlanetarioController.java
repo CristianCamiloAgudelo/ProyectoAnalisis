@@ -29,6 +29,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 
 /**
  * FXML Controller class
@@ -55,6 +57,8 @@ public class SistemaPlanetarioController implements Initializable {
     private int tipoPlaneta;
     private Boolean banderaEnemigo;
     private FileLoader fileLoader;
+    private String nombrePlanetaInicial;
+    private String nombrePlanetaFinal;
 
     void setData(AnchorPane marco, List<Planeta> planetas) {
         this.marco = marco;
@@ -63,6 +67,8 @@ public class SistemaPlanetarioController implements Initializable {
         this.tipoPlaneta = 0;
         this.banderaEnemigo = false;
         this.planetas = planetas;
+        this.nombrePlanetaFinal = "";
+        this.nombrePlanetaInicial = "";
         if (!this.planetas.isEmpty()) {
             PintarPlanetas(this.planetas);
         }
@@ -82,8 +88,9 @@ public class SistemaPlanetarioController implements Initializable {
         this.fileLoader = new FileLoader("src/Vistas/Nebulosa.fxml");
         VistaGenerica vistaNebulosa = fileLoader.open("nebulosa");
         NebulosaController nebulosaController = (NebulosaController) vistaNebulosa.getController();
-        nebulosaController.setData(this.marco, this.controlUniverso.ListaSistemasPlanetarios());
         nebulosaController.setControlUniverso(this.controlUniverso);
+        nebulosaController.setData(this.marco, this.controlUniverso.ListaSistemasPlanetarios());
+
         this.marco.getChildren().clear();
         this.marco.getChildren().add(vistaNebulosa.getParent());
     }
@@ -92,7 +99,6 @@ public class SistemaPlanetarioController implements Initializable {
         Planeta planeta = this.controlUniverso.EntrarPlaneta(nombrePlaneta);
         this.fileLoader = new FileLoader("src/Vistas/Planeta.fxml");
         VistaGenerica vistaPlaneta = fileLoader.open("planeta");
-
         PlanetaController PlanetaController = (PlanetaController) vistaPlaneta.getController();
         PlanetaController.setData(this.marco);
         PlanetaController.setControlUniverso(this.controlUniverso);
@@ -199,16 +205,54 @@ public class SistemaPlanetarioController implements Initializable {
             grid.getColumnConstraints().addAll(leftCol, rightCol);
             Label label = new Label(planeta.getNombre());
             label.setTextFill(javafx.scene.paint.Paint.valueOf("#ffffff"));
-            ImageView imagenNebulosa = new ImageView(planeta.getImagen());
+            ImageView imagenPlaneta = new ImageView(planeta.getImagen());
 
-            imagenNebulosa.setOnMouseClicked(e -> {
-                EntrarPlaneta(label.getText());
+            imagenPlaneta.setOnMouseClicked(e -> {
+                if (e.isPopupTrigger()) {
+                    Conexion(label.getText());
+                } else {
+                    EntrarPlaneta(label.getText());
+                }
             });
-            grid.addRow(1, imagenNebulosa);
+            if (!planeta.getAdyacencias().isEmpty()) {
+
+                for (Nodo nodoPlaneta : planeta.getAdyacencias()) {
+                    Planeta planetaFinal = this.controlUniverso.BuscarPlaneta(nodoPlaneta.getNombre());
+                    PintarLinea(planeta, planetaFinal);
+
+                }
+
+            }
+            grid.addRow(1, imagenPlaneta);
             grid.addRow(0, label);
             this.VistaSistemaPlanetario.getChildren().add(grid);
         }
 
+    }
+
+    private void Conexion(String nombrePlaneta) {
+        System.out.println("entreee");
+        if (this.nombrePlanetaInicial.equals("")) {
+            this.nombrePlanetaInicial = nombrePlaneta;
+        } else {
+            this.nombrePlanetaFinal = nombrePlaneta;
+            Planeta planetaInicial = this.controlUniverso.BuscarPlaneta(this.nombrePlanetaInicial);
+            Planeta planetaFinal = this.controlUniverso.BuscarPlaneta(this.nombrePlanetaFinal);
+            this.controlUniverso.AgregarAdyasenciaPlaneta(planetaInicial, planetaFinal);
+            PintarLinea(planetaInicial, planetaFinal);
+            this.nombrePlanetaInicial = "";
+            this.nombrePlanetaFinal = "";
+        }
+    }
+
+    public void PintarLinea(Planeta planetaInicial, Planeta planetaFinal) {
+        System.out.println("pinte");
+        Line linea = new Line(planetaInicial.getPosicionX() + 80, planetaInicial.getPosicionY() + 80, planetaFinal.getPosicionX() + 80, planetaFinal.getPosicionY() + 80);
+        linea.setStroke(Color.CORNFLOWERBLUE);
+        linea.setStrokeWidth(3);
+        linea.setStrokeDashOffset(5); //separacion
+        linea.getStrokeDashArray().addAll(5d);
+        this.VistaSistemaPlanetario.getChildren().add(linea);
     }
 
     private void EliminarElementoVista(String tipoElemento) {

@@ -31,7 +31,7 @@ public class ControlNebulosa {
         this.imagenes.add("Imagenes/nebulosa11.png");
         this.imagenes.add("Imagenes/NebulosaTipo3.png");
         this.imagenes.add("Imagenes/NebulosaTipo4.png");
-        
+
     }
 
     public Nebulosa CrearNebulosa(String nombre, Boolean enemigo, double posicionX, double posicionY, int tipoNebulosa) {
@@ -46,13 +46,17 @@ public class ControlNebulosa {
         return sistemaPlanetario;
     }
 
+    void AgregarAdyasenciaSistemaPlanetario(SistemaPlanetario sistemaPlanetarioInicial, SistemaPlanetario sistemaPlanetarioFinal) {
+        sistemaPlanetarioInicial.getAdyacencias().add(new Nodo(sistemaPlanetarioFinal.getNombre(), 0));
+    }
+
     public SistemaPlanetario EntrarSistemaPlanetario(String nombreSistemaPlanetario) {
         SistemaPlanetario sistemaPlanetario = BuscarSistemaPlanetario(nombreSistemaPlanetario);
         this.ActualizarSistemaPlanetario(sistemaPlanetario);
         return sistemaPlanetario;
     }
 
-    private SistemaPlanetario BuscarSistemaPlanetario(String nombreSistemaPlanetario) {
+    public SistemaPlanetario BuscarSistemaPlanetario(String nombreSistemaPlanetario) {
         for (SistemaPlanetario sistemasPlanetario : this.nebulosa.getListaSistemasPlanetarios()) {
             if (sistemasPlanetario.getNombre().equals(nombreSistemaPlanetario)) {
                 return sistemasPlanetario;
@@ -76,6 +80,14 @@ public class ControlNebulosa {
         return planeta;
     }
 
+    public Planeta BuscarPlaneta(String nombrePlaneta) {
+        return this.controlSistemaPlanetario.BuscarPlaneta(nombrePlaneta);
+    }
+
+    void AgregarAdyasenciaPlaneta(Planeta planetaInicial, Planeta planetaFinal) {
+       this.controlSistemaPlanetario.AgregarAdyasenciaPlaneta(planetaInicial,planetaFinal);
+    }
+
     public Planeta EntrarPlaneta(String nombrePlaneta) {
         return null;
     }
@@ -83,14 +95,6 @@ public class ControlNebulosa {
     public List<Planeta> ListaPlanetas() {
         List<Planeta> planetas = this.controlSistemaPlanetario.ListaPlanetas();
         return planetas;
-    }
-
-    public LinkedList CrearConexion(int codigo, Nodo nodo) {
-        return null;
-    }
-
-    private Parent Volver() {
-        return null;// volver a vista universo
     }
 
     /**

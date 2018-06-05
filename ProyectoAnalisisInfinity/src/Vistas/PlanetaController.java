@@ -51,8 +51,9 @@ public class PlanetaController implements Initializable {
         VistaGenerica vistaSistemaPlanetario = fileLoader.open("sistemaplanetario");
 
         SistemaPlanetarioController sistemaPlanetarioController = (SistemaPlanetarioController) vistaSistemaPlanetario.getController();
-        sistemaPlanetarioController.setData(marco, this.controlUniverso.ListaPlanetas());
         sistemaPlanetarioController.setControlUniverso(this.controlUniverso);
+        sistemaPlanetarioController.setData(marco, this.controlUniverso.ListaPlanetas());
+
         this.marco.getChildren().clear();
         this.marco.getChildren().add(vistaSistemaPlanetario.getParent());
     }

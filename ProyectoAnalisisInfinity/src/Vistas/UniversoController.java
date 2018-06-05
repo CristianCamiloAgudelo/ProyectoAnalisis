@@ -69,7 +69,6 @@ public class UniversoController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
     }
 
     public void setData(AnchorPane marco, List<Nebulosa> nebulosas) {
@@ -88,23 +87,19 @@ public class UniversoController implements Initializable {
         this.fileLoader = new FileLoader("src/Vistas/Nebulosa.fxml");
         VistaGenerica vistaNebulosa = fileLoader.open("nebulosa");
         NebulosaController nebulosaController = (NebulosaController) vistaNebulosa.getController();
-        nebulosaController.setData(this.marco, nebulosa.getListaSistemasPlanetarios());
         nebulosaController.setControlUniverso(this.controlUniverso);
+        nebulosaController.setData(this.marco, nebulosa.getListaSistemasPlanetarios());
         this.marco.getChildren().clear();
         this.marco.getChildren().add(vistaNebulosa.getParent());
     }
 
     private void crearNebulosa(String nombre, boolean enemigo, double posicionX, double posicionY, int tipoNebulosa) {
-
-        Nebulosa nebulosa = this.controlUniverso.AgregarNebulosa(nombre, enemigo, posicionX, posicionY, tipoNebulosa);
-        this.nebulosas.add(nebulosa);
+        this.controlUniverso.AgregarNebulosa(nombre, enemigo, posicionX, posicionY, tipoNebulosa);
         PintarNebulosa(this.nebulosas);
-
     }
 
     @FXML
     private void Agregar(MouseEvent event) {
-        System.out.println("entreee");
         if (this.bandera) {
             this.bandera = false;
             final GridPane grid = new GridPane();
@@ -166,13 +161,11 @@ public class UniversoController implements Initializable {
             boton.setOnAction(evento);
             grid.addRow(3, boton);
             VistaUniverso.getChildren().add(grid);
-            System.out.println("sali");
 
         }
     }
 
     private void PintarNebulosa(List<Nebulosa> nebulosas) {
-
         EliminarElementoVista("GridPane");
         for (Nebulosa nebulosa : nebulosas) {
             GridPane grid = new GridPane();
@@ -202,11 +195,44 @@ public class UniversoController implements Initializable {
                     EntrarNebulosa(label.getText());
                 }
             });
+            if (!nebulosa.getAdyacencias().isEmpty()) {
+
+                for (Nodo nodoNebulosa : nebulosa.getAdyacencias()) {
+                    Nebulosa nebulosaFinal = this.controlUniverso.BuscarNebulosa(nodoNebulosa.getNombre());
+                    PintarLinea(nebulosa, nebulosaFinal);
+
+                }
+
+            }
+
             grid.addRow(1, imagenNebulosa);
             grid.addRow(0, label);
             this.VistaUniverso.getChildren().add(grid);
         }
 
+    }
+
+    private void Conexion(String nombreNebulosa) {
+        if (this.nombreNebulosaInicial.equals("")) {
+            this.nombreNebulosaInicial = nombreNebulosa;
+        } else {
+            this.nombreNebulosaFinal = nombreNebulosa;
+            Nebulosa nebulosaInicial = this.controlUniverso.BuscarNebulosa(this.nombreNebulosaInicial);
+            Nebulosa nebulosaFinal = this.controlUniverso.BuscarNebulosa(this.nombreNebulosaFinal);
+            this.controlUniverso.AgregarAdyasenciaNebulosa(nebulosaInicial, nebulosaFinal);
+            PintarLinea(nebulosaInicial, nebulosaFinal);
+            this.nombreNebulosaInicial = "";
+            this.nombreNebulosaFinal = "";
+        }
+    }
+
+    public void PintarLinea(Nebulosa nebulosaInicial, Nebulosa nebulosaFinal) {
+        Line linea = new Line(nebulosaInicial.getPosicionX() + 80, nebulosaInicial.getPosicionY() + 80, nebulosaFinal.getPosicionX() + 80, nebulosaFinal.getPosicionY() + 80);
+        linea.setStroke(Color.CORNFLOWERBLUE);
+        linea.setStrokeWidth(3);
+        linea.setStrokeDashOffset(5); //separacion
+        linea.getStrokeDashArray().addAll(5d);
+        this.VistaUniverso.getChildren().add(linea);
     }
 
     private void EliminarElementoVista(String tipoElemento) {
@@ -231,7 +257,6 @@ public class UniversoController implements Initializable {
         this.bandera = true;
         this.rutaImagen = "Imagenes/nebulosa11.png";
         this.tipoNebulosa = 0;
-        System.out.println("tipo1");
     }
 
     @FXML
@@ -239,7 +264,6 @@ public class UniversoController implements Initializable {
         this.bandera = true;
         this.rutaImagen = "Imagenes/NebulosaTipo3.png";
         this.tipoNebulosa = 1;
-        System.out.println("tipo2");
     }
 
     @FXML
@@ -247,7 +271,6 @@ public class UniversoController implements Initializable {
         this.bandera = true;
         this.rutaImagen = "Imagenes/NebulosaTipo4.png";
         this.tipoNebulosa = 2;
-        System.out.println("tipo3");
     }
 
     /**
@@ -263,29 +286,4 @@ public class UniversoController implements Initializable {
     public void setControlUniverso(ControlUniverso controlUniverso) {
         this.controlUniverso = controlUniverso;
     }
-
-    private void Conexion(String nombreNebulosa) {
-        if (this.nombreNebulosaInicial.equals("")) {
-            this.nombreNebulosaInicial = nombreNebulosa;
-        } else {
-            this.nombreNebulosaFinal = nombreNebulosa;
-            Nebulosa nebulosaInicial = this.controlUniverso.BuscarNebulosa(this.nombreNebulosaInicial);
-            Nebulosa nebulosaFinal = this.controlUniverso.BuscarNebulosa(this.nombreNebulosaFinal);
-            PintarLinea(nebulosaInicial, nebulosaFinal);
-            this.nombreNebulosaInicial = "";
-            this.nombreNebulosaFinal = "";
-
-        }
-
-    }
-
-    public void PintarLinea(Nebulosa nebulosaInicial, Nebulosa nebulosaFinal) {
-        Line linea = new Line(nebulosaInicial.getPosicionX() + 10, nebulosaInicial.getPosicionY() + 10, nebulosaFinal.getPosicionX() + 10, nebulosaFinal.getPosicionY() + 10);
-        linea.setStroke(Color.DODGERBLUE);
-        linea.setStrokeWidth(3);
-        linea.setStrokeDashOffset(5); //separacion
-        linea.getStrokeDashArray().addAll(15d);
-        this.VistaUniverso.getChildren().add(linea);
-    }
-
 }
