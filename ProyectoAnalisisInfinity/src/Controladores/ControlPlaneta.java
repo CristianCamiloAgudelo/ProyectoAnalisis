@@ -39,8 +39,8 @@ public class ControlPlaneta {
     public Planeta CrearPlaneta(String nombrePlaneta, Boolean enemigo, double posicionX, double posicionY, int tipoPlaneta, int zero, int iridio, int paladio, int platino) {
         Elementos elementos = crearElementos(zero, iridio, paladio, platino);
         this.codigoPlaneta++;
-        Planeta planeta = new Planeta(this.codigoPlaneta, nombrePlaneta, elementos, false, posicionX, posicionY, this.imagenPlanetas.get(tipoPlaneta));
-        return planeta;
+        Planeta planetaA = new Planeta(this.codigoPlaneta, nombrePlaneta, elementos, false, posicionX, posicionY, this.imagenPlanetas.get(tipoPlaneta));
+        return planetaA;
     }
 
     private void EntrarEstacionCombustible() {

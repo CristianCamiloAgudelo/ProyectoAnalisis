@@ -58,14 +58,13 @@ public class SistemaPlanetarioController implements Initializable {
     private Boolean banderaEstacionCombustible;
     private FileLoader fileLoader;
 
-    private int intZero=0;
-    private int intIridio=0;
-    private int intPlatino=0;
-    private int intPaladio=0;
+    private int intZero = 0;
+    private int intIridio = 0;
+    private int intPlatino = 0;
+    private int intPaladio = 0;
 
     private String nombrePlanetaInicial;
     private String nombrePlanetaFinal;
-
 
     void setData(AnchorPane marco, List<Planeta> planetas) {
         this.marco = marco;
@@ -107,8 +106,9 @@ public class SistemaPlanetarioController implements Initializable {
         this.fileLoader = new FileLoader("src/Vistas/Planeta.fxml");
         VistaGenerica vistaPlaneta = fileLoader.open("planeta");
         PlanetaController PlanetaController = (PlanetaController) vistaPlaneta.getController();
-        PlanetaController.setData(this.marco);
         PlanetaController.setControlUniverso(this.controlUniverso);
+        PlanetaController.setData(this.marco);
+
         this.marco.getChildren().clear();
         this.marco.getChildren().add(vistaPlaneta.getParent());
     }
@@ -153,75 +153,68 @@ public class SistemaPlanetarioController implements Initializable {
             grid.addRow(2, imagen);
 
             //checkboxestacion sercivicio
-            
-            Label checkboxLabel = new Label("");            
+            Label checkboxLabel = new Label("");
             CheckBox checkBox = new CheckBox("¡Estacion de Servicio?");
             checkBox.setTextFill(javafx.scene.paint.Paint.valueOf("#ffffff"));
             checkboxLabel.setLabelFor(checkBox);
             grid.add(checkBox, 0, 1);
-           
-            
-           
+
             // elemento ZERO
-            
             TextField zero = new TextField("");
             //zero.setPromptText("Ingrese Cantidad Recurso");
             CheckBox checkZero = new CheckBox("ZERO");
             checkZero.setTextFill(javafx.scene.paint.Paint.valueOf("#ffffff"));
-            grid.add(checkZero, 1, 3);            
-            checkZero.setOnMouseClicked(e->{
+            grid.add(checkZero, 1, 3);
+            checkZero.setOnMouseClicked(e -> {
                 if (checkZero.isSelected()) {
                     grid.add(zero, 0, 3);
-                    
+
                 }
-                               
+
             }
             );
-            
-            
+
             //elemnto IRIDIO
             TextField iridio = new TextField("");
             CheckBox checkIridio = new CheckBox("IRIDIO");
             iridio.setPromptText("Ingrese Cantidad Recurso");
             checkIridio.setTextFill(javafx.scene.paint.Paint.valueOf("#ffffff"));
             grid.add(checkIridio, 1, 4);
-            checkIridio.setOnMouseClicked(e->{
+            checkIridio.setOnMouseClicked(e -> {
                 if (checkIridio.isSelected()) {
-                    grid.add(iridio, 0, 4);                  
+                    grid.add(iridio, 0, 4);
                 }
-                
+
             }
             );
-            
+
             //elemnto PLATINO
             TextField platino = new TextField("");
             CheckBox checkPlatino = new CheckBox("PLATINO");
             platino.setPromptText("Ingrese Cantidad Recurso");
             checkPlatino.setTextFill(javafx.scene.paint.Paint.valueOf("#ffffff"));
             grid.add(checkPlatino, 1, 5);
-            checkPlatino.setOnMouseClicked(e->{
+            checkPlatino.setOnMouseClicked(e -> {
                 if (checkPlatino.isSelected()) {
-                    grid.add(platino, 0, 5);                  
+                    grid.add(platino, 0, 5);
                 }
-                
+
             }
             );
-            
+
             //elemnto paladio
             TextField paladio = new TextField("");
             CheckBox checkPaladio = new CheckBox("PALADIO");
             paladio.setPromptText("Ingrese Cantidad Recurso");
             checkPaladio.setTextFill(javafx.scene.paint.Paint.valueOf("#ffffff"));
             grid.add(checkPaladio, 1, 6);
-            checkPaladio.setOnMouseClicked(e->{
+            checkPaladio.setOnMouseClicked(e -> {
                 if (checkPaladio.isSelected()) {
-                    grid.add(paladio, 0, 6);                
+                    grid.add(paladio, 0, 6);
                 }
-                
+
             }
             );
-            
-            
 
             // boton
             Button boton = new Button("Aceptar");
@@ -242,40 +235,32 @@ public class SistemaPlanetarioController implements Initializable {
                         banderaEstacionCombustible = false;
                     }
                     //zero
-                    if (zero.getText().equals(""))
-                    {
+                    if (zero.getText().equals("")) {
                         zero.setText("0");
-                        
-                    }
-                    else {
-                          intZero=Integer.parseInt(zero.getText());
+
+                    } else {
+                        intZero = Integer.parseInt(zero.getText());
                     }
                     //iridio
-                    if (iridio.getText().equals(""))
-                    {
+                    if (iridio.getText().equals("")) {
                         iridio.setText("0");
+                    } else {
+                        intIridio = Integer.parseInt(zero.getText());
                     }
-                    else {
-                          intIridio=Integer.parseInt(zero.getText());
-                    }
-                    if (paladio.getText().equals(""))
-                    {
+                    if (paladio.getText().equals("")) {
                         paladio.setText("0");
+                    } else {
+                        intPaladio = Integer.parseInt(zero.getText());
                     }
-                    else {
-                          intPaladio=Integer.parseInt(zero.getText());
-                    }
-                    if (platino.getText().equals(""))
-                    {
+                    if (platino.getText().equals("")) {
                         platino.setText("0");
-                    }
-                    else {
-                          intPlatino=Integer.parseInt(zero.getText());
+                    } else {
+                        intPlatino = Integer.parseInt(zero.getText());
                     }
                     grid.setVisible(false);
                     CrearPlaneta(label.getText(), banderaEstacionCombustible, grid.getLayoutX(), grid.getLayoutY(), tipoPlaneta,
-                                intZero,intIridio,intPaladio,intPlatino);
-                                                                                                            
+                            intZero, intIridio, intPaladio, intPlatino);
+
                 }
             };
             boton.setOnAction(evento);

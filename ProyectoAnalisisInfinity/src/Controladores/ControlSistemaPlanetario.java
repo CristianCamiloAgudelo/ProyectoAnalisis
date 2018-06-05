@@ -48,6 +48,7 @@ public class ControlSistemaPlanetario {
 
     public Planeta EntrarPlaneta(String nombrePlaneta) {
         Planeta planeta = BuscarPlaneta(nombrePlaneta);
+        System.out.println("planeta:    " + planeta.getNombre() + planeta.getElementos().getZero());
         this.ActualizarPlaneta(planeta);
         return planeta;
     }
@@ -82,6 +83,10 @@ public class ControlSistemaPlanetario {
      */
     public void setSistemaPlanetario(SistemaPlanetario sistemaPlanetario) {
         this.sistemaPlanetario = sistemaPlanetario;
+    }
+
+    public Planeta getPlaneta() {
+        return this.controlPlaneta.getPlaneta();
     }
 
 }

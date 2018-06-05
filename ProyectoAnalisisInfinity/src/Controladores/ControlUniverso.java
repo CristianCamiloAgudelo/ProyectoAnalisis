@@ -118,6 +118,10 @@ public class ControlUniverso {
         return planetas;
     }
 
+    public Planeta getPlaneta(){
+   return  this.controlNebulosa.getPlaneta();
+    }
+    
     /**
      * @return the universo
      */

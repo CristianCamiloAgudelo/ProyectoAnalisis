@@ -89,14 +89,17 @@ public class ControlNebulosa {
     }
 
     public Planeta EntrarPlaneta(String nombrePlaneta) {
-        return this.controlSistemaPlanetario.EntrarPlaneta(nombrePlaneta);
+        Planeta planeta = this.controlSistemaPlanetario.EntrarPlaneta(nombrePlaneta);
+        return planeta;
     }
 
     public List<Planeta> ListaPlanetas() {
         List<Planeta> planetas = this.controlSistemaPlanetario.ListaPlanetas();
         return planetas;
     }
-
+public Planeta getPlaneta() {
+       return  this.controlSistemaPlanetario.getPlaneta();
+    }
     /**
      * @return the nebulosa
      */
@@ -110,5 +113,7 @@ public class ControlNebulosa {
     public void setNebulosa(Nebulosa nebulosa) {
         this.nebulosa = nebulosa;
     }
+
+    
 
 }
