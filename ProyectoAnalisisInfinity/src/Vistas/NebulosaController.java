@@ -77,15 +77,12 @@ public class NebulosaController implements Initializable {
     }
 
     private void EntrarSistemaPlanetario(String nombreSistemaPlanetario) {
-
         SistemaPlanetario sistemaPlanetario = this.controlUniverso.EntrarSistemaPlanetario(nombreSistemaPlanetario);
         this.fileLoader = new FileLoader("src/Vistas/SistemaPlanetario.fxml");
         VistaGenerica vistaSistemaPlanetario = fileLoader.open("sistemaplanetario");
-
         SistemaPlanetarioController sistemaPlanetarioController = (SistemaPlanetarioController) vistaSistemaPlanetario.getController();
         sistemaPlanetarioController.setControlUniverso(this.controlUniverso);
         sistemaPlanetarioController.setData(this.marco, sistemaPlanetario.getListaPlanetas());
-
         this.marco.getChildren().clear();
         this.marco.getChildren().add(vistaSistemaPlanetario.getParent());
 
@@ -93,16 +90,13 @@ public class NebulosaController implements Initializable {
 
     @FXML
     private void AtrasNebulosa(MouseEvent event) {
-
         this.fileLoader = new FileLoader("src/Vistas/Universo.fxml");
         VistaGenerica vistaUniverso = fileLoader.open("universo");
         UniversoController universoController = (UniversoController) vistaUniverso.getController();
         universoController.setControlUniverso(this.controlUniverso);
         universoController.setData(this.marco, this.controlUniverso.ListaNebulosas());
-
         this.marco.getChildren().clear();
         this.marco.getChildren().add(vistaUniverso.getParent());
-
     }
 
     private void crearSistemaPlanetario(String nombre, Boolean enemigo, double posicionX, double posicionY, int tipoSistemaPlanetario) {
