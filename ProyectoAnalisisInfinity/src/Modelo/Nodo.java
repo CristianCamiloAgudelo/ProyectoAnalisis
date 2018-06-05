@@ -10,23 +10,23 @@ package Modelo;
  * @author usuario
  */
 public class Nodo{
-    private int codigo;
+    private String nombre;
     private int peso;
 
     public Nodo() {
         
     }
 
-    public Nodo(int codigo, int peso) {
-        this.codigo = codigo;
+    public Nodo(String nombre, int peso) {
+        this.nombre = nombre;
         this.peso = peso;
     }
 
     /**
      * @return the codigo
      */
-    public int getCodigo() {
-        return codigo;
+    public String getNombre() {
+        return nombre;
     }
 
     /**

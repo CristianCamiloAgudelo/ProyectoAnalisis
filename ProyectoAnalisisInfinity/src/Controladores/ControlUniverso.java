@@ -21,16 +21,19 @@ public class ControlUniverso {
         this.controlNebulosa = new ControlNebulosa();
     }
 
-    public Universo CrearUniverso(String nombre) {
+    public void CrearUniverso(String nombre) {
         this.setUniverso(new Universo(nombre));
-        return this.getUniverso();
+
     }
 
-    public Nebulosa AgregarNebulosa(String nombre, Boolean enemigo, double posicionX, double posicionY, int tipoNebulosa) {
+    public void AgregarNebulosa(String nombre, Boolean enemigo, double posicionX, double posicionY, int tipoNebulosa) {
         Nebulosa nebulosa = this.controlNebulosa.CrearNebulosa(nombre, enemigo, posicionX, posicionY, tipoNebulosa);
         this.universo.getListaNebulosas().add(nebulosa);
-        return nebulosa;
 
+    }
+
+    public void AgregarAdyasenciaNebulosa(Nebulosa nebulosaInicial, Nebulosa nebulosaFinal) {
+        nebulosaInicial.getAdyacencias().add(new Nodo(nebulosaFinal.getNombre(), 0));
     }
 
     public Nebulosa EntrarNebulosa(String nombreNebulosa) {
@@ -62,9 +65,18 @@ public class ControlUniverso {
         return sistemaPlanetario;
     }
 
+    public void AgregarAdyasenciaSistemaPlanetario(SistemaPlanetario sistemaPlanetarioInicial, SistemaPlanetario sistemaPlanetarioFinal) {
+        this.controlNebulosa.AgregarAdyasenciaSistemaPlanetario(sistemaPlanetarioInicial, sistemaPlanetarioFinal);
+    }
+
     public SistemaPlanetario EntrarSistemaPlanetario(String nombreSistemaPlanetario) {
         SistemaPlanetario sistemaPlanetario = this.controlNebulosa.EntrarSistemaPlanetario(nombreSistemaPlanetario);
         return sistemaPlanetario;
+    }
+
+    public SistemaPlanetario BuscarSistemaPlanetario(String nombreSistemaPlanetario) {
+        return this.controlNebulosa.BuscarSistemaPlanetario(nombreSistemaPlanetario);
+
     }
 
     public List<SistemaPlanetario> ListaSistemasPlanetarios() {
@@ -75,6 +87,14 @@ public class ControlUniverso {
     public Planeta AgregarPlaneta(String nombrePlaneta, Boolean enemigo, double posicionX, double posicionY, int tipoPlaneta, int zero, int iridio, int paladio, int platino) {
         Planeta planeta = this.controlNebulosa.AgregarPlaneta(nombrePlaneta, enemigo, posicionX, posicionY, tipoPlaneta, zero, iridio, platino, paladio);
         return planeta;
+    }
+
+    public Planeta BuscarPlaneta(String nombrePlaneta) {
+        return this.controlNebulosa.BuscarPlaneta(nombrePlaneta);
+    }
+
+    public void AgregarAdyasenciaPlaneta(Planeta planetaInicial, Planeta planetaFinal) {
+        this.controlNebulosa.AgregarAdyasenciaPlaneta(planetaInicial, planetaFinal);
     }
 
     public Planeta EntrarPlaneta(String nombrePlaneta) {

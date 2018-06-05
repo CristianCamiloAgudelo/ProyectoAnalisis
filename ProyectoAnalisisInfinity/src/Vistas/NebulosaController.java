@@ -25,6 +25,8 @@ import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 
 /**
  * FXML Controller class
@@ -49,6 +51,8 @@ public class NebulosaController implements Initializable {
     @FXML
     private ImageView atrasNebulosa;
     private int tipoSistemaPlanetario;
+    private String nombreSistemaInicial;
+    private String nombreSistemaFinal;
 
     /**
      * Initializes the controller class.
@@ -64,10 +68,11 @@ public class NebulosaController implements Initializable {
         this.rutaImagen = "";
         this.sistemasPlanetarios = sistemasPlanetarios;
         this.marco = marco;
+        this.nombreSistemaFinal = "";
+        this.nombreSistemaInicial = "";
         if (!this.sistemasPlanetarios.isEmpty()) {
             PintarSistemaPlanetario(this.sistemasPlanetarios);
         }
-        
         this.tipoSistemaPlanetario = 0;
     }
 
@@ -78,8 +83,9 @@ public class NebulosaController implements Initializable {
         VistaGenerica vistaSistemaPlanetario = fileLoader.open("sistemaplanetario");
 
         SistemaPlanetarioController sistemaPlanetarioController = (SistemaPlanetarioController) vistaSistemaPlanetario.getController();
-        sistemaPlanetarioController.setData(this.marco, sistemaPlanetario.getListaPlanetas());
         sistemaPlanetarioController.setControlUniverso(this.controlUniverso);
+        sistemaPlanetarioController.setData(this.marco, sistemaPlanetario.getListaPlanetas());
+
         this.marco.getChildren().clear();
         this.marco.getChildren().add(vistaSistemaPlanetario.getParent());
 
@@ -90,17 +96,16 @@ public class NebulosaController implements Initializable {
 
         this.fileLoader = new FileLoader("src/Vistas/Universo.fxml");
         VistaGenerica vistaUniverso = fileLoader.open("universo");
-
         UniversoController universoController = (UniversoController) vistaUniverso.getController();
-        universoController.setData(this.marco, this.controlUniverso.ListaNebulosas());
         universoController.setControlUniverso(this.controlUniverso);
+        universoController.setData(this.marco, this.controlUniverso.ListaNebulosas());
+
         this.marco.getChildren().clear();
         this.marco.getChildren().add(vistaUniverso.getParent());
 
     }
 
     private void crearSistemaPlanetario(String nombre, Boolean enemigo, double posicionX, double posicionY, int tipoSistemaPlanetario) {
-
         SistemaPlanetario sistemaPlanetario = this.getControlUniverso().AgregarSistemaPlanetario(nombre, enemigo, posicionX, posicionY, tipoSistemaPlanetario);
         this.sistemasPlanetarios.add(sistemaPlanetario);
         PintarSistemaPlanetario(this.sistemasPlanetarios);
@@ -164,7 +169,6 @@ public class NebulosaController implements Initializable {
             grid.setLayoutY(sistemaPlanetario.getPosicionY());
             grid.setVgap(10);
             grid.setGridLinesVisible(false);
-            System.out.println(sistemaPlanetario.getPosicionX() + " " + sistemaPlanetario.getPosicionY());
             ColumnConstraints leftCol = new ColumnConstraints();
             leftCol.setHalignment(HPos.CENTER);
             leftCol.setHgrow(Priority.ALWAYS);
@@ -177,16 +181,53 @@ public class NebulosaController implements Initializable {
             grid.getColumnConstraints().addAll(leftCol, rightCol);
             Label label = new Label(sistemaPlanetario.getNombre());
             label.setTextFill(javafx.scene.paint.Paint.valueOf("#ffffff"));
-            ImageView imagenNebulosa = new ImageView(sistemaPlanetario.getImagen());
+            ImageView imagenSistemaPlanetario = new ImageView(sistemaPlanetario.getImagen());
 
-            imagenNebulosa.setOnMouseClicked(e -> {
-                EntrarSistemaPlanetario(label.getText());
+            imagenSistemaPlanetario.setOnMouseClicked(e -> {
+                if (e.isPopupTrigger()) {
+                    Conexion(label.getText());
+                } else {
+                    EntrarSistemaPlanetario(label.getText());
+                }
             });
-            grid.addRow(1, imagenNebulosa);
+            if (!sistemaPlanetario.getAdyacencias().isEmpty()) {
+
+                for (Nodo nodoSistemaPlanetario : sistemaPlanetario.getAdyacencias()) {
+                    SistemaPlanetario sistemaPlanetarioFinal = this.controlUniverso.BuscarSistemaPlanetario(nodoSistemaPlanetario.getNombre());
+                    PintarLinea(sistemaPlanetario, sistemaPlanetarioFinal);
+
+                }
+
+            }
+            grid.addRow(1, imagenSistemaPlanetario);
             grid.addRow(0, label);
             this.VistaNebulosa.getChildren().add(grid);
         }
 
+    }
+
+    private void Conexion(String nombreSistemaPlanetario) {
+        System.out.println("entreee");
+        if (this.nombreSistemaInicial.equals("")) {
+            this.nombreSistemaInicial = nombreSistemaPlanetario;
+        } else {
+            this.nombreSistemaFinal = nombreSistemaPlanetario;
+            SistemaPlanetario sistemaPlanetarioInicial = this.controlUniverso.BuscarSistemaPlanetario(this.nombreSistemaInicial);
+            SistemaPlanetario sistemaPlanetarioFinal = this.controlUniverso.BuscarSistemaPlanetario(this.nombreSistemaFinal);
+            this.controlUniverso.AgregarAdyasenciaSistemaPlanetario(sistemaPlanetarioInicial, sistemaPlanetarioFinal);
+            PintarLinea(sistemaPlanetarioInicial, sistemaPlanetarioFinal);
+            this.nombreSistemaInicial = "";
+            this.nombreSistemaFinal = "";
+        }
+    }
+
+    public void PintarLinea(SistemaPlanetario sistemaPlanetarioInicial, SistemaPlanetario sistemaPlanetarioFinal) {
+        Line linea = new Line(sistemaPlanetarioInicial.getPosicionX() + 80, sistemaPlanetarioInicial.getPosicionY() + 80, sistemaPlanetarioFinal.getPosicionX() + 80, sistemaPlanetarioFinal.getPosicionY() + 80);
+        linea.setStroke(Color.CORNFLOWERBLUE);
+        linea.setStrokeWidth(3);
+        linea.setStrokeDashOffset(5); //separacion
+        linea.getStrokeDashArray().addAll(5d);
+        this.VistaNebulosa.getChildren().add(linea);
     }
 
     private void EliminarElementoVista(String tipoElemento) {
@@ -225,7 +266,6 @@ public class NebulosaController implements Initializable {
         this.bandera = true;
         this.rutaImagen = "Imagenes/SistemaPlanetarioTipo1.png";
         this.tipoSistemaPlanetario = 0;
-        System.out.println("tipo1 este");
     }
 
     @FXML
@@ -233,7 +273,6 @@ public class NebulosaController implements Initializable {
         this.bandera = true;
         this.rutaImagen = "Imagenes/SistemaPlanetarioTipo2.png";
         this.tipoSistemaPlanetario = 1;
-        System.out.println("tipo2 este");
     }
 
 }
