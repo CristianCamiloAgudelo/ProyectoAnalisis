@@ -131,7 +131,7 @@ public class UniversoController implements Initializable {
             //checkbox
             Label checkboxLabel = new Label("¿Enemigos? ");
             checkboxLabel.setTextFill(javafx.scene.paint.Paint.valueOf("#ffffff"));
-            CheckBox checkBox = new CheckBox("enemigos");
+            CheckBox checkBox = new CheckBox("");
 
             checkboxLabel.setLabelFor(checkBox);
             grid.addRow(1, checkboxLabel, checkBox);

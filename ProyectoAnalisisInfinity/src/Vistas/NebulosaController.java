@@ -130,12 +130,8 @@ public class NebulosaController implements Initializable {
             //imagen
             ImageView imagen = new ImageView(this.rutaImagen);
             grid.addRow(2, imagen);
-            //checkbox
-            Label checkboxLabel = new Label("¿Enemigos? ");
-            checkboxLabel.setTextFill(javafx.scene.paint.Paint.valueOf("#ffffff"));
-            CheckBox checkBox = new CheckBox("enemigos");
-            checkboxLabel.setLabelFor(checkBox);
-            grid.addRow(1, checkboxLabel, checkBox);
+            
+            
             // boton
             Button boton = new Button("Aceptar");
             EventHandler<ActionEvent> evento = new EventHandler<ActionEvent>() {
@@ -146,12 +142,7 @@ public class NebulosaController implements Initializable {
                     label.setText(input.getText());
                     grid.add(label, 0, 1);
 
-                    //enemigos activos
-                    if (checkBox.isSelected()) {
-                        banderaEnemigo = true;
-                    } else {
-                        banderaEnemigo = false;
-                    }
+                   
                     grid.setVisible(false);
                     crearSistemaPlanetario(label.getText(), banderaEnemigo, grid.getLayoutX(), grid.getLayoutY(), tipoSistemaPlanetario);
                 }
