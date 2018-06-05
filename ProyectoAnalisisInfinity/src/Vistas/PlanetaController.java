@@ -5,16 +5,19 @@
  */
 package Vistas;
 
-import Controladores.ControlUniverso;
-import Modelo.FileLoader;
+import Controladores.*;
+import Modelo.*;
 import Modelo.VistaGenerica;
+import java.awt.Rectangle;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -36,12 +39,30 @@ public class PlanetaController implements Initializable {
     @FXML
     private ImageView atrasPlaneta;
     private FileLoader fileLoader;
+    @FXML
+    private javafx.scene.shape.Rectangle barraZero;
+    @FXML
+    private javafx.scene.shape.Rectangle barraPlatino;
+    @FXML
+    private javafx.scene.shape.Rectangle barraIridio;
+    @FXML
+    private javafx.scene.shape.Rectangle barraPaladio;
+
+    @FXML
+    private Label labelZero;
+    @FXML
+    private Label labelIridio;
+    @FXML
+    private Label labelPaladio;
+    @FXML
+    private Label labelPlatino;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         // TODO
     }
 
@@ -73,10 +94,34 @@ public class PlanetaController implements Initializable {
         rightCol.setHalignment(HPos.CENTER);
         rightCol.setHgrow(Priority.ALWAYS);
         grid.getColumnConstraints().addAll(leftCol, rightCol);
-        Button boton = new Button("Estacion de servicio");
+        Button boton = new Button();
+        ImageView imagenTeletrasportador= new ImageView("Imagenes/teleTrasportador.png");
+        boton.setGraphic(imagenTeletrasportador);
         boton.setId("btn");
-        grid.add(boton, 0, 1);
+        grid.setLayoutX(1100);
+        grid.setLayoutY(400);
+        grid.add(imagenTeletrasportador, 0, 1);
+        crearElementos();
+
         this.VistaPlaneta.getChildren().add(grid);
+    }
+
+    public void crearElementos() {
+        Planeta planeta = this.controlUniverso.getPlaneta();
+
+        try {
+            labelZero.setText("Zero: " + Integer.toString(planeta.getElementos().getZero()));
+            barraZero.setVisible(true);
+            labelPaladio.setText("Paladio: "+ Integer.toString(planeta.getElementos().getPaladio()));
+            barraPaladio.setVisible(true);
+            labelIridio.setText("Iridio: " + Integer.toString(planeta.getElementos().getIridio()));
+            barraIridio.setVisible(true);
+            labelPlatino.setText("Platino: "+ Integer.toString(planeta.getElementos().getPlatino()));
+            barraPlatino.setVisible(true);
+        } catch (Exception e) {
+            System.out.println("error!!!! " + e + e.getMessage());
+        }
+
     }
 
     /**

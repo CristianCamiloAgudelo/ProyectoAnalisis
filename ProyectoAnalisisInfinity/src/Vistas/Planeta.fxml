@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="VistaPlaneta" fx:id="VistaPlaneta" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="874.0" prefWidth="1300.0" stylesheets="@Estilos.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vistas.PlanetaController">
    <children>
@@ -12,5 +16,65 @@
             <Image url="@../Imagenes/atras.png" />
          </image>
       </ImageView>
+      <Rectangle fx:id="barraZero" arcHeight="5.0" arcWidth="5.0" height="23.0" layoutX="42.0" layoutY="437.0" stroke="BLACK" strokeType="INSIDE" width="227.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#201fff" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle fx:id="barraPlatino" arcHeight="5.0" arcWidth="5.0" height="23.0" layoutX="53.0" layoutY="546.0" stroke="BLACK" strokeType="INSIDE" width="227.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#ff2121" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle fx:id="barraIridio" arcHeight="5.0" arcWidth="5.0" height="23.0" layoutX="52.0" layoutY="495.0" stroke="BLACK" strokeType="INSIDE" width="227.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#15f50e" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle fx:id="barraPaladio" arcHeight="5.0" arcWidth="5.0" height="23.0" layoutX="51.0" layoutY="600.0" stroke="BLACK" strokeType="INSIDE" width="227.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#2c2c2c" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label fx:id="labelZero" layoutX="287.0" layoutY="433.0" text="zer" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelIridio" layoutX="289.0" layoutY="491.0" text="ff" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelPaladio" layoutX="286.0" layoutY="542.0" text="ffff" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelPlatino" layoutX="285.0" layoutY="596.0" text="gggg" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
