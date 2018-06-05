@@ -25,8 +25,8 @@ public class ControlPlaneta {
     public ControlPlaneta() {
         this.codigoPlaneta = 0;
         this.imagenPlanetas = new LinkedList<>();
-        this.imagenPlanetas.add("Imagenes/PlanetaTipo1.png");
-        this.imagenPlanetas.add("Imagenes/PlanetaTipo2.png");
+        this.imagenPlanetas.add("Imagenes/PlanetaTipo1Gif.gif");
+        this.imagenPlanetas.add("Imagenes/PlanetaTipo2Gif.gif");
         this.imagenPlanetas.add("Imagenes/PlanetaTipo3.png");
         this.imagenPlanetas.add("Imagenes/PlanetaTipo4.png");
     }

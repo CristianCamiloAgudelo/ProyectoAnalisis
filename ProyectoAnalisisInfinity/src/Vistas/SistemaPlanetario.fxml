@@ -27,7 +27,7 @@
                         <Label prefHeight="23.0" prefWidth="140.0" text="NebulosaTipo1" />
                         <ImageView fx:id="tipo1" fitHeight="31.0" fitWidth="135.0" onMouseClicked="#crearTipo1" pickOnBounds="true" GridPane.rowIndex="1">
                            <image>
-                              <Image url="@../Imagenes/PlanetaTipo1.png" />
+                              <Image url="@../Imagenes/PlanetaTipo4Gif.gif" />
                            </image>
                         </ImageView>
                      </children>
@@ -44,7 +44,7 @@
                         <Label prefHeight="23.0" prefWidth="140.0" text="NebulosaTipo1" />
                         <ImageView fx:id="tipo2" fitHeight="47.0" fitWidth="135.0" onMouseClicked="#crearTipo2" pickOnBounds="true" GridPane.rowIndex="1">
                            <image>
-                              <Image url="@../Imagenes/PlanetaTipo2.png" />
+                              <Image url="@../Imagenes/PlanetaTipo2Gif.gif" />
                            </image>
                         </ImageView>
                      </children>

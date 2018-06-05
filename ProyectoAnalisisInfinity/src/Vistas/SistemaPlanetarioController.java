@@ -362,7 +362,7 @@ public class SistemaPlanetarioController implements Initializable {
     @FXML
     private void crearTipo1(MouseEvent event) {
         this.bandera = true;
-        this.rutaImagen = "Imagenes/PlanetaTipo1.png";
+        this.rutaImagen = "Imagenes/PlanetaTipo1Gif.gif";
         this.tipoPlaneta = 0;
         System.out.println("tipo1 este");
     }
@@ -370,7 +370,7 @@ public class SistemaPlanetarioController implements Initializable {
     @FXML
     private void crearTipo2(MouseEvent event) {
         this.bandera = true;
-        this.rutaImagen = "Imagenes/PlanetaTipo2.png";
+        this.rutaImagen = "Imagenes/PlanetaTipo4Gif.gif";
         this.tipoPlaneta = 1;
         System.out.println("tipo2 este");
     }
