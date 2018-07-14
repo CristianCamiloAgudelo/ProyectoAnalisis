@@ -7,6 +7,13 @@ package Controladores;
 
 import Modelo.*;
 import java.util.List;
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.stage.FileChooser;
 
 /**
  *
@@ -33,8 +40,32 @@ public class ControlUniverso {
         this.setUniverso(new Universo(nombre));
 
     }
-     public void CrearNave(String nombreNave) {
-        this.nave = new Nave(nombreNave, this.universo.getListaNebulosas().get(0).getPosicionX(),this.universo.getListaNebulosas().get(0).getPosicionY());
+
+    public void GuardarUniverso() {
+
+        try {
+            JsonFactory factory = new JsonFactory();
+            
+            ObjectMapper objectMapper = new ObjectMapper(factory);
+            String nombreArchivo = this.universo.getNombre() + ".json";
+            objectMapper.writeValue(new File(nombreArchivo), this.universo);
+        } catch (IOException ex) {
+            System.out.println("error al cargar el archivo: " + ex);
+        }
+    }
+
+    public void CargarUniverso(File archivo) {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            this.universo = new Universo();
+            this.universo = mapper.readValue(archivo, Universo.class);
+        } catch (IOException ex) {
+            System.out.println("error al cargar el archivo: " + ex);
+        }
+    }
+
+    public void CrearNave(String nombreNave) {
+        this.nave = new Nave(nombreNave, this.universo.getListaNebulosas().get(0).getPosicionX(), this.universo.getListaNebulosas().get(0).getPosicionY());
     }
 
     public void AgregarNebulosa(String nombre, Boolean enemigo, double posicionX, double posicionY, int tipoNebulosa) {
@@ -45,6 +76,7 @@ public class ControlUniverso {
 
     public void AgregarAdyasenciaNebulosa(Nebulosa nebulosaInicial, Nebulosa nebulosaFinal) {
         nebulosaInicial.getAdyacencias().add(new Nodo(nebulosaFinal.getNombre(), 0));
+        nebulosaFinal.getAdyacencias().add(new Nodo(nebulosaInicial.getNombre(), 0));
     }
 
     public Nebulosa EntrarNebulosa(String nombreNebulosa) {
@@ -54,6 +86,7 @@ public class ControlUniverso {
     }
 
     public Nebulosa BuscarNebulosa(String nombreNebulosa) {
+
         for (Nebulosa nebulosa : this.universo.getListaNebulosas()) {
             if (nebulosa.getNombre().equals(nombreNebulosa)) {
                 return nebulosa;
@@ -118,10 +151,10 @@ public class ControlUniverso {
         return planetas;
     }
 
-    public Planeta getPlaneta(){
-   return  this.controlNebulosa.getPlaneta();
+    public Planeta getPlaneta() {
+        return this.controlNebulosa.getPlaneta();
     }
-    
+
     /**
      * @return the universo
      */
@@ -135,7 +168,5 @@ public class ControlUniverso {
     public void setUniverso(Universo universo) {
         this.universo = universo;
     }
-
-   
 
 }

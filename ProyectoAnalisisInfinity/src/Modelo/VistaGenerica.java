@@ -5,10 +5,7 @@
  */
 package Modelo;
 
-import Vistas.NebulosaController;
-import Vistas.PlanetaController;
-import Vistas.SistemaPlanetarioController;
-import Vistas.UniversoController;
+import Vistas.*;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 
@@ -37,6 +34,10 @@ public class VistaGenerica {
         this.Controller = Controller;
     }
     public VistaGenerica(Parent parent, PlanetaController Controller) {
+        this.parent = parent;
+        this.Controller = Controller;
+    }
+    public VistaGenerica(Parent parent, MenuController Controller) {
         this.parent = parent;
         this.Controller = Controller;
     }

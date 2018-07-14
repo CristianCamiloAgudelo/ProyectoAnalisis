@@ -17,6 +17,9 @@ public class Propulsor {
     private int duracionPropulsor;
     private boolean activo;
 
+    public Propulsor() {
+    }
+
     public Propulsor(int codigo, String nombre, int velocidad, int duracionPropulsor) {
         this.codigo = codigo;
         this.nombre = nombre;

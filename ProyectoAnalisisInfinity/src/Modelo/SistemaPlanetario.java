@@ -20,6 +20,11 @@ public class SistemaPlanetario
     private double posicionX;
     private double posicionY;
 
+    public SistemaPlanetario() {
+        this.adyacencias = new LinkedList<>();
+        this.listaPlanetas = new LinkedList<>();
+    }
+
     public SistemaPlanetario(int codigo, String nombre, Boolean enemigo, double posicionX, double posicionY, String imagen) {
         this.codigo = codigo;
         this.nombre = nombre;

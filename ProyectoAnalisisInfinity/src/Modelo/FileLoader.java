@@ -59,6 +59,9 @@ public class FileLoader {
                     case "planeta":
                         vistaGenerica = new VistaGenerica(panelEdit, (PlanetaController) loader.getController());
                         break;
+                    case "menu":
+                        vistaGenerica = new VistaGenerica(panelEdit, (MenuController) loader.getController());
+                        break;
                     default:
                         vistaGenerica = new VistaGenerica();
                         break;

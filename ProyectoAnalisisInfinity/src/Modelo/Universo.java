@@ -13,6 +13,10 @@ public class Universo {
     private String Nombre;
     private List<Nebulosa> listaNebulosas;
 
+    public Universo() {
+        this.listaNebulosas = new LinkedList<>();
+    }
+
     public Universo(String Nombre) {
         this.Nombre = Nombre;
         this.listaNebulosas = new LinkedList<>();
@@ -37,6 +41,13 @@ public class Universo {
      */
     public void setListaNebulosas(List<Nebulosa> listaNebulosas) {
         this.listaNebulosas = listaNebulosas;
+    }
+
+    /**
+     * @param Nombre the Nombre to set
+     */
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
 
 }

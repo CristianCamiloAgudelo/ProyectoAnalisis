@@ -11,6 +11,9 @@ public class Elementos {
     private int paladio;
     private int platino;
 
+    public Elementos() {
+    }
+
     public Elementos(int zero, int iridio, int paladio, int platino) {
         this.zero = zero;
         this.iridio = iridio;

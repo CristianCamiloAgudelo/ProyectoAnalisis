@@ -11,6 +11,8 @@ import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.animation.RotateTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -30,6 +32,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -102,24 +105,17 @@ public class UniversoController implements Initializable {
         PintarNebulosa(this.nebulosas);
     }
 
-    @FXML
-    private void Agregar(MouseEvent event) throws InterruptedException{
-        if (getSimulacion()) {
-            double destinoNaveX = event.getX();
-            double destinoNaveY = event.getY();
-            while (this.controlUniverso.getNave().getPosicionX() != destinoNaveX && this.controlUniverso.getNave().getPosicionY() != destinoNaveY) {
-                if (this.controlUniverso.getNave().getPosicionX() < destinoNaveX) {
-                    this.controlUniverso.getNave().setPosicionX(this.controlUniverso.getNave().getPosicionX() + 1);
-                }
-                if (this.controlUniverso.getNave().getPosicionY() < destinoNaveY) {
-                    this.controlUniverso.getNave().setPosicionY(this.controlUniverso.getNave().getPosicionY() + 1);
-                }
-                
-                this.VistaUniverso.getChildren().remove(this.VistaUniverso.getChildren().size()-1);
-                PintarNave();
-                Thread.sleep(100);
-            }
+    public void iniciarSimulacion() {
+        boolean simulacion = true;
+        int i = 0;
+        while (simulacion && i < this.nebulosas.size() - 1) {
+            simulacion = moverNave(this.nebulosas.get(i).getPosicionX(), this.nebulosas.get(i).getPosicionY(), this.nebulosas.get(i + 1).getPosicionX(), this.nebulosas.get(i + 1).getPosicionY());
         }
+
+    }
+
+    @FXML
+    private void Agregar(MouseEvent event) throws InterruptedException {
         if (this.bandera) {
             this.bandera = false;
             final GridPane grid = new GridPane();
@@ -185,6 +181,30 @@ public class UniversoController implements Initializable {
         }
     }
 
+    public boolean moverNave(double Xinicial, double Yinicial, double Xfinal, double Yfinal) {
+        try {
+            TranslateTransition translateTransition = new TranslateTransition();
+            translateTransition.setNode(this.nave);
+            translateTransition.setFromX(Xinicial);
+            translateTransition.setFromX(Yinicial);
+            translateTransition.setToX(Xfinal - 30);
+            translateTransition.setToY(Yfinal - 50);
+            translateTransition.setDuration(Duration.seconds(3));
+            translateTransition.play();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
+
+    public void rotarNave(double angulo) {
+        //TranslateTransition translateTransition = new TranslateTransition();
+        RotateTransition rotateTransition = new RotateTransition(Duration.millis(3000), this.nave);
+        rotateTransition.setToAngle(angulo);
+        rotateTransition.play();
+    }
+
     private void PintarNebulosa(List<Nebulosa> nebulosas) {
         EliminarElementoVista("GridPane");
         for (Nebulosa nebulosa : nebulosas) {
@@ -218,6 +238,7 @@ public class UniversoController implements Initializable {
             if (!nebulosa.getAdyacencias().isEmpty()) {
 
                 for (Nodo nodoNebulosa : nebulosa.getAdyacencias()) {
+
                     Nebulosa nebulosaFinal = this.controlUniverso.BuscarNebulosa(nodoNebulosa.getNombre());
                     PintarLinea(nebulosa, nebulosaFinal);
 
@@ -236,7 +257,9 @@ public class UniversoController implements Initializable {
         this.nave = new ImageView(this.controlUniverso.getNave().getImagen());
         this.nave.setLayoutX(this.controlUniverso.getNave().getPosicionX());
         this.nave.setLayoutY(this.controlUniverso.getNave().getPosicionY());
+        this.nave.setId("infinityShip");
         this.VistaUniverso.getChildren().add(nave);
+
     }
 
     private void Conexion(String nombreNebulosa) {

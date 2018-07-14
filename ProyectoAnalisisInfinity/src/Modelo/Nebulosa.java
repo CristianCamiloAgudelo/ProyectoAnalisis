@@ -10,15 +10,20 @@ import java.util.List;
  */
 public class Nebulosa {
 
-    private final int codigo;
-    private final String nombre;
+    private int codigo;
+    private String nombre;
     private boolean enemigo;
     private boolean visitado;
     private List<Nodo> adyacencias;
     private List<SistemaPlanetario> listaSistemasPlanetarios;
-    private final String imagen;
+    private String imagen;
     private double posicionX;
     private double posicionY;
+
+    public Nebulosa() {
+        this.adyacencias = new LinkedList<>();
+        this.listaSistemasPlanetarios = new LinkedList<>();
+    }
 
     public Nebulosa(int codigo, String nombre, boolean enemigo, double posicionX, double posicionY, String imagen) {
         this.codigo = codigo;

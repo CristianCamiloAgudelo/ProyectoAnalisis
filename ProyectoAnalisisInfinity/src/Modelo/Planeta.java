@@ -19,6 +19,10 @@ public class Planeta {
     private double posicionX;
     private double posicionY;
 
+    public Planeta() {
+    this.adyacencias = new LinkedList<>();
+    }
+
     public Planeta(int codigo, String nombre, Elementos elementos, boolean estacionCombustible, double posicionX, double posicionY, String imagen) {
         this.codigo = codigo;
         this.nombre = nombre;

@@ -48,6 +48,7 @@ public class ControlNebulosa {
 
     void AgregarAdyasenciaSistemaPlanetario(SistemaPlanetario sistemaPlanetarioInicial, SistemaPlanetario sistemaPlanetarioFinal) {
         sistemaPlanetarioInicial.getAdyacencias().add(new Nodo(sistemaPlanetarioFinal.getNombre(), 0));
+        sistemaPlanetarioFinal.getAdyacencias().add(new Nodo(sistemaPlanetarioInicial.getNombre(), 0));
     }
 
     public SistemaPlanetario EntrarSistemaPlanetario(String nombreSistemaPlanetario) {

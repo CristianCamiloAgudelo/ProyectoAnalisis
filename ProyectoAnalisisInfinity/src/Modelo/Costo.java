@@ -11,6 +11,9 @@ public class Costo {
     private int paladio;
     private int platino;
 
+    public Costo() {
+    }
+
     public Costo(int zero, int iridio, int paladio, int platino) {
         this.zero = zero;
         this.iridio = iridio;

@@ -44,6 +44,7 @@ public class ControlSistemaPlanetario {
 
     void AgregarAdyasenciaPlaneta(Planeta planetaInicial, Planeta planetaFinal) {
         planetaInicial.getAdyacencias().add(new Nodo(planetaFinal.getNombre(), 0));
+        planetaFinal.getAdyacencias().add(new Nodo(planetaInicial.getNombre(), 0));
     }
 
     public Planeta EntrarPlaneta(String nombrePlaneta) {

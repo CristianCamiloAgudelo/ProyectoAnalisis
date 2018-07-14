@@ -17,6 +17,9 @@ public class Escudo {
     private int duracionEscudo;
     private boolean activo;
 
+    public Escudo() {
+    }
+
     public Escudo(int codigo, String descripcion, int vida, int duracionEscudo) {
         this.codigo = codigo;
         this.descripcion = descripcion;

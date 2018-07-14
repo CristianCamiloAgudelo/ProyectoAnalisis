@@ -19,6 +19,9 @@ public class Enemigo {
     private List<String> imagenes;
     private String tipoEnemigo;
 
+    public Enemigo() {
+    }
+
     public Enemigo(int codigo, String descripcion, int vida, int daño, String tipoEnemigo) {
         this.codigo = codigo;
         this.descripcion = descripcion;
