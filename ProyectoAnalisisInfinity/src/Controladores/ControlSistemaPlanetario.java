@@ -39,6 +39,7 @@ public class ControlSistemaPlanetario {
     public Planeta AgregarPlaneta(String nombrePlaneta, Boolean enemigo, double posicionX, double posicionY, int tipoPlaneta, int zero, int iridio, int paladio, int platino) {
         Planeta planeta = this.controlPlaneta.CrearPlaneta(nombrePlaneta, enemigo, posicionX, posicionY, tipoPlaneta, zero, iridio, paladio, platino);
         this.sistemaPlanetario.getListaPlanetas().add(planeta);
+        System.out.println("agregue Planeta");
         return planeta;
     }
 
@@ -63,14 +64,17 @@ public class ControlSistemaPlanetario {
         return null;
     }
 
-    private double CalcularBeneficio() {
+    public double CalcularBeneficio(SistemaPlanetario sistemaPlanetario) {
         double beneficio = 0;
-        for (Planeta planeta : this.sistemaPlanetario.getListaPlanetas()) {
+        System.out.println("nombre sistema: "+ sistemaPlanetario.getNombre()+" cantidadPlanetas: "+ sistemaPlanetario.getListaPlanetas().size());
+        for (Planeta planeta : sistemaPlanetario.getListaPlanetas()) {
+            //System.out.println("es explorable: "+ planeta.isExprorable());
             if (planeta.isExprorable()) {
                 beneficio += planeta.getElementos().getZero() * 4;
                 beneficio += planeta.getElementos().getPlatino() * 3;
                 beneficio += planeta.getElementos().getPaladio() * 2;
                 beneficio += planeta.getElementos().getIridio();
+                //System.out.println("nombre planeta: "+ planeta.getNombre()+ "beneficio: "+beneficio);
             }
         }
         return beneficio;
@@ -80,14 +84,14 @@ public class ControlSistemaPlanetario {
      * en esta funcion se adiciona al costo el valor de las sondas * (cantidad
      * de sondas que deba gastarse la nave para recolectar alli) una sonda cubre
      * 2 elementos, por planeta como maximo se usan 2 sondas valor sonda =
-     * zero:150*4 + platino:200*4 + paladio:210*4 + iridio:230*4 = 3160;
+     * zero:20*4 + platino:25*4 + paladio:40*4 + iridio:50*4 = 540;
      *
-     * @return
+     * @return costo
      */
-    private double CalcularCosto() {
+    public double CalcularCosto(SistemaPlanetario sistemaPlanetario) {
         double costo = 0;
         int contador = 0;
-        for (Planeta planeta : this.sistemaPlanetario.getListaPlanetas()) {
+        for (Planeta planeta : sistemaPlanetario.getListaPlanetas()) {
             if (planeta.getElementos().getZero() != 0) {
                 contador++;
             }
@@ -101,9 +105,9 @@ public class ControlSistemaPlanetario {
                 contador++;
             }
             if (contador > 2) {
-                costo += 3160 * 2;
+                costo += 540 * 2;
             } else {
-                costo += 3160 * 1;
+                costo += 540 * 1;
             }
             contador = 0;
 

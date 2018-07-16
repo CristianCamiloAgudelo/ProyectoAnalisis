@@ -13,7 +13,7 @@ public class SistemaPlanetario
     private int codigo;
     private String nombre;
     private boolean visitado;
-    private Boolean enemigos;
+    private boolean enemigos;
     private List<Nodo> adyacencias;
     private List<Planeta> listaPlanetas;
     private String imagen;

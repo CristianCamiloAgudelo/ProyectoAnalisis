@@ -9,6 +9,7 @@ import javafx.geometry.Insets;
 import Modelo.*;
 import java.net.URL;
 import Controladores.ControlUniverso;
+import Controladores.ControlNebulosa;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -55,6 +56,8 @@ public class NebulosaController implements Initializable {
     private int tipoSistemaPlanetario;
     private String nombreSistemaInicial;
     private String nombreSistemaFinal;
+    @FXML
+    private Button calcularRecorrido;
 
     /**
      * Initializes the controller class.
@@ -103,7 +106,6 @@ public class NebulosaController implements Initializable {
 
     private void crearSistemaPlanetario(String nombre, Boolean enemigo, double posicionX, double posicionY, int tipoSistemaPlanetario) {
         SistemaPlanetario sistemaPlanetario = this.getControlUniverso().AgregarSistemaPlanetario(nombre, enemigo, posicionX, posicionY, tipoSistemaPlanetario);
-        this.sistemasPlanetarios.add(sistemaPlanetario);
         PintarSistemaPlanetario(this.sistemasPlanetarios);
     }
 
@@ -232,7 +234,7 @@ public class NebulosaController implements Initializable {
                 public void handle(ActionEvent event) {
                     int peso = Integer.parseInt(input.getText());
                     controlUniverso.AgregarAdyasenciaSistemaPlanetario(sistemaPlanetarioInicial, sistemaPlanetarioFinal, peso);
-                    PintarLinea(sistemaPlanetarioInicial, sistemaPlanetarioFinal,peso);
+                    PintarLinea(sistemaPlanetarioInicial, sistemaPlanetarioFinal, peso);
                     nombreSistemaInicial = "";
                     nombreSistemaFinal = "";
                     grid.setVisible(false);
@@ -245,11 +247,11 @@ public class NebulosaController implements Initializable {
         }
     }
 
-    public void PintarLinea(SistemaPlanetario sistemaPlanetarioInicial, SistemaPlanetario sistemaPlanetarioFinal, int peso) {
-        double posicionPesoX = (sistemaPlanetarioFinal.getPosicionX()+80+ sistemaPlanetarioInicial.getPosicionX()+80)/2;
-        double posicionPesoY = (sistemaPlanetarioFinal.getPosicionY()+80 + sistemaPlanetarioInicial.getPosicionY()+80)/2;
+    public void PintarLinea(SistemaPlanetario sistemaPlanetarioInicial, SistemaPlanetario sistemaPlanetarioFinal, double peso) {
+        double posicionPesoX = (sistemaPlanetarioFinal.getPosicionX() + 80 + sistemaPlanetarioInicial.getPosicionX() + 80) / 2;
+        double posicionPesoY = (sistemaPlanetarioFinal.getPosicionY() + 80 + sistemaPlanetarioInicial.getPosicionY() + 80) / 2;
         Label label = new Label(String.valueOf(peso));
-        label.setFont(Font.font("Rockwell Extra Bold",20));
+        label.setFont(Font.font("Rockwell Extra Bold", 20));
         label.setTextFill(Color.WHITE);
         label.setLayoutX(posicionPesoX);
         label.setLayoutY(posicionPesoY);
@@ -309,4 +311,17 @@ public class NebulosaController implements Initializable {
         this.tipoSistemaPlanetario = 1;
     }
 
+    @FXML
+    private void CalcularRecorrido(ActionEvent event) {
+        
+        List<SistemaPlanetario> recorrido = this.controlUniverso.IniciarRecorrido();
+        mostrarRecorridos(recorrido);
+
+    }
+
+    public void mostrarRecorridos(List<SistemaPlanetario> recorrido) {
+        for (SistemaPlanetario sistemaPlanetario : recorrido) {
+            System.out.println(sistemaPlanetario.getNombre() + " -> ");
+        }
+    }
 }

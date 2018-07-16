@@ -45,7 +45,7 @@ public class ControlUniverso {
 
         try {
             JsonFactory factory = new JsonFactory();
-            
+
             ObjectMapper objectMapper = new ObjectMapper(factory);
             String nombreArchivo = this.universo.getNombre() + ".json";
             objectMapper.writeValue(new File(nombreArchivo), this.universo);
@@ -70,6 +70,7 @@ public class ControlUniverso {
 
     public void AgregarNebulosa(String nombre, Boolean enemigo, double posicionX, double posicionY, int tipoNebulosa) {
         Nebulosa nebulosa = this.controlNebulosa.CrearNebulosa(nombre, enemigo, posicionX, posicionY, tipoNebulosa);
+        System.out.println("agregue nebulosa");
         this.universo.getListaNebulosas().add(nebulosa);
 
     }
@@ -167,6 +168,10 @@ public class ControlUniverso {
      */
     public void setUniverso(Universo universo) {
         this.universo = universo;
+    }
+
+    public List<SistemaPlanetario> IniciarRecorrido() {
+        return this.controlNebulosa.IniciarRecorrido();
     }
 
 }

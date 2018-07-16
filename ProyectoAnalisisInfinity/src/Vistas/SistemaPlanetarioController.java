@@ -115,8 +115,6 @@ public class SistemaPlanetarioController implements Initializable {
 
     private void CrearPlaneta(String nombrePlaneta, Boolean enemigo, double PosicionX, double posicionY, int tipoPlaneta, int zero, int iridio, int paladio, int platino) {
         Planeta planeta = this.controlUniverso.AgregarPlaneta(nombrePlaneta, enemigo, PosicionX, posicionY, tipoPlaneta, zero, iridio, paladio, platino);
-        this.planetas.add(planeta);
-        System.out.println(planeta.getCodigo() + planeta.getNombre());
         PintarPlanetas(this.planetas);
     }
 
@@ -280,7 +278,6 @@ public class SistemaPlanetarioController implements Initializable {
             grid.setLayoutY(planeta.getPosicionY());
             grid.setVgap(10);
             grid.setGridLinesVisible(false);
-            System.out.println(planeta.getPosicionX() + " " + planeta.getPosicionY());
             ColumnConstraints leftCol = new ColumnConstraints();
             leftCol.setHalignment(HPos.CENTER);
             leftCol.setHgrow(Priority.ALWAYS);
@@ -319,7 +316,6 @@ public class SistemaPlanetarioController implements Initializable {
     }
 
     private void Conexion(String nombrePlaneta) {
-        System.out.println("entreee");
         if (this.nombrePlanetaInicial.equals("")) {
             this.nombrePlanetaInicial = nombrePlaneta;
         } else {
@@ -334,7 +330,6 @@ public class SistemaPlanetarioController implements Initializable {
     }
 
     public void PintarLinea(Planeta planetaInicial, Planeta planetaFinal) {
-        System.out.println("pinte");
         Line linea = new Line(planetaInicial.getPosicionX() + 80, planetaInicial.getPosicionY() + 80, planetaFinal.getPosicionX() + 80, planetaFinal.getPosicionY() + 80);
         linea.setStroke(Color.CORNFLOWERBLUE);
         linea.setStrokeWidth(3);
@@ -365,7 +360,6 @@ public class SistemaPlanetarioController implements Initializable {
         this.bandera = true;
         this.rutaImagen = "Imagenes/PlanetaTipo1Gif.gif";
         this.tipoPlaneta = 0;
-        System.out.println("tipo1 este");
     }
 
     @FXML
@@ -373,7 +367,6 @@ public class SistemaPlanetarioController implements Initializable {
         this.bandera = true;
         this.rutaImagen = "Imagenes/PlanetaTipo4Gif.gif";
         this.tipoPlaneta = 1;
-        System.out.println("tipo2 este");
     }
 
     /**

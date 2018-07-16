@@ -96,6 +96,7 @@ public class UniversoController implements Initializable {
         NebulosaController nebulosaController = (NebulosaController) vistaNebulosa.getController();
         nebulosaController.setControlUniverso(this.controlUniverso);
         nebulosaController.setData(this.marco, nebulosa.getListaSistemasPlanetarios());
+        System.out.println();
         this.marco.getChildren().clear();
         this.marco.getChildren().add(vistaNebulosa.getParent());
     }
