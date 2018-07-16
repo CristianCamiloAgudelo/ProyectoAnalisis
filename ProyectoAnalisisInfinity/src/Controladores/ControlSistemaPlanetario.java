@@ -42,7 +42,7 @@ public class ControlSistemaPlanetario {
         return planeta;
     }
 
-    void AgregarAdyasenciaPlaneta(Planeta planetaInicial, Planeta planetaFinal) {
+    public void AgregarAdyasenciaPlaneta(Planeta planetaInicial, Planeta planetaFinal) {
         planetaInicial.getAdyacencias().add(new Nodo(planetaFinal.getNombre(), 0));
         planetaFinal.getAdyacencias().add(new Nodo(planetaInicial.getNombre(), 0));
     }
@@ -61,6 +61,55 @@ public class ControlSistemaPlanetario {
             }
         }
         return null;
+    }
+
+    private double CalcularBeneficio() {
+        double beneficio = 0;
+        for (Planeta planeta : this.sistemaPlanetario.getListaPlanetas()) {
+            if (planeta.isExprorable()) {
+                beneficio += planeta.getElementos().getZero() * 4;
+                beneficio += planeta.getElementos().getPlatino() * 3;
+                beneficio += planeta.getElementos().getPaladio() * 2;
+                beneficio += planeta.getElementos().getIridio();
+            }
+        }
+        return beneficio;
+    }
+
+    /**
+     * en esta funcion se adiciona al costo el valor de las sondas * (cantidad
+     * de sondas que deba gastarse la nave para recolectar alli) una sonda cubre
+     * 2 elementos, por planeta como maximo se usan 2 sondas valor sonda =
+     * zero:150*4 + platino:200*4 + paladio:210*4 + iridio:230*4 = 3160;
+     *
+     * @return
+     */
+    private double CalcularCosto() {
+        double costo = 0;
+        int contador = 0;
+        for (Planeta planeta : this.sistemaPlanetario.getListaPlanetas()) {
+            if (planeta.getElementos().getZero() != 0) {
+                contador++;
+            }
+            if (planeta.getElementos().getPlatino() != 0) {
+                contador++;
+            }
+            if (planeta.getElementos().getPaladio() != 0) {
+                contador++;
+            }
+            if (planeta.getElementos().getIridio() != 0) {
+                contador++;
+            }
+            if (contador > 2) {
+                costo += 3160 * 2;
+            } else {
+                costo += 3160 * 1;
+            }
+            contador = 0;
+
+        }
+
+        return costo;
     }
 
     private void ActualizarPlaneta(Planeta planeta) {

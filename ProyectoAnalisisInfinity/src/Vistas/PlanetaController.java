@@ -18,6 +18,7 @@ import javafx.geometry.Insets;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -39,14 +40,6 @@ public class PlanetaController implements Initializable {
     @FXML
     private ImageView atrasPlaneta;
     private FileLoader fileLoader;
-    @FXML
-    private javafx.scene.shape.Rectangle barraZero;
-    @FXML
-    private javafx.scene.shape.Rectangle barraPlatino;
-    @FXML
-    private javafx.scene.shape.Rectangle barraIridio;
-    @FXML
-    private javafx.scene.shape.Rectangle barraPaladio;
 
     @FXML
     private Label labelZero;
@@ -56,6 +49,14 @@ public class PlanetaController implements Initializable {
     private Label labelPaladio;
     @FXML
     private Label labelPlatino;
+    @FXML
+    private ProgressBar zero;
+    @FXML
+    private ProgressBar paladio;
+    @FXML
+    private ProgressBar iridio;
+    @FXML
+    private ProgressBar platino;
 
     /**
      * Initializes the controller class.
@@ -111,13 +112,13 @@ public class PlanetaController implements Initializable {
 
         try {
             labelZero.setText("Zero: " + Integer.toString(planeta.getElementos().getZero()));
-            barraZero.setVisible(true);
+            zero.setVisible(true);
             labelPaladio.setText("Paladio: "+ Integer.toString(planeta.getElementos().getPaladio()));
-            barraPaladio.setVisible(true);
+            paladio.setVisible(true);
             labelIridio.setText("Iridio: " + Integer.toString(planeta.getElementos().getIridio()));
-            barraIridio.setVisible(true);
+            iridio.setVisible(true);
             labelPlatino.setText("Platino: "+ Integer.toString(planeta.getElementos().getPlatino()));
-            barraPlatino.setVisible(true);
+            platino.setVisible(true);
         } catch (Exception e) {
             System.out.println("error!!!! " + e + e.getMessage());
         }

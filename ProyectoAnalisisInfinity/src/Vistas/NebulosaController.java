@@ -27,6 +27,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 
 /**
  * FXML Controller class
@@ -130,8 +132,7 @@ public class NebulosaController implements Initializable {
             //imagen
             ImageView imagen = new ImageView(this.rutaImagen);
             grid.addRow(2, imagen);
-            
-            
+
             // boton
             Button boton = new Button("Aceptar");
             EventHandler<ActionEvent> evento = new EventHandler<ActionEvent>() {
@@ -142,7 +143,6 @@ public class NebulosaController implements Initializable {
                     label.setText(input.getText());
                     grid.add(label, 0, 1);
 
-                   
                     grid.setVisible(false);
                     crearSistemaPlanetario(label.getText(), banderaEnemigo, grid.getLayoutX(), grid.getLayoutY(), tipoSistemaPlanetario);
                 }
@@ -188,7 +188,7 @@ public class NebulosaController implements Initializable {
 
                 for (Nodo nodoSistemaPlanetario : sistemaPlanetario.getAdyacencias()) {
                     SistemaPlanetario sistemaPlanetarioFinal = this.controlUniverso.BuscarSistemaPlanetario(nodoSistemaPlanetario.getNombre());
-                    PintarLinea(sistemaPlanetario, sistemaPlanetarioFinal);
+                    PintarLinea(sistemaPlanetario, sistemaPlanetarioFinal, nodoSistemaPlanetario.getPeso());
 
                 }
 
@@ -201,21 +201,61 @@ public class NebulosaController implements Initializable {
     }
 
     private void Conexion(String nombreSistemaPlanetario) {
-        System.out.println("entreee");
         if (this.nombreSistemaInicial.equals("")) {
             this.nombreSistemaInicial = nombreSistemaPlanetario;
         } else {
+
             this.nombreSistemaFinal = nombreSistemaPlanetario;
             SistemaPlanetario sistemaPlanetarioInicial = this.controlUniverso.BuscarSistemaPlanetario(this.nombreSistemaInicial);
             SistemaPlanetario sistemaPlanetarioFinal = this.controlUniverso.BuscarSistemaPlanetario(this.nombreSistemaFinal);
-            this.controlUniverso.AgregarAdyasenciaSistemaPlanetario(sistemaPlanetarioInicial, sistemaPlanetarioFinal);
-            PintarLinea(sistemaPlanetarioInicial, sistemaPlanetarioFinal);
-            this.nombreSistemaInicial = "";
-            this.nombreSistemaFinal = "";
+            GridPane grid = new GridPane();
+            grid.setLayoutX(600);
+            grid.setLayoutY(300);
+            grid.setPadding(new Insets(10));
+            grid.setVgap(10);
+            grid.setHgap(10);
+            ColumnConstraints leftCol = new ColumnConstraints();
+            leftCol.setHalignment(HPos.CENTER);
+            leftCol.setHgrow(Priority.ALWAYS);
+            ColumnConstraints rightCol = new ColumnConstraints();
+            rightCol.setHalignment(HPos.CENTER);
+            rightCol.setHgrow(Priority.ALWAYS);
+            grid.getColumnConstraints().addAll(leftCol, rightCol);
+            //input
+            TextField input = new TextField("");
+            input.setPromptText("¿Distancia?");
+            grid.addRow(0, input);
+            // boton
+            Button boton = new Button("Aceptar");
+            EventHandler<ActionEvent> evento = new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    int peso = Integer.parseInt(input.getText());
+                    controlUniverso.AgregarAdyasenciaSistemaPlanetario(sistemaPlanetarioInicial, sistemaPlanetarioFinal, peso);
+                    PintarLinea(sistemaPlanetarioInicial, sistemaPlanetarioFinal,peso);
+                    nombreSistemaInicial = "";
+                    nombreSistemaFinal = "";
+                    grid.setVisible(false);
+                }
+            };
+            boton.setOnAction(evento);
+            grid.addRow(3, boton);
+            this.marco.getChildren().add(grid);
+
         }
     }
 
-    public void PintarLinea(SistemaPlanetario sistemaPlanetarioInicial, SistemaPlanetario sistemaPlanetarioFinal) {
+    public void PintarLinea(SistemaPlanetario sistemaPlanetarioInicial, SistemaPlanetario sistemaPlanetarioFinal, int peso) {
+        double posicionPesoX = (sistemaPlanetarioFinal.getPosicionX()+80+ sistemaPlanetarioInicial.getPosicionX()+80)/2;
+        double posicionPesoY = (sistemaPlanetarioFinal.getPosicionY()+80 + sistemaPlanetarioInicial.getPosicionY()+80)/2;
+        Label label = new Label(String.valueOf(peso));
+        label.setFont(Font.font("Rockwell Extra Bold",20));
+        label.setTextFill(Color.WHITE);
+        label.setLayoutX(posicionPesoX);
+        label.setLayoutY(posicionPesoY);
+        label.setTextAlignment(TextAlignment.CENTER);
+        this.VistaNebulosa.getChildren().add(label);
+        label.setVisible(true);
         Line linea = new Line(sistemaPlanetarioInicial.getPosicionX() + 80, sistemaPlanetarioInicial.getPosicionY() + 80, sistemaPlanetarioFinal.getPosicionX() + 80, sistemaPlanetarioFinal.getPosicionY() + 80);
         linea.setStroke(Color.CORNFLOWERBLUE);
         linea.setStrokeWidth(3);

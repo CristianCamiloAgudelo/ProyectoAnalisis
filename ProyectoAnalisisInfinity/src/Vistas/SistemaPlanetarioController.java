@@ -163,6 +163,7 @@ public class SistemaPlanetarioController implements Initializable {
             TextField zero = new TextField("");
             //zero.setPromptText("Ingrese Cantidad Recurso");
             CheckBox checkZero = new CheckBox("ZERO");
+            zero.setPromptText("Ingrese Cantidad Recurso");
             checkZero.setTextFill(javafx.scene.paint.Paint.valueOf("#ffffff"));
             grid.add(checkZero, 1, 3);
             checkZero.setOnMouseClicked(e -> {
@@ -245,17 +246,17 @@ public class SistemaPlanetarioController implements Initializable {
                     if (iridio.getText().equals("")) {
                         iridio.setText("0");
                     } else {
-                        intIridio = Integer.parseInt(zero.getText());
+                        intIridio = Integer.parseInt(iridio.getText());
                     }
                     if (paladio.getText().equals("")) {
                         paladio.setText("0");
                     } else {
-                        intPaladio = Integer.parseInt(zero.getText());
+                        intPaladio = Integer.parseInt(paladio.getText());
                     }
                     if (platino.getText().equals("")) {
                         platino.setText("0");
                     } else {
-                        intPlatino = Integer.parseInt(zero.getText());
+                        intPlatino = Integer.parseInt(platino.getText());
                     }
                     grid.setVisible(false);
                     CrearPlaneta(label.getText(), banderaEstacionCombustible, grid.getLayoutX(), grid.getLayoutY(), tipoPlaneta,

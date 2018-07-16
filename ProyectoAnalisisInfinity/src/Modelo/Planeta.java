@@ -12,6 +12,7 @@ public class Planeta {
     private int codigo;
     private String nombre;
     private boolean visitado;
+    private boolean exprorable;
     private Elementos elementos;
     private boolean estacionCombustible;
     private List<Nodo> adyacencias;
@@ -33,6 +34,7 @@ public class Planeta {
         this.posicionY = posicionY;
         this.adyacencias = new LinkedList<>();
         this.imagen = imagen;
+        this.exprorable = true;
     }
 
     public Planeta(int codigo, String nombre, Elementos elementos, boolean estacionCombustible, List<Nodo> adyacencias, double posicionX, double posicionY, String imagen) {
@@ -45,6 +47,8 @@ public class Planeta {
         this.estacionCombustible = estacionCombustible;
         this.adyacencias = adyacencias;
         this.imagen = imagen;
+        this.exprorable = true;
+        
     }
 
     /**
@@ -143,6 +147,20 @@ public class Planeta {
      */
     public void setPosicionY(double posicionY) {
         this.posicionY = posicionY;
+    }
+
+    /**
+     * @return the exprorable
+     */
+    public boolean isExprorable() {
+        return exprorable;
+    }
+
+    /**
+     * @param exprorable the exprorable to set
+     */
+    public void setExprorable(boolean exprorable) {
+        this.exprorable = exprorable;
     }
 
 }

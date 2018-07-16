@@ -106,11 +106,7 @@ public class UniversoController implements Initializable {
     }
 
     public void iniciarSimulacion() {
-        boolean simulacion = true;
-        int i = 0;
-        while (simulacion && i < this.nebulosas.size() - 1) {
-            simulacion = moverNave(this.nebulosas.get(i).getPosicionX(), this.nebulosas.get(i).getPosicionY(), this.nebulosas.get(i + 1).getPosicionX(), this.nebulosas.get(i + 1).getPosicionY());
-        }
+       moverNave(this.nebulosas.get(0).getPosicionX(), this.nebulosas.get(0).getPosicionY(), this.nebulosas.get(1).getPosicionX(), this.nebulosas.get(1).getPosicionY());
 
     }
 
@@ -181,8 +177,8 @@ public class UniversoController implements Initializable {
         }
     }
 
-    public boolean moverNave(double Xinicial, double Yinicial, double Xfinal, double Yfinal) {
-        try {
+    public void moverNave(double Xinicial, double Yinicial, double Xfinal, double Yfinal) {
+  
             TranslateTransition translateTransition = new TranslateTransition();
             translateTransition.setNode(this.nave);
             translateTransition.setFromX(Xinicial);
@@ -191,10 +187,8 @@ public class UniversoController implements Initializable {
             translateTransition.setToY(Yfinal - 50);
             translateTransition.setDuration(Duration.seconds(3));
             translateTransition.play();
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+          
+   
 
     }
 

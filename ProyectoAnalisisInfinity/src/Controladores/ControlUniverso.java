@@ -30,7 +30,7 @@ public class ControlUniverso {
 
     private Universo universo;
     private Nave nave;
-    private final ControlNebulosa controlNebulosa;
+    private ControlNebulosa controlNebulosa;
 
     public ControlUniverso() {
         this.controlNebulosa = new ControlNebulosa();
@@ -109,8 +109,8 @@ public class ControlUniverso {
         return sistemaPlanetario;
     }
 
-    public void AgregarAdyasenciaSistemaPlanetario(SistemaPlanetario sistemaPlanetarioInicial, SistemaPlanetario sistemaPlanetarioFinal) {
-        this.controlNebulosa.AgregarAdyasenciaSistemaPlanetario(sistemaPlanetarioInicial, sistemaPlanetarioFinal);
+    public void AgregarAdyasenciaSistemaPlanetario(SistemaPlanetario sistemaPlanetarioInicial, SistemaPlanetario sistemaPlanetarioFinal, int peso) {
+        this.controlNebulosa.AgregarAdyasenciaSistemaPlanetario(sistemaPlanetarioInicial, sistemaPlanetarioFinal, peso);
     }
 
     public SistemaPlanetario EntrarSistemaPlanetario(String nombreSistemaPlanetario) {
