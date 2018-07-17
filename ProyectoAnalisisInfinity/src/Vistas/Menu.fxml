@@ -37,49 +37,42 @@
       </MenuBar>
       <AnchorPane fx:id="marco" layoutX="181.0" layoutY="118.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.0">
          <children>
-            <GridPane layoutX="392.0" layoutY="94.0" prefHeight="158.0" prefWidth="386.0">
+            <GridPane layoutX="56.0" layoutY="337.0" prefHeight="297.0" prefWidth="389.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.60000000000002" minWidth="10.0" prefWidth="161.6" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="230.40003662109373" minWidth="0.0" prefWidth="216.79999999999998" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.60000000000002" minWidth="10.0" prefWidth="181.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="279.0" minWidth="0.0" prefWidth="208.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="166.0" minHeight="10.0" prefHeight="166.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="131.0" minHeight="9.0" prefHeight="106.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="37.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="26.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="BotonCrearMapa" mnemonicParsing="false" onAction="#CrearMapa" text="Crear Mapa" GridPane.columnIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#CargarMapa" text="Cargar Mapa" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" text="Manual Usuario" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Button mnemonicParsing="false" text="Estadisticas" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <ImageView fitHeight="39.0" fitWidth="85.0" pickOnBounds="true">
+                  <Button fx:id="BotonCrearMapa" mnemonicParsing="false" onAction="#CrearMapa" prefHeight="67.0" prefWidth="214.0" text="Crear Mapa" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#CargarMapa" prefHeight="84.0" prefWidth="221.0" text="Cargar Mapa" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ImageView fitHeight="126.0" fitWidth="149.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../Imagenes/atras.png" />
+                        <Image url="@../Imagenes/crear.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="39.0" fitWidth="85.0" pickOnBounds="true" GridPane.rowIndex="1">
+                  <ImageView fitHeight="122.0" fitWidth="136.0" pickOnBounds="true" GridPane.rowIndex="1">
                      <image>
-                        <Image url="@../Imagenes/Nave1.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="39.0" fitWidth="85.0" pickOnBounds="true" GridPane.rowIndex="2">
-                     <image>
-                        <Image url="@../Imagenes/BalaPng1.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="39.0" fitWidth="85.0" pickOnBounds="true" GridPane.rowIndex="3">
-                     <image>
-                        <Image url="@../Imagenes/Arma1.png" />
+                        <Image url="@../Imagenes/cargar.png" />
                      </image>
                   </ImageView>
                </children>
             </GridPane>
-            <Text layoutX="489.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu">
+            <Text layoutX="285.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu">
                <font>
                   <Font size="34.0" />
                </font>
             </Text>
+            <ImageView fx:id="encabezado" fitHeight="217.0" fitWidth="753.0" layoutX="193.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Imagenes/encabezado.gif" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
     </children>

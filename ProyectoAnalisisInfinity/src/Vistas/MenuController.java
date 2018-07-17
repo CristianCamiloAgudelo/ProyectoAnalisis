@@ -47,6 +47,8 @@ public class MenuController implements Initializable {
 
     @FXML
     private Button BotonCrearMapa;
+    @FXML
+    private ImageView encabezado;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
