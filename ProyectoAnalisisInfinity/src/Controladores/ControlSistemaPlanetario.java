@@ -8,6 +8,7 @@ package Controladores;
 import Modelo.*;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 import javafx.scene.Parent;
 
 /**
@@ -30,9 +31,111 @@ public class ControlSistemaPlanetario {
         this.imagenesSistemasPlanetarios.add("Imagenes/SistemaPlanetarioTipo3.png");
     }
 
-    public SistemaPlanetario CrearSistamPlanetario(String nombre, Boolean enemigo, double posicionX, double posicionY, int tipoSistemaPlanetario) {
+    public List<Planeta> IniciarRecorridoPlanetas() {
+        Planeta nodoPadre = BuscarNodoInicial();
+        List<Planeta> planetasVisitados = new LinkedList<>();
+        List<String[]> tablaPesos = new LinkedList<>();
+        Stack<Planeta> pila = new Stack<>();
+        pila.push(nodoPadre);
+        CalcularRecorrido(nodoPadre, planetasVisitados, tablaPesos, pila);
+        tablaPesos.forEach((tablaPeso) -> {
+            System.out.println("padre: " + tablaPeso[0] + " hijo: " + tablaPeso[1] + " heuristica: " + tablaPeso[2]);
+        });
+        return planetasVisitados;
+    }
+
+    /**
+     * heuristica nodosVisitados nodosMarcados lista de pesos [nodoPadre,
+     * nodoHijo, heuristica ] lista solucion
+     *
+     * al costo de recolectar en el sistema planetario se le debe adicionar la
+     * cantidad de combustible consumida para ir de un sistema planetario
+     * cualquiera a ese nodo
+     *
+     * este esta medido por: combustible = distancia / rendimientoCombustible
+     * costoCombustible = zero: 5*4 + platino: 10*3 + paladio: 15*2 + iridio:20
+     * == 100
+     *
+     * nodo inicial: nodo.adyasencias.size() <>= 1 y de estos el que tenga mayor
+     * costo beneficio;
+     *
+     * termina una vez haya recorrido todos los nodos
+     *
+     * @param nodoPadre
+     * @param sistemasPlanetariosVisitados
+     * @param tablaPesos
+     */
+    private void CalcularRecorrido(Planeta nodoPadre, List<Planeta> planetasVisitados, List<String[]> tablaPesos, Stack<Planeta> pila) {
+        nodoPadre.setVisitado(true);
+        planetasVisitados.add(nodoPadre);
+        double mayorHeuristica = -999999999;
+        Planeta nodoHijo = null;
+        for (Nodo nodoAdyacente : nodoPadre.getAdyacencias()) {
+            if (!planetasVisitados.contains(BuscarPlaneta(nodoAdyacente.getNombre()))) {
+                String[] vectorPesos = new String[3];
+                vectorPesos[0] = nodoPadre.getNombre();
+                vectorPesos[1] = nodoAdyacente.getNombre();
+                Planeta planetaAdyacente = BuscarPlaneta(nodoAdyacente.getNombre());
+                double costoBeneficio = this.controlPlaneta.CalcularBeneficio(planetaAdyacente) - this.controlPlaneta.CalcularCosto(planetaAdyacente);
+                vectorPesos[2] = String.valueOf(CalcularHeuristica(costoBeneficio, planetaAdyacente.getAdyacencias().size() - 1));
+                if (Double.parseDouble(vectorPesos[2]) > mayorHeuristica) {
+                    mayorHeuristica = Double.parseDouble(vectorPesos[2]);
+                    nodoHijo = BuscarPlaneta(vectorPesos[1]);
+                }
+                tablaPesos.add(vectorPesos);
+            }
+        }
+        if (nodoHijo != null) {
+            CalcularRecorrido(pila.push(nodoHijo), planetasVisitados, tablaPesos, pila);
+
+        } else if (verificarVisitados()) {
+            if (!pila.isEmpty()) {
+                System.out.println("desapile: ->>>>>>>>>>>" + pila.pop().getNombre());
+            }
+            CalcularRecorrido(pila.lastElement(), planetasVisitados, tablaPesos, pila);
+        }
+
+    }
+
+    private boolean verificarVisitados() {
+        boolean faltaVisitar = false;
+        for (Planeta planeta : this.sistemaPlanetario.getListaPlanetas()) {
+            if (!planeta.isVisitado()) {
+                System.out.println("falta visitar: " + planeta.getNombre());
+                faltaVisitar = true;
+            }
+        }
+
+        return faltaVisitar;
+    }
+
+    private Planeta BuscarNodoInicial() {
+        Planeta nodoInicial = new Planeta();
+        int menorAdyasencia = 1000000;
+
+        for (Planeta planeta : this.sistemaPlanetario.getListaPlanetas()) {
+            if (planeta.getAdyacencias().size() < menorAdyasencia) {
+                menorAdyasencia = planeta.getAdyacencias().size();
+                nodoInicial = planeta;
+            }
+        }
+        return nodoInicial;
+    }
+
+    private double CalcularHeuristica(double costoBeneficio, double cantidadAbyasencias) {
+        costoBeneficio *= 100;
+        cantidadAbyasencias *= 10;
+
+//        System.out.println("costoBeneficio: " + costoBeneficio + " cantidadAdyasencias: " + cantidadAbyasencias + " combustible: " + combustible);
+        double heuristica = (costoBeneficio + cantidadAbyasencias);
+        return heuristica;
+
+    }
+
+    public SistemaPlanetario CrearSistamPlanetario(String nombre, Boolean enemigo, double posicionX, double posicionY, int tipoSistemaPlanetario, boolean teletransportador) {
         this.codigoSistemaPlanetario++;
         SistemaPlanetario sistemaPlanetario = new SistemaPlanetario(this.codigoSistemaPlanetario, nombre, enemigo, posicionX, posicionY, this.imagenesSistemasPlanetarios.get(tipoSistemaPlanetario));
+        sistemaPlanetario.setTeletransportador(teletransportador);
         return sistemaPlanetario;
     }
 
@@ -66,7 +169,7 @@ public class ControlSistemaPlanetario {
 
     public double CalcularBeneficio(SistemaPlanetario sistemaPlanetario) {
         double beneficio = 0;
-        System.out.println("nombre sistema: "+ sistemaPlanetario.getNombre()+" cantidadPlanetas: "+ sistemaPlanetario.getListaPlanetas().size());
+        //System.out.println("nombre sistema: "+ sistemaPlanetario.getNombre()+" cantidadPlanetas: "+ sistemaPlanetario.getListaPlanetas().size());
         for (Planeta planeta : sistemaPlanetario.getListaPlanetas()) {
             //System.out.println("es explorable: "+ planeta.isExprorable());
             if (planeta.isExprorable()) {
@@ -110,9 +213,7 @@ public class ControlSistemaPlanetario {
                 costo += 540 * 1;
             }
             contador = 0;
-
         }
-
         return costo;
     }
 

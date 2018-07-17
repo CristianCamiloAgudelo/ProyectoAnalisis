@@ -9,7 +9,7 @@ import Modelo.*;
 import Modelo.Nodo;
 import java.util.LinkedList;
 import java.util.List;
-
+import java.util.Stack;
 import javafx.scene.Parent;
 
 /**
@@ -23,10 +23,12 @@ public class ControlNebulosa {
     private int codigoImagen;
     private List<String> imagenes;
     private final ControlSistemaPlanetario controlSistemaPlanetario;
+    private boolean teletransportador;
 
     public ControlNebulosa() {
         this.codigoNebulosa = 0;
         this.controlSistemaPlanetario = new ControlSistemaPlanetario();
+        this.teletransportador = false;
         this.imagenes = new LinkedList<>();
         this.imagenes.add("Imagenes/nebulosa11.png");
         this.imagenes.add("Imagenes/NebulosaTipo3.png");
@@ -34,15 +36,16 @@ public class ControlNebulosa {
 
     }
 
-    public List<SistemaPlanetario> IniciarRecorrido() {
+    public List<SistemaPlanetario> IniciarRecorridoSistemasPlanetarios() {
         SistemaPlanetario nodoPadre = BuscarNodoInicial();
         List<SistemaPlanetario> sistemasPlanetariosVisitados = new LinkedList<>();
         List<String[]> tablaPesos = new LinkedList<>();
-        CalcularRecorrido(nodoPadre, sistemasPlanetariosVisitados, tablaPesos);
-        for (String[] tablaPeso : tablaPesos) {
+        Stack<SistemaPlanetario> pila = new Stack<>();
+        pila.push(nodoPadre);
+        CalcularRecorrido(nodoPadre, sistemasPlanetariosVisitados, tablaPesos, pila);
+        tablaPesos.forEach((tablaPeso) -> {
             System.out.println("padre: " + tablaPeso[0] + " hijo: " + tablaPeso[1] + " heuristica: " + tablaPeso[2]);
-        }
-
+        });
         return sistemasPlanetariosVisitados;
     }
 
@@ -67,9 +70,10 @@ public class ControlNebulosa {
      * @param sistemasPlanetariosVisitados
      * @param tablaPesos
      */
-    private void CalcularRecorrido(SistemaPlanetario nodoPadre, List<SistemaPlanetario> sistemasPlanetariosVisitados, List<String[]> tablaPesos) {
+    private void CalcularRecorrido(SistemaPlanetario nodoPadre, List<SistemaPlanetario> sistemasPlanetariosVisitados, List<String[]> tablaPesos, Stack<SistemaPlanetario> pila) {
+        nodoPadre.setVisitado(true);
         sistemasPlanetariosVisitados.add(nodoPadre);
-        double mayorHeuristica = 0;
+        double mayorHeuristica = -999999999;
         SistemaPlanetario nodoHijo = null;
         for (Nodo nodoAdyacente : nodoPadre.getAdyacencias()) {
             if (!sistemasPlanetariosVisitados.contains(BuscarSistemaPlanetario(nodoAdyacente.getNombre()))) {
@@ -89,17 +93,33 @@ public class ControlNebulosa {
             }
         }
         if (nodoHijo != null) {
-            CalcularRecorrido(nodoHijo, sistemasPlanetariosVisitados, tablaPesos);
+            CalcularRecorrido(pila.push(nodoHijo), sistemasPlanetariosVisitados, tablaPesos, pila);
+
+        } else if (verificarVisitados()) {
+            if (!pila.isEmpty()) {
+                System.out.println("desapile: ->>>>>>>>>>>" + pila.pop().getNombre());
+            }
+            CalcularRecorrido(pila.lastElement(), sistemasPlanetariosVisitados, tablaPesos, pila);
         }
+
+    }
+
+    private boolean verificarVisitados() {
+        boolean faltaVisitar = false;
+        for (SistemaPlanetario sistemasPlanetariosVisitado : this.nebulosa.getListaSistemasPlanetarios()) {
+            if (!sistemasPlanetariosVisitado.isVisitado()) {
+                System.out.println("falta visitar: " + sistemasPlanetariosVisitado.getNombre());
+                faltaVisitar = true;
+            }
+        }
+
+        return faltaVisitar;
     }
 
     private SistemaPlanetario BuscarNodoInicial() {
         SistemaPlanetario nodoInicial = new SistemaPlanetario();
-        int menorAdyasencia = 10000;
-
         for (SistemaPlanetario sistema : this.nebulosa.getListaSistemasPlanetarios()) {
-            if (sistema.getAdyacencias().size() < menorAdyasencia) {
-                menorAdyasencia = sistema.getAdyacencias().size();
+            if (sistema.isTeletransportador()) {
                 nodoInicial = sistema;
             }
         }
@@ -109,9 +129,9 @@ public class ControlNebulosa {
     private double CalcularHeuristica(double costoBeneficio, double cantidadAbyasencias, double combustible) {
         costoBeneficio *= 100;
         cantidadAbyasencias *= 10;
-        combustible *= 2;
-        System.out.println("costoBeneficio: "+costoBeneficio + " cantidadAdyasencias: "+ cantidadAbyasencias + " combustible: "+ combustible);
-        double heuristica = (costoBeneficio + cantidadAbyasencias) - combustible;
+
+//        System.out.println("costoBeneficio: " + costoBeneficio + " cantidadAdyasencias: " + cantidadAbyasencias + " combustible: " + combustible);
+        double heuristica = (costoBeneficio + cantidadAbyasencias) + combustible;
         return heuristica;
 
     }
@@ -122,10 +142,13 @@ public class ControlNebulosa {
         return nebulosa;
     }
 
-    public SistemaPlanetario AgregarSistemaPlanetario(String nombre, Boolean enemigo, double posicionX, double posicionY, int tipoSistemaPlanetario) {
-        SistemaPlanetario sistemaPlanetario = this.controlSistemaPlanetario.CrearSistamPlanetario(nombre, enemigo, posicionX, posicionY, tipoSistemaPlanetario);
+    public SistemaPlanetario AgregarSistemaPlanetario(String nombre, Boolean enemigo, double posicionX, double posicionY, int tipoSistemaPlanetario, boolean teletransportador) {
+        if (teletransportador) {
+            this.nebulosa.setTeletransportador(true);
+        }
+        SistemaPlanetario sistemaPlanetario = this.controlSistemaPlanetario.CrearSistamPlanetario(nombre, enemigo, posicionX, posicionY, tipoSistemaPlanetario, teletransportador);
         this.nebulosa.getListaSistemasPlanetarios().add(sistemaPlanetario);
-        System.out.println("agregue sistema");
+        System.out.println("agregue sistema teletransportador: " + teletransportador);
         return sistemaPlanetario;
     }
 
@@ -199,6 +222,24 @@ public class ControlNebulosa {
      */
     public void setNebulosa(Nebulosa nebulosa) {
         this.nebulosa = nebulosa;
+    }
+
+    public List<Planeta> IniciarRecorridoPlaneta() {
+        return this.controlSistemaPlanetario.IniciarRecorridoPlanetas();
+    }
+
+    /**
+     * @return the teletransportador
+     */
+    public boolean isTeletransportador() {
+        return teletransportador;
+    }
+
+    /**
+     * @param teletransportador the teletransportador to set
+     */
+    public void setTeletransportador(boolean teletransportador) {
+        this.teletransportador = teletransportador;
     }
 
 }

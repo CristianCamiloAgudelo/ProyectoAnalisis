@@ -11,6 +11,7 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.stage.FileChooser;
@@ -105,8 +106,8 @@ public class ControlUniverso {
         return nebulosas;
     }
 
-    public SistemaPlanetario AgregarSistemaPlanetario(String nombreSistemaPlanetario, Boolean enemigo, double posicionX, double posicionY, int tipoSistemaPlanetario) {
-        SistemaPlanetario sistemaPlanetario = this.controlNebulosa.AgregarSistemaPlanetario(nombreSistemaPlanetario, enemigo, posicionX, posicionY, tipoSistemaPlanetario);
+    public SistemaPlanetario AgregarSistemaPlanetario(String nombreSistemaPlanetario, Boolean enemigo, double posicionX, double posicionY, int tipoSistemaPlanetario, boolean teletransportador) {
+        SistemaPlanetario sistemaPlanetario = this.controlNebulosa.AgregarSistemaPlanetario(nombreSistemaPlanetario, enemigo, posicionX, posicionY, tipoSistemaPlanetario, teletransportador);
         return sistemaPlanetario;
     }
 
@@ -171,7 +172,25 @@ public class ControlUniverso {
     }
 
     public List<SistemaPlanetario> IniciarRecorrido() {
-        return this.controlNebulosa.IniciarRecorrido();
+        return this.controlNebulosa.IniciarRecorridoSistemasPlanetarios();
+    }
+
+    public List<Planeta> IniciarRecorridoPlaneta() {
+        return this.controlNebulosa.IniciarRecorridoPlaneta();
+    }
+
+    public boolean isTeletransportador() {
+        return this.controlNebulosa.getNebulosa().isTeletransportador();
+    }
+
+    public List<Nebulosa> RecorridoNebulosas() {
+        List<Nebulosa> recorridoNebulosas = new LinkedList<>();
+        for (Nebulosa nebulosa : this.universo.getListaNebulosas()) {
+            if (nebulosa.isTeletransportador()) {
+                recorridoNebulosas.add(nebulosa);
+            }
+        }
+        return recorridoNebulosas;
     }
 
 }

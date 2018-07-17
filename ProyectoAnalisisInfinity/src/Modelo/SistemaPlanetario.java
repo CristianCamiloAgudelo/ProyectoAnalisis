@@ -19,6 +19,7 @@ public class SistemaPlanetario
     private String imagen;
     private double posicionX;
     private double posicionY;
+    private boolean teletransportador;
 
     public SistemaPlanetario() {
         this.adyacencias = new LinkedList<>();
@@ -35,6 +36,7 @@ public class SistemaPlanetario
         this.imagen = imagen;
         this.posicionX = posicionX;
         this.posicionY = posicionY;
+        this.teletransportador = false;
     }
     
     
@@ -49,6 +51,7 @@ public class SistemaPlanetario
         this.imagen = imagen;
         this.posicionX = posicionX;
         this.posicionY = posicionY;
+        this.teletransportador = false;
     }
 
     /**
@@ -83,14 +86,14 @@ public class SistemaPlanetario
      * @return the enemigos
      */
     public Boolean getEnemigos() {
-        return enemigos;
+        return isEnemigos();
     }
 
     /**
      * @param enemigo   the enemigos to set
      */
     public void setEnemigos(Boolean enemigo) {
-        this.enemigos = enemigo;
+        this.setEnemigos((boolean) enemigo);
     }
 
     /**
@@ -154,6 +157,34 @@ public class SistemaPlanetario
      */
     public void setPosicionY(int posicionY) {
         this.posicionY = posicionY;
+    }
+
+    /**
+     * @return the enemigos
+     */
+    public boolean isEnemigos() {
+        return enemigos;
+    }
+
+    /**
+     * @param enemigos the enemigos to set
+     */
+    public void setEnemigos(boolean enemigos) {
+        this.enemigos = enemigos;
+    }
+
+    /**
+     * @return the teletransportador
+     */
+    public boolean isTeletransportador() {
+        return teletransportador;
+    }
+
+    /**
+     * @param teletransportador the teletransportador to set
+     */
+    public void setTeletransportador(boolean teletransportador) {
+        this.teletransportador = teletransportador;
     }
 
     

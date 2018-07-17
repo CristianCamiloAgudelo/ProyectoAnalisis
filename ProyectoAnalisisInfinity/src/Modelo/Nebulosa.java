@@ -19,6 +19,7 @@ public class Nebulosa {
     private String imagen;
     private double posicionX;
     private double posicionY;
+    private boolean teletransportador;
 
     public Nebulosa() {
         this.adyacencias = new LinkedList<>();
@@ -35,6 +36,7 @@ public class Nebulosa {
         this.imagen = imagen;
         this.posicionX = posicionX;
         this.posicionY = posicionY;
+        this.teletransportador = false;
     }
 
     public Nebulosa(int codigo, String nombre, boolean enemigo, boolean visitado, List<Nodo> adyacencias, List<SistemaPlanetario> listaSistemasPlanetarios, double posicionX, double posicionY, String imagen) {
@@ -47,6 +49,7 @@ public class Nebulosa {
         this.listaSistemasPlanetarios = listaSistemasPlanetarios;
         this.posicionX = posicionX;
         this.posicionY = posicionY;
+        this.teletransportador = false;
     }
 
     /**
@@ -152,6 +155,20 @@ public class Nebulosa {
      */
     public void setPosicionY(int posicionY) {
         this.posicionY = posicionY;
+    }
+
+    /**
+     * @return the teletransportador
+     */
+    public boolean isTeletransportador() {
+        return teletransportador;
+    }
+
+    /**
+     * @param teletransportador the teletransportador to set
+     */
+    public void setTeletransportador(boolean teletransportador) {
+        this.teletransportador = teletransportador;
     }
 
 }

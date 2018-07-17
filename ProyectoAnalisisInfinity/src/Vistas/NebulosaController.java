@@ -13,6 +13,7 @@ import Controladores.ControlNebulosa;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
@@ -45,8 +46,9 @@ public class NebulosaController implements Initializable {
     private GridPane tipo1;
     @FXML
     private ImageView tipo2;
-    private Boolean bandera;
-    private Boolean banderaEnemigo;
+    private boolean bandera;
+    private boolean banderaEnemigo;
+    private boolean teletransportador;
     private String rutaImagen;
     private List<SistemaPlanetario> sistemasPlanetarios;
     private AnchorPane marco;
@@ -75,6 +77,7 @@ public class NebulosaController implements Initializable {
         this.marco = marco;
         this.nombreSistemaFinal = "";
         this.nombreSistemaInicial = "";
+
         if (!this.sistemasPlanetarios.isEmpty()) {
             PintarSistemaPlanetario(this.sistemasPlanetarios);
         }
@@ -104,8 +107,8 @@ public class NebulosaController implements Initializable {
         this.marco.getChildren().add(vistaUniverso.getParent());
     }
 
-    private void crearSistemaPlanetario(String nombre, Boolean enemigo, double posicionX, double posicionY, int tipoSistemaPlanetario) {
-        SistemaPlanetario sistemaPlanetario = this.getControlUniverso().AgregarSistemaPlanetario(nombre, enemigo, posicionX, posicionY, tipoSistemaPlanetario);
+    private void crearSistemaPlanetario(String nombre, Boolean enemigo, double posicionX, double posicionY, int tipoSistemaPlanetario, boolean teletransportador) {
+        SistemaPlanetario sistemaPlanetario = this.getControlUniverso().AgregarSistemaPlanetario(nombre, enemigo, posicionX, posicionY, tipoSistemaPlanetario, teletransportador);
         PintarSistemaPlanetario(this.sistemasPlanetarios);
     }
 
@@ -113,6 +116,7 @@ public class NebulosaController implements Initializable {
     private void Agregar(MouseEvent event) {
 
         if (this.bandera) {
+
             this.bandera = false;
             final GridPane grid = new GridPane();
             grid.setLayoutX(event.getX());
@@ -129,8 +133,15 @@ public class NebulosaController implements Initializable {
             grid.getColumnConstraints().addAll(leftCol, rightCol);
             //input
             TextField input = new TextField("");
-            input.setPromptText("Nombre Nebulosa");
+            input.setPromptText("Nombre Sistema");
             grid.addRow(0, input);
+            //checkbox teletransportador
+            CheckBox checkBox = new CheckBox("teletransportador?");
+            checkBox.setTextFill(javafx.scene.paint.Paint.valueOf("#ffffff"));
+            grid.addRow(1, checkBox);
+            if (this.controlUniverso.isTeletransportador()) {
+                checkBox.setVisible(false);
+            }
             //imagen
             ImageView imagen = new ImageView(this.rutaImagen);
             grid.addRow(2, imagen);
@@ -144,9 +155,9 @@ public class NebulosaController implements Initializable {
                     label.setTextFill(javafx.scene.paint.Paint.valueOf("#ffffff"));
                     label.setText(input.getText());
                     grid.add(label, 0, 1);
-
                     grid.setVisible(false);
-                    crearSistemaPlanetario(label.getText(), banderaEnemigo, grid.getLayoutX(), grid.getLayoutY(), tipoSistemaPlanetario);
+                    CheckBox nodo = (CheckBox) getNodeByRowColumnIndex(1, 0, grid);
+                    crearSistemaPlanetario(label.getText(), banderaEnemigo, grid.getLayoutX(), grid.getLayoutY(), tipoSistemaPlanetario, nodo.isSelected());
                 }
             };
             boton.setOnAction(evento);
@@ -154,6 +165,27 @@ public class NebulosaController implements Initializable {
             this.VistaNebulosa.getChildren().add(grid);
 
         }
+    }
+
+    /**
+     * metodo sacado de internet ("https://stackoverflow.com/questions/20825935/javafx-get-node-by-row-and-column")
+     *
+     * @param row
+     * @param column
+     * @param gridPane
+     * @return
+     */
+    public Node getNodeByRowColumnIndex(final int row, final int column, GridPane gridPane) {
+        Node result = null;
+        ObservableList<Node> childrens = gridPane.getChildren();
+
+        for (Node node : childrens) {
+            if (gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column) {
+                result = node;
+                break;
+            }
+        }
+        return result;
     }
 
     private void PintarSistemaPlanetario(List<SistemaPlanetario> sistemasPlanetarios) {
@@ -313,7 +345,7 @@ public class NebulosaController implements Initializable {
 
     @FXML
     private void CalcularRecorrido(ActionEvent event) {
-        
+
         List<SistemaPlanetario> recorrido = this.controlUniverso.IniciarRecorrido();
         mostrarRecorridos(recorrido);
 

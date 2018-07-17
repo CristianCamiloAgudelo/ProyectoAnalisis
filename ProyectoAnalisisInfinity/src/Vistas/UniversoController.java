@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -71,6 +72,8 @@ public class UniversoController implements Initializable {
     private Boolean simulacion;
     @FXML
     private ImageView tipo3;
+    @FXML
+    private Button recorrido;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -107,7 +110,7 @@ public class UniversoController implements Initializable {
     }
 
     public void iniciarSimulacion() {
-       moverNave(this.nebulosas.get(0).getPosicionX(), this.nebulosas.get(0).getPosicionY(), this.nebulosas.get(1).getPosicionX(), this.nebulosas.get(1).getPosicionY());
+        moverNave(this.nebulosas.get(0).getPosicionX(), this.nebulosas.get(0).getPosicionY(), this.nebulosas.get(1).getPosicionX(), this.nebulosas.get(1).getPosicionY());
 
     }
 
@@ -159,9 +162,9 @@ public class UniversoController implements Initializable {
                     label.setText(input.getText());
 
                     grid.add(label, 0, 1);
-
+                    CheckBox nodo = (CheckBox) getNodeByRowColumnIndex(1, 1, grid);
                     //enemigos activos
-                    if (checkBox.isSelected()) {
+                    if (nodo.isSelected()) {
                         banderaEnemigo = true;
                     } else {
                         banderaEnemigo = false;
@@ -178,18 +181,39 @@ public class UniversoController implements Initializable {
         }
     }
 
+    /**
+     * metodo sacado de internet
+     * ("https://stackoverflow.com/questions/20825935/javafx-get-node-by-row-and-column")
+     *
+     * @param row
+     * @param column
+     * @param gridPane
+     * @return
+     */
+    public Node getNodeByRowColumnIndex(final int row, final int column, GridPane gridPane) {
+        Node result = null;
+        ObservableList<Node> childrens = gridPane.getChildren();
+
+        for (Node node : childrens) {
+            if (gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column) {
+                result = node;
+                break;
+            }
+        }
+
+        return result;
+    }
+
     public void moverNave(double Xinicial, double Yinicial, double Xfinal, double Yfinal) {
-  
-            TranslateTransition translateTransition = new TranslateTransition();
-            translateTransition.setNode(this.nave);
-            translateTransition.setFromX(Xinicial);
-            translateTransition.setFromX(Yinicial);
-            translateTransition.setToX(Xfinal - 30);
-            translateTransition.setToY(Yfinal - 50);
-            translateTransition.setDuration(Duration.seconds(3));
-            translateTransition.play();
-          
-   
+
+        TranslateTransition translateTransition = new TranslateTransition();
+        translateTransition.setNode(this.nave);
+        translateTransition.setFromX(Xinicial);
+        translateTransition.setFromX(Yinicial);
+        translateTransition.setToX(Xfinal - 30);
+        translateTransition.setToY(Yfinal - 50);
+        translateTransition.setDuration(Duration.seconds(3));
+        translateTransition.play();
 
     }
 
@@ -344,5 +368,13 @@ public class UniversoController implements Initializable {
      */
     public void setSimulacion(Boolean simulacion) {
         this.simulacion = simulacion;
+    }
+
+    @FXML
+    private void IniciarRecorrido(ActionEvent event) {
+        List<Nebulosa> recorridoNebulosas = this.controlUniverso.RecorridoNebulosas();
+        for (Nebulosa recorridoNebulosa : recorridoNebulosas) {
+            System.out.println("nombre: " + recorridoNebulosa.getNombre());
+        }
     }
 }

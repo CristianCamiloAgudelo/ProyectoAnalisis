@@ -1,1 +1,485 @@
-{"listaNebulosas":[{"codigo":1,"nombre":"ddd","enemigo":false,"visitado":false,"adyacencias":[],"listaSistemasPlanetarios":[{"codigo":1,"nombre":"dddd","visitado":false,"enemigos":false,"adyacencias":[{"nombre":"4444","peso":40},{"nombre":"eeee","peso":30},{"nombre":"ppp","peso":10},{"nombre":"ttt","peso":5}],"listaPlanetas":[{"codigo":1,"nombre":"p1","visitado":false,"exprorable":true,"elementos":{"zero":100,"iridio":100,"paladio":100,"platino":100},"estacionCombustible":false,"adyacencias":[{"nombre":"p3","peso":0},{"nombre":"p2","peso":0}],"imagen":"Imagenes/PlanetaTipo2Gif.gif","posicionX":131.0,"posicionY":65.0},{"codigo":2,"nombre":"p2","visitado":false,"exprorable":true,"elementos":{"zero":200,"iridio":200,"paladio":200,"platino":100},"estacionCombustible":false,"adyacencias":[{"nombre":"p1","peso":0},{"nombre":"p3","peso":0}],"imagen":"Imagenes/PlanetaTipo1Gif.gif","posicionX":616.0,"posicionY":87.0},{"codigo":3,"nombre":"p3","visitado":false,"exprorable":true,"elementos":{"zero":100,"iridio":110,"paladio":100,"platino":100},"estacionCombustible":false,"adyacencias":[{"nombre":"p1","peso":0},{"nombre":"p2","peso":0}],"imagen":"Imagenes/PlanetaTipo2Gif.gif","posicionX":402.0,"posicionY":258.0}],"imagen":"Imagenes/SistemaPlanetarioTipo1.png","posicionX":205.0,"posicionY":66.0},{"codigo":2,"nombre":"rrr","visitado":false,"enemigos":false,"adyacencias":[{"nombre":"eeee","peso":20},{"nombre":"4444","peso":15}],"listaPlanetas":[{"codigo":10,"nombre":"gg","visitado":false,"exprorable":true,"elementos":{"zero":150,"iridio":100,"paladio":100,"platino":100},"estacionCombustible":false,"adyacencias":[],"imagen":"Imagenes/PlanetaTipo1Gif.gif","posicionX":400.0,"posicionY":76.0}],"imagen":"Imagenes/SistemaPlanetarioTipo1.png","posicionX":718.0,"posicionY":101.0},{"codigo":3,"nombre":"eeee","visitado":false,"enemigos":false,"adyacencias":[{"nombre":"dddd","peso":30},{"nombre":"rrr","peso":20},{"nombre":"4444","peso":35}],"listaPlanetas":[{"codigo":8,"nombre":"uu","visitado":false,"exprorable":true,"elementos":{"zero":100,"iridio":100,"paladio":100,"platino":100},"estacionCombustible":false,"adyacencias":[{"nombre":"wwww","peso":0},{"nombre":"tttt","peso":0}],"imagen":"Imagenes/PlanetaTipo2Gif.gif","posicionX":333.0,"posicionY":83.0},{"codigo":9,"nombre":"wwww","visitado":false,"exprorable":true,"elementos":{"zero":100,"iridio":100,"paladio":100,"platino":100},"estacionCombustible":false,"adyacencias":[{"nombre":"uu","peso":0}],"imagen":"Imagenes/PlanetaTipo2Gif.gif","posicionX":691.0,"posicionY":59.0},{"codigo":1,"nombre":"tttt","visitado":false,"exprorable":true,"elementos":{"zero":200,"iridio":100,"paladio":100,"platino":100},"estacionCombustible":false,"adyacencias":[{"nombre":"uu","peso":0}],"imagen":"Imagenes/PlanetaTipo1Gif.gif","posicionX":197.0,"posicionY":95.0}],"imagen":"Imagenes/SistemaPlanetarioTipo2.png","posicionX":546.0,"posicionY":122.0},{"codigo":4,"nombre":"4444","visitado":false,"enemigos":false,"adyacencias":[{"nombre":"dddd","peso":40},{"nombre":"rrr","peso":15},{"nombre":"eeee","peso":35},{"nombre":"gggg","peso":5}],"listaPlanetas":[{"codigo":4,"nombre":"rrr","visitado":false,"exprorable":true,"elementos":{"zero":500,"iridio":500,"paladio":500,"platino":500},"estacionCombustible":false,"adyacencias":[],"imagen":"Imagenes/PlanetaTipo2Gif.gif","posicionX":258.0,"posicionY":45.0}],"imagen":"Imagenes/SistemaPlanetarioTipo1.png","posicionX":551.0,"posicionY":385.0},{"codigo":5,"nombre":"ppp","visitado":false,"enemigos":false,"adyacencias":[{"nombre":"dddd","peso":10},{"nombre":"ttt","peso":20}],"listaPlanetas":[{"codigo":6,"nombre":"ee","visitado":false,"exprorable":true,"elementos":{"zero":50,"iridio":50,"paladio":50,"platino":50},"estacionCombustible":false,"adyacencias":[{"nombre":"oo","peso":0}],"imagen":"Imagenes/PlanetaTipo2Gif.gif","posicionX":284.0,"posicionY":103.0},{"codigo":7,"nombre":"oo","visitado":false,"exprorable":true,"elementos":{"zero":100,"iridio":100,"paladio":50,"platino":50},"estacionCombustible":false,"adyacencias":[{"nombre":"ee","peso":0}],"imagen":"Imagenes/PlanetaTipo1Gif.gif","posicionX":771.0,"posicionY":73.0}],"imagen":"Imagenes/SistemaPlanetarioTipo2.png","posicionX":147.0,"posicionY":251.0},{"codigo":6,"nombre":"gggg","visitado":false,"enemigos":false,"adyacencias":[{"nombre":"4444","peso":5}],"listaPlanetas":[{"codigo":5,"nombre":"r","visitado":false,"exprorable":true,"elementos":{"zero":0,"iridio":100,"paladio":0,"platino":0},"estacionCombustible":false,"adyacencias":[],"imagen":"Imagenes/PlanetaTipo1Gif.gif","posicionX":321.0,"posicionY":94.0}],"imagen":"Imagenes/SistemaPlanetarioTipo1.png","posicionX":903.0,"posicionY":331.0},{"codigo":1,"nombre":"ttt","visitado":false,"enemigos":false,"adyacencias":[{"nombre":"ppp","peso":20},{"nombre":"dddd","peso":5}],"listaPlanetas":[{"codigo":1,"nombre":"330","visitado":false,"exprorable":true,"elementos":{"zero":50,"iridio":50,"paladio":50,"platino":50},"estacionCombustible":false,"adyacencias":[],"imagen":"Imagenes/PlanetaTipo1Gif.gif","posicionX":168.0,"posicionY":39.0}],"imagen":"Imagenes/SistemaPlanetarioTipo1.png","posicionX":345.0,"posicionY":319.0}],"imagen":"Imagenes/NebulosaTipo3.png","posicionX":239.0,"posicionY":129.0}],"nombre":"fff"}
+{
+    "listaNebulosas": [
+        {
+            "codigo": 1,
+            "nombre": "ddd",
+            "enemigo": false,
+            "visitado": false,
+            "adyacencias": [],
+            "listaSistemasPlanetarios": [
+                {
+                    "codigo": 1,
+                    "nombre": "dddd",
+                    "visitado": false,
+                    "enemigos": false,
+                    "adyacencias": [
+                        {
+                            "nombre": "4444",
+                            "peso": 40.0
+                        },
+                        {
+                            "nombre": "eeee",
+                            "peso": 30.0
+                        },
+                        {
+                            "nombre": "ppp",
+                            "peso": 10.0
+                        },
+                        {
+                            "nombre": "ttt",
+                            "peso": 5.0
+                        }
+                    ],
+                    "listaPlanetas": [
+                        {
+                            "codigo": 1,
+                            "nombre": "p1",
+                            "visitado": false,
+                            "exprorable": true,
+                            "elementos": {
+                                "zero": 100,
+                                "iridio": 100,
+                                "paladio": 100,
+                                "platino": 100
+                            },
+                            "estacionCombustible": false,
+                            "adyacencias": [
+                                {
+                                    "nombre": "p3",
+                                    "peso": 0.0
+                                },
+                                {
+                                    "nombre": "p2",
+                                    "peso": 0.0
+                                }
+                            ],
+                            "imagen": "Imagenes/PlanetaTipo2Gif.gif",
+                            "posicionX": 131.0,
+                            "posicionY": 65.0
+                        },
+                        {
+                            "codigo": 2,
+                            "nombre": "p2",
+                            "visitado": false,
+                            "exprorable": true,
+                            "elementos": {
+                                "zero": 200,
+                                "iridio": 200,
+                                "paladio": 200,
+                                "platino": 100
+                            },
+                            "estacionCombustible": false,
+                            "adyacencias": [
+                                {
+                                    "nombre": "p1",
+                                    "peso": 0.0
+                                },
+                                {
+                                    "nombre": "p3",
+                                    "peso": 0.0
+                                }
+                            ],
+                            "imagen": "Imagenes/PlanetaTipo1Gif.gif",
+                            "posicionX": 616.0,
+                            "posicionY": 87.0
+                        },
+                        {
+                            "codigo": 3,
+                            "nombre": "p3",
+                            "visitado": false,
+                            "exprorable": true,
+                            "elementos": {
+                                "zero": 100,
+                                "iridio": 110,
+                                "paladio": 100,
+                                "platino": 100
+                            },
+                            "estacionCombustible": false,
+                            "adyacencias": [
+                                {
+                                    "nombre": "p1",
+                                    "peso": 0.0
+                                },
+                                {
+                                    "nombre": "p2",
+                                    "peso": 0.0
+                                }
+                            ],
+                            "imagen": "Imagenes/PlanetaTipo2Gif.gif",
+                            "posicionX": 402.0,
+                            "posicionY": 258.0
+                        }
+                    ],
+                    "imagen": "Imagenes/SistemaPlanetarioTipo1.png",
+                    "posicionX": 205.0,
+                    "posicionY": 66.0,
+                    "teletransportador": false
+                },
+                {
+                    "codigo": 2,
+                    "nombre": "rrr",
+                    "visitado": false,
+                    "enemigos": false,
+                    "adyacencias": [
+                        {
+                            "nombre": "eeee",
+                            "peso": 20.0
+                        },
+                        {
+                            "nombre": "4444",
+                            "peso": 15.0
+                        }
+                    ],
+                    "listaPlanetas": [
+                        {
+                            "codigo": 10,
+                            "nombre": "gg",
+                            "visitado": false,
+                            "exprorable": true,
+                            "elementos": {
+                                "zero": 150,
+                                "iridio": 100,
+                                "paladio": 100,
+                                "platino": 100
+                            },
+                            "estacionCombustible": false,
+                            "adyacencias": [],
+                            "imagen": "Imagenes/PlanetaTipo1Gif.gif",
+                            "posicionX": 400.0,
+                            "posicionY": 76.0
+                        }
+                    ],
+                    "imagen": "Imagenes/SistemaPlanetarioTipo1.png",
+                    "posicionX": 718.0,
+                    "posicionY": 101.0,
+                    "teletransportador": true
+                },
+                {
+                    "codigo": 3,
+                    "nombre": "eeee",
+                    "visitado": false,
+                    "enemigos": false,
+                    "adyacencias": [
+                        {
+                            "nombre": "dddd",
+                            "peso": 30.0
+                        },
+                        {
+                            "nombre": "rrr",
+                            "peso": 20.0
+                        },
+                        {
+                            "nombre": "4444",
+                            "peso": 35.0
+                        }
+                    ],
+                    "listaPlanetas": [
+                        {
+                            "codigo": 8,
+                            "nombre": "uu",
+                            "visitado": false,
+                            "exprorable": true,
+                            "elementos": {
+                                "zero": 100,
+                                "iridio": 100,
+                                "paladio": 100,
+                                "platino": 100
+                            },
+                            "estacionCombustible": false,
+                            "adyacencias": [
+                                {
+                                    "nombre": "wwww",
+                                    "peso": 0.0
+                                },
+                                {
+                                    "nombre": "tttt",
+                                    "peso": 0.0
+                                }
+                            ],
+                            "imagen": "Imagenes/PlanetaTipo2Gif.gif",
+                            "posicionX": 333.0,
+                            "posicionY": 83.0
+                        },
+                        {
+                            "codigo": 9,
+                            "nombre": "wwww",
+                            "visitado": false,
+                            "exprorable": true,
+                            "elementos": {
+                                "zero": 100,
+                                "iridio": 100,
+                                "paladio": 100,
+                                "platino": 100
+                            },
+                            "estacionCombustible": false,
+                            "adyacencias": [
+                                {
+                                    "nombre": "uu",
+                                    "peso": 0.0
+                                }
+                            ],
+                            "imagen": "Imagenes/PlanetaTipo2Gif.gif",
+                            "posicionX": 691.0,
+                            "posicionY": 59.0
+                        },
+                        {
+                            "codigo": 1,
+                            "nombre": "tttt",
+                            "visitado": false,
+                            "exprorable": true,
+                            "elementos": {
+                                "zero": 200,
+                                "iridio": 100,
+                                "paladio": 100,
+                                "platino": 100
+                            },
+                            "estacionCombustible": false,
+                            "adyacencias": [
+                                {
+                                    "nombre": "uu",
+                                    "peso": 0.0
+                                }
+                            ],
+                            "imagen": "Imagenes/PlanetaTipo1Gif.gif",
+                            "posicionX": 197.0,
+                            "posicionY": 95.0
+                        }
+                    ],
+                    "imagen": "Imagenes/SistemaPlanetarioTipo2.png",
+                    "posicionX": 546.0,
+                    "posicionY": 122.0,
+                    "teletransportador": false
+                },
+                {
+                    "codigo": 4,
+                    "nombre": "4444",
+                    "visitado": false,
+                    "enemigos": false,
+                    "adyacencias": [
+                        {
+                            "nombre": "dddd",
+                            "peso": 40.0
+                        },
+                        {
+                            "nombre": "rrr",
+                            "peso": 15.0
+                        },
+                        {
+                            "nombre": "eeee",
+                            "peso": 35.0
+                        },
+                        {
+                            "nombre": "gggg",
+                            "peso": 5.0
+                        }
+                    ],
+                    "listaPlanetas": [
+                        {
+                            "codigo": 4,
+                            "nombre": "rrr",
+                            "visitado": false,
+                            "exprorable": true,
+                            "elementos": {
+                                "zero": 500,
+                                "iridio": 500,
+                                "paladio": 500,
+                                "platino": 500
+                            },
+                            "estacionCombustible": false,
+                            "adyacencias": [],
+                            "imagen": "Imagenes/PlanetaTipo2Gif.gif",
+                            "posicionX": 258.0,
+                            "posicionY": 45.0
+                        }
+                    ],
+                    "imagen": "Imagenes/SistemaPlanetarioTipo1.png",
+                    "posicionX": 551.0,
+                    "posicionY": 385.0,
+                    "teletransportador": false
+                },
+                {
+                    "codigo": 5,
+                    "nombre": "ppp",
+                    "visitado": false,
+                    "enemigos": false,
+                    "adyacencias": [
+                        {
+                            "nombre": "dddd",
+                            "peso": 10.0
+                        },
+                        {
+                            "nombre": "ttt",
+                            "peso": 20.0
+                        }
+                    ],
+                    "listaPlanetas": [
+                        {
+                            "codigo": 6,
+                            "nombre": "ee",
+                            "visitado": false,
+                            "exprorable": true,
+                            "elementos": {
+                                "zero": 50,
+                                "iridio": 50,
+                                "paladio": 50,
+                                "platino": 50
+                            },
+                            "estacionCombustible": false,
+                            "adyacencias": [
+                                {
+                                    "nombre": "oo",
+                                    "peso": 0.0
+                                }
+                            ],
+                            "imagen": "Imagenes/PlanetaTipo2Gif.gif",
+                            "posicionX": 284.0,
+                            "posicionY": 103.0
+                        },
+                        {
+                            "codigo": 7,
+                            "nombre": "oo",
+                            "visitado": false,
+                            "exprorable": true,
+                            "elementos": {
+                                "zero": 100,
+                                "iridio": 100,
+                                "paladio": 50,
+                                "platino": 50
+                            },
+                            "estacionCombustible": false,
+                            "adyacencias": [
+                                {
+                                    "nombre": "ee",
+                                    "peso": 0.0
+                                }
+                            ],
+                            "imagen": "Imagenes/PlanetaTipo1Gif.gif",
+                            "posicionX": 771.0,
+                            "posicionY": 73.0
+                        }
+                    ],
+                    "imagen": "Imagenes/SistemaPlanetarioTipo2.png",
+                    "posicionX": 147.0,
+                    "posicionY": 251.0,
+                    "teletransportador": false
+                },
+                {
+                    "codigo": 6,
+                    "nombre": "gggg",
+                    "visitado": false,
+                    "enemigos": false,
+                    "adyacencias": [
+                        {
+                            "nombre": "4444",
+                            "peso": 5.0
+                        }
+                    ],
+                    "listaPlanetas": [
+                        {
+                            "codigo": 5,
+                            "nombre": "r",
+                            "visitado": false,
+                            "exprorable": true,
+                            "elementos": {
+                                "zero": 0,
+                                "iridio": 100,
+                                "paladio": 0,
+                                "platino": 0
+                            },
+                            "estacionCombustible": false,
+                            "adyacencias": [],
+                            "imagen": "Imagenes/PlanetaTipo1Gif.gif",
+                            "posicionX": 321.0,
+                            "posicionY": 94.0
+                        }
+                    ],
+                    "imagen": "Imagenes/SistemaPlanetarioTipo1.png",
+                    "posicionX": 903.0,
+                    "posicionY": 331.0,
+                    "teletransportador": false
+                },
+                {
+                    "codigo": 1,
+                    "nombre": "ttt",
+                    "visitado": false,
+                    "enemigos": false,
+                    "adyacencias": [
+                        {
+                            "nombre": "ppp",
+                            "peso": 20.0
+                        },
+                        {
+                            "nombre": "dddd",
+                            "peso": 5.0
+                        }
+                    ],
+                    "listaPlanetas": [
+                        {
+                            "codigo": 1,
+                            "nombre": "330",
+                            "visitado": false,
+                            "exprorable": true,
+                            "elementos": {
+                                "zero": 50,
+                                "iridio": 50,
+                                "paladio": 50,
+                                "platino": 50
+                            },
+                            "estacionCombustible": false,
+                            "adyacencias": [],
+                            "imagen": "Imagenes/PlanetaTipo1Gif.gif",
+                            "posicionX": 168.0,
+                            "posicionY": 39.0
+                        }
+                    ],
+                    "imagen": "Imagenes/SistemaPlanetarioTipo1.png",
+                    "posicionX": 345.0,
+                    "posicionY": 319.0,
+                    "teletransportador": false
+                }
+            ],
+            "imagen": "Imagenes/NebulosaTipo3.png",
+            "posicionX": 239.0,
+            "posicionY": 129.0,
+            "teletransportador": false
+        },
+        {
+            "codigo": 1,
+            "nombre": "333",
+            "enemigo": false,
+            "visitado": false,
+            "adyacencias": [],
+            "listaSistemasPlanetarios": [
+                {
+                    "codigo": 1,
+                    "nombre": "333",
+                    "visitado": false,
+                    "enemigos": false,
+                    "adyacencias": [],
+                    "listaPlanetas": [],
+                    "imagen": "Imagenes/SistemaPlanetarioTipo1.png",
+                    "posicionX": 215.0,
+                    "posicionY": 75.0,
+                    "teletransportador": true
+                },
+                {
+                    "codigo": 2,
+                    "nombre": "ggg",
+                    "visitado": false,
+                    "enemigos": false,
+                    "adyacencias": [],
+                    "listaPlanetas": [],
+                    "imagen": "Imagenes/SistemaPlanetarioTipo1.png",
+                    "posicionX": 676.0,
+                    "posicionY": 70.0,
+                    "teletransportador": false
+                }
+            ],
+            "imagen": "Imagenes/NebulosaTipo3.png",
+            "posicionX": 632.0,
+            "posicionY": 70.0,
+            "teletransportador": true
+        }
+    ],
+    "nombre": "fff"
+}

@@ -43,6 +43,36 @@ public class ControlPlaneta {
         return planetaA;
     }
 
+    public double CalcularBeneficio(Planeta planeta) {
+        double beneficio = 0;
+        if (planeta.isExprorable()) {
+            beneficio += planeta.getElementos().getZero() * 4;
+            beneficio += planeta.getElementos().getPlatino() * 3;
+            beneficio += planeta.getElementos().getPaladio() * 2;
+            beneficio += planeta.getElementos().getIridio();
+            //System.out.println("nombre planeta: "+ planeta.getNombre()+ "beneficio: "+beneficio);
+        }
+        return beneficio;
+    }
+
+    public double CalcularCosto(Planeta planeta) {
+        double costo = 0;
+        if (planeta.getElementos().getZero() != 0) {
+            costo += 270;
+        }
+        if (planeta.getElementos().getPlatino() != 0) {
+            costo += 270;
+        }
+        if (planeta.getElementos().getPaladio() != 0) {
+            costo += 270;
+        }
+        if (planeta.getElementos().getIridio() != 0) {
+            costo += 270;
+        }
+
+        return costo;
+    }
+
     private void EntrarEstacionCombustible() {
 
     }
