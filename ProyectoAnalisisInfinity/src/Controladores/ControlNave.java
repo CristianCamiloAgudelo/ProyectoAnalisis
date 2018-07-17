@@ -6,8 +6,10 @@
 package Controladores;
 
 /**
- *
- * @author USER
+ * 
+ * @author Cristian Camilo Agudelo - Santiago Granada A.
+ * @version 1.0
+ *  
  */
 public class ControlNave {
     

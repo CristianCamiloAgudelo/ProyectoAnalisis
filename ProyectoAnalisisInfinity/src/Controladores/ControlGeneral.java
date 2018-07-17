@@ -9,9 +9,12 @@ import Modelo.*;
 import java.util.Stack;
 
 /**
- *
- * @author USER
+ * 
+ * @author Cristian Camilo Agudelo - Santiago Granada A.
+ * @version 1.0
+ *  
  */
+
 public class ControlGeneral {
     public ControlGeneral() {
     }

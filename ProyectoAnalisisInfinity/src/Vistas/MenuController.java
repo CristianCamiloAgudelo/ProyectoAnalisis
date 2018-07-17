@@ -104,7 +104,7 @@ public class MenuController implements Initializable {
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Guardar");
-        File file = new File("C:\\Users\\USER\\Documents\\GitHub\\ProyectoAnalisis\\ProyectoAnalisisInfinity");
+        File file = new File("C:\\Users\\usuario\\Documents\\NetBeansProjects\\ProyectoAnalisis\\ProyectoAnalisisInfinity");
         fileChooser.setInitialDirectory(file);
         fileChooser.setSelectedExtensionFilter(new ExtensionFilter("JSON files", "*.json*"));
         fileChooser.setTitle("Open Resource File");

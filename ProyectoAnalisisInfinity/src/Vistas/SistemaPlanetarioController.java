@@ -11,7 +11,6 @@ import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -66,8 +65,6 @@ public class SistemaPlanetarioController implements Initializable {
 
     private String nombrePlanetaInicial;
     private String nombrePlanetaFinal;
-    @FXML
-    private Button CalcularRecorrido;
 
     void setData(AnchorPane marco, List<Planeta> planetas) {
         this.marco = marco;
@@ -116,9 +113,10 @@ public class SistemaPlanetarioController implements Initializable {
         this.marco.getChildren().add(vistaPlaneta.getParent());
     }
 
-    private void CrearPlaneta(String nombrePlaneta, boolean estacionCombustible, double PosicionX, double posicionY, int tipoPlaneta, int zero, int iridio, int paladio, int platino) {
-        System.out.println("estacion combustible: "+estacionCombustible);
-        Planeta planeta = this.controlUniverso.AgregarPlaneta(nombrePlaneta, estacionCombustible, PosicionX, posicionY, tipoPlaneta, zero, iridio, paladio, platino);
+    private void CrearPlaneta(String nombrePlaneta, Boolean enemigo, double PosicionX, double posicionY, int tipoPlaneta, int zero, int iridio, int paladio, int platino) {
+        Planeta planeta = this.controlUniverso.AgregarPlaneta(nombrePlaneta, enemigo, PosicionX, posicionY, tipoPlaneta, zero, iridio, paladio, platino);
+        this.planetas.add(planeta);
+        System.out.println(planeta.getCodigo() + planeta.getNombre());
         PintarPlanetas(this.planetas);
     }
 
@@ -232,8 +230,11 @@ public class SistemaPlanetarioController implements Initializable {
                     grid.add(label, 0, 1);
 
                     //enemigos activos
-                    CheckBox nodo = (CheckBox) getNodeByRowColumnIndex(1,0, grid);
-
+                    if (checkBox.isSelected()) {
+                        banderaEstacionCombustible = true;
+                    } else {
+                        banderaEstacionCombustible = false;
+                    }
                     //zero
                     if (zero.getText().equals("")) {
                         zero.setText("0");
@@ -258,7 +259,7 @@ public class SistemaPlanetarioController implements Initializable {
                         intPlatino = Integer.parseInt(platino.getText());
                     }
                     grid.setVisible(false);
-                    CrearPlaneta(label.getText(), nodo.isSelected(), grid.getLayoutX(), grid.getLayoutY(), tipoPlaneta,
+                    CrearPlaneta(label.getText(), banderaEstacionCombustible, grid.getLayoutX(), grid.getLayoutY(), tipoPlaneta,
                             intZero, intIridio, intPaladio, intPlatino);
 
                 }
@@ -270,28 +271,6 @@ public class SistemaPlanetarioController implements Initializable {
         }
     }
 
-    /**
-     * metodo sacado de internet
-     * ("https://stackoverflow.com/questions/20825935/javafx-get-node-by-row-and-column")
-     *
-     * @param row
-     * @param column
-     * @param gridPane
-     * @return
-     */
-    public Node getNodeByRowColumnIndex(final int row, final int column, GridPane gridPane) {
-        Node result = null;
-        ObservableList<Node> childrens = gridPane.getChildren();
-
-        for (Node node : childrens) {
-            if (gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column) {
-                result = node;
-                break;
-            }
-        }
-        return result;
-    }
-
     private void PintarPlanetas(List<Planeta> planetas) {
 
         EliminarElementoVista("GridPane");
@@ -301,6 +280,7 @@ public class SistemaPlanetarioController implements Initializable {
             grid.setLayoutY(planeta.getPosicionY());
             grid.setVgap(10);
             grid.setGridLinesVisible(false);
+            System.out.println(planeta.getPosicionX() + " " + planeta.getPosicionY());
             ColumnConstraints leftCol = new ColumnConstraints();
             leftCol.setHalignment(HPos.CENTER);
             leftCol.setHgrow(Priority.ALWAYS);
@@ -339,6 +319,7 @@ public class SistemaPlanetarioController implements Initializable {
     }
 
     private void Conexion(String nombrePlaneta) {
+        System.out.println("entreee");
         if (this.nombrePlanetaInicial.equals("")) {
             this.nombrePlanetaInicial = nombrePlaneta;
         } else {
@@ -353,6 +334,7 @@ public class SistemaPlanetarioController implements Initializable {
     }
 
     public void PintarLinea(Planeta planetaInicial, Planeta planetaFinal) {
+        System.out.println("pinte");
         Line linea = new Line(planetaInicial.getPosicionX() + 80, planetaInicial.getPosicionY() + 80, planetaFinal.getPosicionX() + 80, planetaFinal.getPosicionY() + 80);
         linea.setStroke(Color.CORNFLOWERBLUE);
         linea.setStrokeWidth(3);
@@ -383,6 +365,7 @@ public class SistemaPlanetarioController implements Initializable {
         this.bandera = true;
         this.rutaImagen = "Imagenes/PlanetaTipo1Gif.gif";
         this.tipoPlaneta = 0;
+        System.out.println("tipo1 este");
     }
 
     @FXML
@@ -390,6 +373,7 @@ public class SistemaPlanetarioController implements Initializable {
         this.bandera = true;
         this.rutaImagen = "Imagenes/PlanetaTipo4Gif.gif";
         this.tipoPlaneta = 1;
+        System.out.println("tipo2 este");
     }
 
     /**
@@ -406,15 +390,4 @@ public class SistemaPlanetarioController implements Initializable {
         this.controlUniverso = controlUniverso;
     }
 
-    @FXML
-    private void CalcularRecorrido(ActionEvent event) {
-        List<Planeta> recorrido = this.controlUniverso.IniciarRecorridoPlaneta();
-        mostrarRecorridos(recorrido);
-    }
-
-    public void mostrarRecorridos(List<Planeta> recorrido) {
-        for (Planeta planeta : recorrido) {
-            System.out.println(planeta.getNombre() + " -> ");
-        }
-    }
 }

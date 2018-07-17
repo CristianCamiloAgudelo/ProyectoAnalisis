@@ -10,21 +10,14 @@ package Modelo;
  * @author usuario
  */
 public class Nodo{
-
-    /**
-     * @param peso the peso to set
-     */
-    public void setPeso(int peso) {
-        this.peso = peso;
-    }
     private String nombre;
-    private double peso;
+    private int peso;
 
     public Nodo() {
         
     }
 
-    public Nodo(String nombre, double peso) {
+    public Nodo(String nombre, int peso) {
         this.nombre = nombre;
         this.peso = peso;
     }
@@ -39,7 +32,7 @@ public class Nodo{
     /**
      * @return the peso
      */
-    public double getPeso() {
+    public int getPeso() {
         return peso;
     }
 
