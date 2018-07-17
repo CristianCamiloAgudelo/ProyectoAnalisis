@@ -10,7 +10,7 @@ and open the template in the editor.
 
 #marco{
     
-    -fx-background-image: url("../Imagenes/universoFondoGif.gif");
+    -fx-background-image: url("../Imagenes/fondoMenu.jpg");
     -fx-background-size: cover;
         
 }

@@ -47,10 +47,11 @@ public class MenuController implements Initializable {
 
     @FXML
     private Button BotonCrearMapa;
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.controlUniverso = new ControlUniverso();
+        
     }
 
     @FXML

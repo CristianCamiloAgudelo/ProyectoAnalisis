@@ -112,12 +112,16 @@ public class PlanetaController implements Initializable {
 
         try {
             labelZero.setText("Zero: " + Integer.toString(planeta.getElementos().getZero()));
+            zero.setProgress((double)(planeta.getElementos().getZero())*0.005);
             zero.setVisible(true);
             labelPaladio.setText("Paladio: "+ Integer.toString(planeta.getElementos().getPaladio()));
+            paladio.setProgress((double)(planeta.getElementos().getPaladio())*0.005);
             paladio.setVisible(true);
             labelIridio.setText("Iridio: " + Integer.toString(planeta.getElementos().getIridio()));
+            iridio.setProgress((double)(planeta.getElementos().getIridio())*0.005);
             iridio.setVisible(true);
             labelPlatino.setText("Platino: "+ Integer.toString(planeta.getElementos().getPlatino()));
+            platino.setProgress((double)(planeta.getElementos().getPlatino())*0.005);
             platino.setVisible(true);
         } catch (Exception e) {
             System.out.println("error!!!! " + e + e.getMessage());
